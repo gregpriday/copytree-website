@@ -1,3 +1,7 @@
+<script lang="ts" context="module">
+  export const prerender = false; // Disable prerendering for dynamic routes
+</script>
+
 <script lang="ts">
   import PromptExplorer from '$lib/components/prompts/PromptExplorer.svelte';
   import PromptViewer from '$lib/components/prompts/PromptViewer.svelte';

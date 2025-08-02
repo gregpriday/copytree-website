@@ -6,11 +6,12 @@ export default defineConfig({
 	plugins: [sveltekit()],
 	kit: {
 		adapter: adapter({
-			runtime: 'nodejs20.x'
+			runtime: 'nodejs20.x',
+			split: true  // Split into multiple functions to avoid bundling hangs
 		}),
 		prerender: {
-			crawl: true,
-			entries: ['*'],
+			crawl: false,  // Disable crawling to prevent hangs
+			entries: ['/', '/docs'],   // Only prerender specific static paths
 			handleHttpError: ({ path, referrer, message }) => {
 				// Ignore expected 404 errors during prerendering
 				const ignoredPaths = ['/favicon.png', '/privacy', '/terms', '/videos/prompts-demo.mp4'];

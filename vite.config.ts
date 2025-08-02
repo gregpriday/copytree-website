@@ -5,7 +5,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
 	plugins: [
-		enhancedImages(), // must come before the SvelteKit plugin
+		// enhancedImages(), // Temporarily disabled to prevent build hangs
 		sveltekit(),
 		tailwindcss()
 	]
