@@ -1,6 +1,2 @@
-// src/app/+page.server.ts
-export const load = async () => {
-	return {
-		message: 'This is the home page!'
-	};
-};
+// src/routes/+page.server.ts
+export const prerender = true;

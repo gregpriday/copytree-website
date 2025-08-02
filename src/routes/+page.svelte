@@ -5,6 +5,7 @@
 	import Features from '$lib/components/home/Features.svelte';
 	import GettingStarted from '$lib/components/home/GettingStarted.svelte';
 	import CallToAction from '$lib/components/home/CallToAction.svelte';
+
 </script>
 
 <svelte:head>

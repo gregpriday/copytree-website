@@ -27,7 +27,7 @@
         
         if (!highlighter) {
           highlighter = await createHighlighter({
-            themes: ['github-dark', 'github-light'],
+            themes: ['github-dark'],
             langs: [
               'markdown',
               'typescript',
@@ -51,14 +51,10 @@
           });
         }
         
-        // Highlight the code
+        // Highlight the code with consistent dark theme
         highlightedCode = highlighter.codeToHtml(code, {
           lang: language,
-          themes: {
-            light: 'github-light',
-            dark: 'github-dark'
-          },
-          defaultColor: false
+          theme: 'github-dark'
         });
         
       } catch (err) {
@@ -73,22 +69,22 @@
   });
 </script>
 
-<div class="h-full bg-secondary overflow-y-auto p-4 text-sm">
+<div class="h-full overflow-y-auto p-4 text-sm" style="background-color: rgb(13 13 13);">
   {#if isLoading}
     <!-- Loading state with skeleton -->
     <div class="space-y-2 animate-pulse">
       {#each Array(5) as _}
-        <div class="h-4 bg-muted rounded w-full"></div>
-        <div class="h-4 bg-muted rounded w-3/4"></div>
-        <div class="h-4 bg-muted rounded w-5/6"></div>
+        <div class="h-4 bg-zinc-800 rounded w-full"></div>
+        <div class="h-4 bg-zinc-800 rounded w-3/4"></div>
+        <div class="h-4 bg-zinc-800 rounded w-5/6"></div>
       {/each}
     </div>
   {:else if error}
     <!-- Error fallback -->
-    <div class="text-destructive text-sm mb-2">
+    <div class="text-red-400 text-sm mb-2">
       Failed to load syntax highlighting: {error}
     </div>
-    <pre class="font-mono whitespace-pre-wrap break-words text-secondary-foreground">{code}</pre>
+    <pre class="font-mono whitespace-pre-wrap break-words text-zinc-300">{code}</pre>
   {:else if highlightedCode}
     <!-- Highlighted code -->
     <div class="shiki-container">
@@ -96,7 +92,7 @@
     </div>
   {:else}
     <!-- Fallback to plain text -->
-    <pre class="font-mono whitespace-pre-wrap break-words text-secondary-foreground">{code}</pre>
+    <pre class="font-mono whitespace-pre-wrap break-words text-zinc-300">{code}</pre>
   {/if}
 </div>
 
@@ -134,12 +130,8 @@
     overflow: visible;
   }
   
-  /* Ensure theme switching works properly */
-  :global(:root:not(.dark) .shiki .github-dark) {
-    display: none;
-  }
-  
-  :global(.dark .shiki .github-light) {
-    display: none;
+  /* Apply consistent dark theme styling */
+  :global(.shiki) {
+    background: rgb(13 13 13) !important; /* zinc-950 equivalent */
   }
 </style>

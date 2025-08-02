@@ -1,5 +1,6 @@
 <script lang="ts">
   import PromptsHero from '$lib/components/prompts/PromptsHero.svelte';
+
 </script>
 
 <svelte:head>

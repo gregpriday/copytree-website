@@ -2,6 +2,7 @@
 <script lang="ts">
 	import '../app.css';
 	import { Header, Footer } from '$lib/components/layout';
+
 </script>
 
 <svelte:head>
