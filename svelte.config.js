@@ -10,17 +10,7 @@ export default defineConfig({
 			split: true  // Split into multiple functions to avoid bundling hangs
 		}),
 		prerender: {
-			crawl: false,  // Disable crawling to prevent hangs
-			entries: ['/', '/docs'],   // Only prerender specific static paths
-			handleHttpError: ({ path, referrer, message }) => {
-				// Ignore expected 404 errors during prerendering
-				const ignoredPaths = ['/favicon.png', '/privacy', '/terms', '/videos/prompts-demo.mp4'];
-				if (ignoredPaths.includes(path)) {
-					return;
-				}
-				// Throw other errors to be caught during development
-				throw new Error(message);
-			}
+			entries: []  // No pages to prerender - completely disabled
 		}
 	}
 });

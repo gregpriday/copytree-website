@@ -1,2 +1,3 @@
 // src/routes/+page.server.ts
-export const prerender = true;
+// Prerendering disabled for simplified deployment
+// export const prerender = true;
