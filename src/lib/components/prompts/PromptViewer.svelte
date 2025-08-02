@@ -3,7 +3,11 @@
   import CopyButton from './CopyButton.svelte';
   import type { PromptConfig } from '$lib/prompts/prompts-config';
   
-  export let prompt: PromptConfig;
+  interface PromptViewerProps {
+    prompt: PromptConfig;
+  }
+  
+  let { prompt }: PromptViewerProps = $props();
 </script>
 
 <div class="flex-1 min-w-0 flex flex-col h-full">

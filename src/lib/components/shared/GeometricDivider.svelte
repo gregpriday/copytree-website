@@ -41,7 +41,7 @@
 >
   <!-- Main divider line -->
   <div class="absolute inset-0 flex items-center" aria-hidden="true">
-    <div class="w-full border-t border-zinc-800 dark:border-zinc-700"></div>
+    <div class="w-full border-t border-border"></div>
   </div>
   
   <!-- Geometric pattern container -->

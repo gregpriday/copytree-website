@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
   import { page } from '$app/stores';
   import LogoIcon from '../shared/LogoIcon.svelte';
   import ThemeToggle from '../shared/ThemeToggle.svelte';
@@ -13,7 +12,7 @@
   };
 
   // Handle escape key to close menu
-  onMount(() => {
+  $effect(() => {
     const handleKeydown = (event: KeyboardEvent) => {
       if (event.key === 'Escape' && isMenuOpen) {
         closeMenu();
@@ -54,7 +53,7 @@
           </a>
         </div>
 
-        <nav class="hidden lg:flex items-center gap-5 xl:gap-6 px-2 font-medium text-zinc-800 dark:text-muted-foreground transition-colors duration-200" aria-label="Primary navigation">
+        <nav class="hidden lg:flex items-center gap-5 xl:gap-6 px-2 font-medium text-muted-foreground transition-colors duration-200" aria-label="Primary navigation">
           <a
             href="/docs"
             class="p-2 text-sm hover:text-foreground/90 transition-colors duration-200 hover:bg-muted rounded-md focus:ring-2 focus:ring-primary focus:outline-none"
@@ -131,21 +130,21 @@
           <div class="flex flex-col space-y-1">
             <a
               href="/docs"
-              class="px-4 py-3 text-sm text-zinc-800 dark:text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-all duration-200 focus:ring-2 focus:ring-primary focus:outline-none"
+              class="px-4 py-3 text-sm text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-all duration-200 focus:ring-2 focus:ring-primary focus:outline-none"
               onclick={closeMenu}
             >
               Documentation
             </a>
             <a
               href="/prompts"
-              class="px-4 py-3 text-sm text-zinc-800 dark:text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-all duration-200 focus:ring-2 focus:ring-primary focus:outline-none"
+              class="px-4 py-3 text-sm text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-all duration-200 focus:ring-2 focus:ring-primary focus:outline-none"
               onclick={closeMenu}
             >
               Prompts
             </a>
             <a
               href="/#video"
-              class="px-4 py-3 text-sm text-zinc-800 dark:text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-all duration-200 focus:ring-2 focus:ring-primary focus:outline-none"
+              class="px-4 py-3 text-sm text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-all duration-200 focus:ring-2 focus:ring-primary focus:outline-none"
               onclick={closeMenu}
             >
               Demo
@@ -154,7 +153,7 @@
               href="https://github.com/gregpriday/copytree"
               target="_blank"
               rel="noopener noreferrer"
-              class="px-4 py-3 text-sm text-zinc-800 dark:text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-all duration-200 focus:ring-2 focus:ring-primary focus:outline-none"
+              class="px-4 py-3 text-sm text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-all duration-200 focus:ring-2 focus:ring-primary focus:outline-none"
               onclick={closeMenu}
             >
               GitHub

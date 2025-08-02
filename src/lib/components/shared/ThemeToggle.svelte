@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
   import { theme, cycleTheme } from '$lib/stores/theme.ts';
+  import { browser } from '$app/environment';
   
   interface ThemeToggleProps {
     class?: string;
@@ -13,16 +13,12 @@
   }: ThemeToggleProps = $props();
 
   let mounted = $state(false);
-  let currentTheme = $state('system');
 
-  onMount(() => {
-    mounted = true;
-    // Subscribe to theme changes
-    const unsubscribe = theme.subscribe(value => {
-      currentTheme = value;
-    });
-    
-    return unsubscribe;
+  // Use auto-subscription with $ prefix - this automatically subscribes/unsubscribes
+  $effect(() => {
+    if (browser) {
+      mounted = true;
+    }
   });
 
   const getIcon = (theme: string) => {
@@ -43,8 +39,8 @@
     </svg>`;
   };
 
-  const getLabel = (theme: string) => {
-    switch (theme) {
+  const getLabel = (themeValue: string) => {
+    switch (themeValue) {
       case 'light': return 'Light';
       case 'dark': return 'Dark';
       case 'system': return 'System';
@@ -55,18 +51,18 @@
 </script>
 
 {#if !mounted}
-  <div class="w-10 h-10 bg-zinc-200 dark:bg-zinc-800 animate-pulse rounded-lg {className}"></div>
+  <div class="w-10 h-10 bg-muted animate-pulse rounded-lg {className}"></div>
 {:else}
   <button
     onclick={cycleTheme}
-    class="inline-flex items-center justify-center gap-2 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-lg transition-all duration-200 hover:!shadow-none {className}"
-    title="Current theme: {getLabel(currentTheme)}. Click to cycle."
-    aria-label="Switch theme. Current: {getLabel(currentTheme)}"
+    class="inline-flex items-center justify-center gap-2 text-muted-foreground hover:text-foreground bg-muted hover:bg-accent rounded-lg transition-all duration-200 hover:!shadow-none {className}"
+    title="Current theme: {getLabel($theme)}. Click to cycle."
+    aria-label="Switch theme. Current: {getLabel($theme)}"
   >
-    {@html getIcon(currentTheme)}
+    {@html getIcon($theme)}
     {#if showLabel}
       <span class="text-sm font-medium">
-        {getLabel(currentTheme)}
+        {getLabel($theme)}
       </span>
     {/if}
   </button>

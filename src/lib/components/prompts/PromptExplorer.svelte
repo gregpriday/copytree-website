@@ -3,7 +3,11 @@
   import * as LucideIcons from 'lucide-svelte';
   import PromptsVideo from './PromptsVideo.svelte';
   
-  export let currentSlug: string;
+  interface Props {
+    currentSlug: string;
+  }
+  
+  let { currentSlug }: Props = $props();
   
   const getIconComponent = (iconName: string) => {
     return (LucideIcons as any)[iconName] || LucideIcons.FileText;
@@ -26,8 +30,7 @@
               ? 'bg-primary/10 text-primary font-medium'
               : 'hover:bg-muted/50 text-muted-foreground hover:text-foreground'}"
           >
-            <svelte:component 
-              this={IconComponent} 
+            <IconComponent 
               class="w-4 h-4 flex-shrink-0 {isActive ? 'text-primary' : ''}" 
             />
             <span class="truncate">{prompt.title}</span>

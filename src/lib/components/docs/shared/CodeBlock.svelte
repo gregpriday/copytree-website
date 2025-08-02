@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
   import { Copy, Check } from 'lucide-svelte';
 
   interface CodeBlockProps {
@@ -176,8 +175,8 @@
     }
   }
 
-  // Lifecycle
-  onMount(() => {
+  // Lifecycle effects
+  $effect(() => {
     // Start syntax highlighting
     highlightCode();
     

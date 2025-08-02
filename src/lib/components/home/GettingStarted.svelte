@@ -1,5 +1,5 @@
 <script lang="ts">
-  import CodeBlock from './CodeBlock.svelte';
+  import { CodeBlock } from '$lib/components/shared';
 
   // Add a type for the step object for better type safety
   interface Step {
@@ -66,7 +66,7 @@
           <div class="flex gap-6">
             <!-- Step number -->
             <div class="flex-shrink-0 relative z-10">
-              <div class="w-16 h-16 rounded-xl bg-white dark:bg-muted border-2 border-zinc-200 dark:border-border flex items-center justify-center group-hover:border-primary/50 transition-all duration-300 shadow-sm box-border">
+              <div class="w-16 h-16 rounded-xl bg-background border-2 border-border flex items-center justify-center group-hover:border-primary/50 transition-all duration-300 shadow-sm box-border">
                 {#if step.isProTip}
                   <div class="w-10 h-10">
                     <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">

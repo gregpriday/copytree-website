@@ -1,9 +1,13 @@
 <script lang="ts">
   import { Copy, Check } from 'lucide-svelte';
   
-  export let content: string;
+  interface Props {
+    content: string;
+  }
   
-  let copied = false;
+  let { content }: Props = $props();
+  
+  let copied = $state(false);
 
   const handleCopy = async () => {
     if (content) {
@@ -15,10 +19,9 @@
 </script>
 
 <button
-  on:click={handleCopy}
+  onclick={handleCopy}
   class="flex-shrink-0 flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200 cursor-pointer shadow-sm
-    dark:bg-muted dark:hover:bg-background dark:text-foreground dark:border dark:border-border
-    bg-zinc-800 hover:bg-zinc-700 text-white"
+    bg-muted hover:bg-accent text-foreground border border-border"
 >
   {#if copied}
     <Check class="w-4 h-4" />

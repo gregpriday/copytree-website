@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
 
   interface VisibleLine {
     text: string;
@@ -150,7 +149,7 @@
     isDone = true;
   }
 
-  onMount(() => {
+  $effect(() => {
     const observer = new IntersectionObserver(
       async ([entry]) => {
         if (entry.isIntersecting) {
@@ -182,15 +181,15 @@
 
 <div bind:this={terminalRef} class="w-full my-8">
   <!-- Container adapts to theme using Tailwind's dark mode -->
-  <div class="bg-white/90 dark:bg-zinc-900/50 backdrop-blur-sm border border-zinc-300 dark:border-zinc-800 shadow-lg dark:shadow-none rounded-lg overflow-hidden">
+  <div class="bg-background/90 backdrop-blur-sm border border-border shadow-lg dark:shadow-none rounded-lg overflow-hidden">
     <!-- Terminal header - adapts to theme -->
-    <div class="flex items-center gap-2 px-4 py-2 bg-zinc-100 dark:bg-zinc-800 border-b border-zinc-200 dark:border-zinc-700">
+    <div class="flex items-center gap-2 px-4 py-2 bg-secondary border-b border-border">
       <div class="flex gap-1.5">
         <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
         <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
         <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
       </div>
-      <span class="text-xs font-medium ml-2 text-zinc-600 dark:text-zinc-400">
+      <span class="text-xs font-medium ml-2 text-muted-foreground">
         Terminal
       </span>
     </div>

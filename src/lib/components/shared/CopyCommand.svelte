@@ -26,7 +26,7 @@
 
 <button
   onclick={copyToClipboard}
-  class="inline-flex items-center gap-2 px-3 py-2 text-sm font-mono bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 rounded-lg border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all duration-200 focus:ring-2 focus:ring-primary focus:outline-none {className}"
+  class="inline-flex items-center gap-2 px-3 py-2 text-sm font-mono bg-muted text-muted-foreground rounded-lg border border-border hover:bg-accent hover:text-accent-foreground transition-all duration-200 focus:ring-2 focus:ring-ring focus:outline-none {className}"
   title="Click to copy command"
   aria-label="Copy command to clipboard"
 >

@@ -3,7 +3,11 @@
   import PromptViewer from '$lib/components/prompts/PromptViewer.svelte';
   import type { PageData } from './$types';
   
-  export let data: PageData;
+  interface PageProps {
+    data: PageData;
+  }
+  
+  let { data }: PageProps = $props();
 </script>
 
 <div class="flex border border-border rounded-lg overflow-hidden h-[calc(100vh-310px)]">
