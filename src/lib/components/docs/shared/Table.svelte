@@ -58,7 +58,7 @@
                   {@render cell()}
                 {:else}
                   {#if cell}
-                    <cell />
+                    <cell></cell>
                   {/if}
                 {/if}
               </td>

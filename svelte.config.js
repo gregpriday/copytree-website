@@ -5,7 +5,9 @@ import adapter from '@sveltejs/adapter-vercel';
 export default defineConfig({
 	plugins: [sveltekit()],
 	kit: {
-		adapter: adapter(),
+		adapter: adapter({
+			runtime: 'nodejs20.x'
+		}),
 		prerender: {
 			crawl: true,
 			entries: ['*'],

@@ -32,6 +32,7 @@
       playsinline
     >
       <source src="/videos/prompts-demo.mp4" type="video/mp4" />
+      <track kind="captions" srclang="en" label="English captions" />
       Your browser does not support the video tag.
     </video>
     
