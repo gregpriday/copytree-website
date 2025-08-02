@@ -1,15 +1,5 @@
 <script>
-	import { goto } from '$app/navigation';
-	import { browser } from '$app/environment';
-
-	let { data } = $props();
-
-	// Redirect to the first prompt on client-side
-	$effect(() => {
-		if (browser && data.prompts && data.prompts.length > 0) {
-			goto(`/prompts/${data.prompts[0].slug}`, { replaceState: true });
-		}
-	});
+	// This page will be redirected by the server load function
 </script>
 
 <div class="container mx-auto px-6 py-12">

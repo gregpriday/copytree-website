@@ -1,35 +1,36 @@
-import { prompts } from '$lib/prompts/prompts-config.js';
 import { error } from '@sveltejs/kit';
+import { prompts } from '$lib/prompts/prompts-config.js';
 
 export const prerender = true;
 
-export async function entries() {
-	return prompts.map((prompt) => ({ slug: prompt.slug }));
-}
-
-export async function load({ params, fetch }) {
+export const load = async ({ params, fetch }) => {
 	const { slug } = params;
 
 	// Find the prompt config
-	const prompt = prompts.find((p) => p.slug === slug);
-	if (!prompt) {
+	const promptConfig = prompts.find((p) => p.slug === slug);
+	if (!promptConfig) {
 		throw error(404, 'Prompt not found');
 	}
 
 	try {
-		// Load the prompt content from static files during prerendering
-		const response = await fetch(`/prompts/${prompt.file}`);
+		// Load the prompt content from static files
+		const response = await fetch(`/prompts/${promptConfig.file}`);
 		if (!response.ok) {
 			throw error(404, 'Prompt file not found');
 		}
 		const content = await response.text();
 
+		const promptWithContent = {
+			...promptConfig,
+			content
+		};
+
 		return {
-			prompt: { ...prompt, content },
+			prompt: promptWithContent,
 			currentSlug: slug
 		};
 	} catch (err) {
 		console.error('Failed to load prompt:', err);
 		throw error(500, 'Failed to load prompt content');
 	}
-}
+};

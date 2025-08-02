@@ -1,18 +1,11 @@
-import adapter from '@sveltejs/adapter-static';
+import adapter from '@sveltejs/adapter-auto';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
-		adapter: adapter({
-			pages: 'public',
-			assets: 'public',
-			fallback: undefined,
-			precompress: false,
-			strict: true
-		}),
+		adapter: adapter(),
 		prerender: {
-			crawl: true,
-			entries: ['*'],
+			entries: ['/', '/docs', '/prompts', '/prompts/implementation-architect'],
 			handleHttpError: ({ path, referrer, message }) => {
 				// Ignore missing privacy/terms pages during prerendering
 				if (path === '/privacy' || path === '/terms') {
