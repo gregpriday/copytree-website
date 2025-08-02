@@ -1,5 +1,6 @@
 <script lang="ts">
   import VideoPlayer from './VideoPlayer.svelte';
+  import intelligentFileCopyingImg from '$lib/assets/images/home/intelligent-file-copying.png?enhanced';
 
   const features = [
     {
@@ -51,7 +52,7 @@
         <div class="absolute -inset-px bg-primary/10 rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
         <VideoPlayer 
           youtubeVideoId="jGztGfRujSE"
-          poster="/images/home/intelligent-file-copying.png"
+          poster={intelligentFileCopyingImg.src}
           title="CopyTree Getting Started"
         />
       </div>

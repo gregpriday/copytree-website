@@ -12,8 +12,9 @@ export default defineConfig({
 			crawl: true,
 			entries: ['*'],
 			handleHttpError: ({ path, referrer, message }) => {
-				// Ignore favicon 404 errors during prerendering
-				if (path === '/favicon.png') {
+				// Ignore expected 404 errors during prerendering
+				const ignoredPaths = ['/favicon.png', '/privacy', '/terms', '/videos/prompts-demo.mp4'];
+				if (ignoredPaths.includes(path)) {
 					return;
 				}
 				// Throw other errors to be caught during development

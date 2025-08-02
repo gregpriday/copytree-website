@@ -1,4 +1,3 @@
-// src/app/+layout.server.ts
-export const ssr = false;
+// src/routes/+layout.server.ts
 export const csr = true;
 export const prerender = true;
