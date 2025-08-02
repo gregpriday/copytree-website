@@ -1,7 +1,3 @@
-<script lang="ts" context="module">
-  export const prerender = false; // Disable prerendering for dynamic routes
-</script>
-
 <script lang="ts">
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';

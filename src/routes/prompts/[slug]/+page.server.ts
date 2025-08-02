@@ -2,6 +2,8 @@ import { error } from '@sveltejs/kit';
 import { prompts } from '$lib/prompts/prompts-config';
 import type { PageServerLoad } from './$types';
 
+export const prerender = false; // Disable prerendering for dynamic routes
+
 export const load: PageServerLoad = async ({ params, fetch }) => {
   const { slug } = params;
   
