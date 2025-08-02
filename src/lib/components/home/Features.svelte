@@ -1,27 +1,32 @@
 <script lang="ts">
+  import intelligentFileCopyingImg from '$lib/assets/images/home/intelligent-file-copying.png?enhanced';
+  import fileTransformsImg from '$lib/assets/images/home/file-transforms.png?enhanced';
+  import aiFriendlyImg from '$lib/assets/images/home/ai-friendly.png?enhanced';
+  import quickProfilesImg from '$lib/assets/images/home/quick-profiles.png?enhanced';
+
   const features = [
     {
       title: 'Smart File Selection',
       description: 'Automatically picks essentials while respecting .gitignore, saving you hours of manual curation.',
-      image: '$lib/assets/images/home/intelligent-file-copying.png',
+      image: intelligentFileCopyingImg,
       alt: 'Intelligent file copying feature showing code selection interface',
     },
     {
       title: '15+ Transformers',
       description: 'Supports PDFs, images, code summaries, and more for AI compatibility.',
-      image: '$lib/assets/images/home/file-transforms.png',
+      image: fileTransformsImg,
       alt: 'File transformation capabilities showing various file types',
     },
     {
       title: 'AI-Friendly Output',
       description: 'Generates XML/JSON ready for large context windows in tools like Claude or GPT-4.',
-      image: '$lib/assets/images/home/ai-friendly.png',
+      image: aiFriendlyImg,
       alt: 'AI-friendly output formats displayed in terminal',
     },
     {
       title: 'Flexible Profiles',
-      description: 'Default profile for quick starts, with easy custom creation via YAML.',
-      image: '$lib/assets/images/home/quick-profiles.png',
+      description: 'Default profile for quick starts, with easy custom creation via YAML.',  
+      image: quickProfilesImg,
       alt: 'Default and custom profile configuration',
     },
   ];
@@ -37,7 +42,7 @@
       mask-image: radial-gradient(ellipse at center, white 20%, transparent 60%);
       -webkit-mask-image: radial-gradient(ellipse at center, white 20%, transparent 60%);
     "
-  />
+  ></div>
   
   <div class="max-w-7xl mx-auto relative z-10">
     <div class="text-center mb-20">
@@ -65,7 +70,7 @@
                 loading={index < 2 ? 'eager' : 'lazy'}
               />
               <!-- Refined Image Blending -->
-              <div class="absolute inset-0 bg-gradient-to-t from-secondary to-transparent" />
+              <div class="absolute inset-0 bg-gradient-to-t from-secondary to-transparent"></div>
             </div>
             
             <!-- Text content -->

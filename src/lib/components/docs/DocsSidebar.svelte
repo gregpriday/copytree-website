@@ -70,9 +70,9 @@
       >
         <div class="relative">
           <!-- Glow effect -->
-          <div class="absolute inset-0 w-2 h-2 bg-primary-400 rounded-full blur-sm animate-breathing" />
+          <div class="absolute inset-0 w-2 h-2 bg-primary-400 rounded-full blur-sm animate-breathing"></div>
           <!-- Main pill -->
-          <div class="relative w-2 h-2 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full shadow-sm" />
+          <div class="relative w-2 h-2 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full shadow-sm"></div>
         </div>
       </div>
       

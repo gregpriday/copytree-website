@@ -57,7 +57,9 @@
                 {:else if isSnippet(cell)}
                   {@render cell()}
                 {:else}
-                  <svelte:component this={cell} />
+                  {#if cell}
+                    <cell />
+                  {/if}
                 {/if}
               </td>
             {/each}

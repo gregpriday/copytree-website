@@ -21,7 +21,7 @@
         background-size: 60px 60px;
         background-repeat: repeat;
       "
-    />
+    ></div>
     <!-- Dark mode grid -->
     <div 
       class="absolute inset-0 hidden dark:block"
@@ -31,14 +31,14 @@
         background-size: 60px 60px;
         background-repeat: repeat;
       "
-    />
+    ></div>
   </div>
 
   <!-- Noise texture overlay -->
   <div 
     class="absolute inset-0 z-[3] opacity-[0.02] dark:opacity-[0.03]" 
     style="background-image: url(/noise-texture.png); background-repeat: repeat;"
-  />
+  ></div>
   
   <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
     <div class="animate-fadeIn opacity-0" style="animation-delay: 0.3s; animation-fill-mode: forwards;">
@@ -46,7 +46,7 @@
       <div class="relative mx-auto mb-6 w-fit">
         <LogoIcon size="xl" class="mx-auto hover:brightness-110" />
         <!-- Subtle ambient glow -->
-        <div class="absolute inset-0 rounded-full bg-primary/20 blur-xl opacity-0 hover:opacity-100 transition-opacity duration-500" />
+        <div class="absolute inset-0 rounded-full bg-primary/20 blur-xl opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
       </div>
       
       <!-- REFINED MESSAGING -->
@@ -73,9 +73,9 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </span>
-            <div class="absolute inset-0 bg-gradient-to-r from-primary to-primary/90 rounded-lg transition-opacity opacity-0 group-hover:opacity-100" />
+            <div class="absolute inset-0 bg-gradient-to-r from-primary to-primary/90 rounded-lg transition-opacity opacity-0 group-hover:opacity-100"></div>
             <!-- Ambient glow effect -->
-            <div class="absolute -inset-1 bg-primary/30 rounded-lg blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+            <div class="absolute -inset-1 bg-primary/30 rounded-lg blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
           </Button>
         </a>
         

@@ -22,7 +22,7 @@
 
 <section id="video" class="relative py-24 md:py-32 px-4 sm:px-6 lg:px-8 bg-background overflow-hidden">
   <!-- Subtle gradient background -->
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-900/10 via-background to-background" />
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-900/10 via-background to-background"></div>
   
   <div class="relative z-10 max-w-5xl mx-auto">
     <div class="text-center mb-10 md:mb-12">
@@ -48,7 +48,7 @@
       <!-- Video wrapper with hover effects constrained to video dimensions -->
       <div class="relative aspect-video rounded-xl overflow-hidden bg-muted border border-border group hover:border-primary/30 transition-all duration-300">
         <!-- Subtle border highlight on hover - constrained to video dimensions -->
-        <div class="absolute -inset-px bg-primary/10 rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+        <div class="absolute -inset-px bg-primary/10 rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
         <VideoPlayer 
           youtubeVideoId="jGztGfRujSE"
           poster="/images/home/intelligent-file-copying.png"

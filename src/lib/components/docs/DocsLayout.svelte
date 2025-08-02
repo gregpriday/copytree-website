@@ -55,21 +55,21 @@
             <Installation />
           </section>
           
-          <div class="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+          <div class="h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
           
           <!-- Quick Start Section -->
           <section id="quick-start" class="scroll-mt-[90px]">
             <QuickStart />
           </section>
           
-          <div class="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+          <div class="h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
           
           <!-- Usage Section -->
           <section id="usage" class="scroll-mt-[90px]">
             <Usage />
           </section>
           
-          <div class="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+          <div class="h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
           
           <!-- Configuration Section -->
           <section id="configuration" class="scroll-mt-[90px]">
@@ -83,21 +83,21 @@
             <Profiles />
           </section>
           
-          <div class="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+          <div class="h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
           
           <!-- Transformers Section -->
           <section id="transformers" class="scroll-mt-[90px]">
             <Transformers />
           </section>
           
-          <div class="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+          <div class="h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
           
           <!-- Commands Reference Section -->
           <section id="commands" class="scroll-mt-[90px]">
             <CommandsReference />
           </section>
           
-          <div class="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+          <div class="h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
           
           <!-- Advanced Features Section -->
           <section id="advanced" class="scroll-mt-[90px]">

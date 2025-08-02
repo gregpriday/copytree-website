@@ -60,7 +60,7 @@
         <div class="group relative">
           <!-- Connection line -->
           {#if index < steps.length - 1}
-            <div class="absolute left-8 top-16 bottom-0 w-0.5 bg-gradient-to-b from-primary to-transparent" />
+            <div class="absolute left-8 top-16 bottom-0 w-0.5 bg-gradient-to-b from-primary to-transparent"></div>
           {/if}
           
           <div class="flex gap-6">

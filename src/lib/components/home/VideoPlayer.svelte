@@ -24,7 +24,7 @@
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen
       class="absolute inset-0 w-full h-full"
-    />
+    ></iframe>
   {:else}
     <img
       src={poster}
@@ -38,7 +38,7 @@
       role="button"
       tabindex="0"
       aria-label="Play video"
-    />
+    ></div>
     <div 
       class="absolute inset-0 flex items-center justify-center" 
       onclick={handlePlayClick}
@@ -48,7 +48,7 @@
       aria-label="Play video"
     >
       <div class="group/button relative flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300 scale-100 group-hover:scale-110 active:scale-100">
-        <div class="absolute -inset-1 bg-white/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div class="absolute -inset-1 bg-white/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         <svg 
           class="text-white drop-shadow-lg w-10 h-10" 
           style="margin-left: 4px"

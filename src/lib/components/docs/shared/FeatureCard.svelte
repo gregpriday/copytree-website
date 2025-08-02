@@ -31,7 +31,7 @@
       {#if icon}
         <div class="mb-4 flex-shrink-0">
           <div class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 border border-primary/30 transition-all duration-300 group-hover:bg-primary/20 group-hover:border-primary/50">
-            <svelte:component this={icon} class="w-6 h-6 text-primary" />
+            {@render icon({ class: "w-6 h-6 text-primary" })}
           </div>
         </div>
       {/if}
@@ -48,6 +48,6 @@
     </div>
     
     <!-- Hover overlay gradient -->
-    <div class="absolute inset-0 bg-gradient-to-br from-primary/[0.02] to-primary/[0.01] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+    <div class="absolute inset-0 bg-gradient-to-br from-primary/[0.02] to-primary/[0.01] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
   </div>
 </div>

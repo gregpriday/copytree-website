@@ -57,7 +57,7 @@
           <div 
             class="transform rotate-45 bg-gradient-to-br from-primary/60 to-emerald-500/60 transition-all duration-300 hover:from-primary hover:to-emerald-500"
             style="width: {currentSize.width}; height: {currentSize.height}; animation-delay: {animate ? `${i * 200}ms` : '0ms'};"
-          />
+          ></div>
         {/each}
         
       {:else if variant === 'triangles'}
@@ -73,7 +73,7 @@
               border-bottom: {currentSize.height} solid oklch(0.723 0.192 149 / 0.6);
               animation-delay: {animate ? `${i * 200}ms` : '0ms'};
             "
-          />
+          ></div>
         {/each}
         
       {:else if variant === 'hexagons'}
@@ -86,7 +86,7 @@
               height: {currentSize.height}; 
               animation-delay: {animate ? `${i * 200}ms` : '0ms'};
             "
-          />
+          ></div>
         {/each}
         
       {:else if variant === 'circles'}
@@ -99,7 +99,7 @@
               height: {i === 2 ? parseInt(currentSize.height) * 1.5 + 'px' : currentSize.height}; 
               animation-delay: {animate ? `${i * 100}ms` : '0ms'};
             "
-          />
+          ></div>
         {/each}
         
       {:else if variant === 'lines'}
@@ -112,7 +112,7 @@
               height: {parseInt(currentSize.height) / 3}px; 
               animation-delay: {animate ? `${i * 150}ms` : '0ms'};
             "
-          />
+          ></div>
         {/each}
       {/if}
     </div>

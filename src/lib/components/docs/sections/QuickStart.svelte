@@ -15,7 +15,7 @@
     <div class="space-y-10">
       <!-- Step 1: Install -->
       <div class="group relative">
-        <div class="absolute left-10 top-20 bottom-0 w-0.5 bg-gradient-to-b from-primary to-transparent" />
+        <div class="absolute left-10 top-20 bottom-0 w-0.5 bg-gradient-to-b from-primary to-transparent"></div>
         <div class="flex gap-6">
           <div class="flex-shrink-0 relative z-10">
             <div class="w-20 h-20 rounded-2xl bg-white dark:bg-muted border-2 border-zinc-200 dark:border-border flex items-center justify-center group-hover:border-primary/50 transition-all duration-300 shadow-sm box-border">
@@ -36,7 +36,7 @@
 
       <!-- Step 2: Copy -->
       <div class="group relative">
-        <div class="absolute left-10 top-20 bottom-0 w-0.5 bg-gradient-to-b from-primary to-transparent" />
+        <div class="absolute left-10 top-20 bottom-0 w-0.5 bg-gradient-to-b from-primary to-transparent"></div>
         <div class="flex gap-6">
           <div class="flex-shrink-0 relative z-10">
             <div class="w-20 h-20 rounded-2xl bg-white dark:bg-muted border-2 border-zinc-200 dark:border-border flex items-center justify-center group-hover:border-primary/50 transition-all duration-300 shadow-sm box-border">
@@ -57,7 +57,7 @@
 
       <!-- Step 3: Paste & Plan -->
       <div class="group relative">
-        <div class="absolute left-10 top-20 bottom-0 w-0.5 bg-gradient-to-b from-primary to-transparent" />
+        <div class="absolute left-10 top-20 bottom-0 w-0.5 bg-gradient-to-b from-primary to-transparent"></div>
         <div class="flex gap-6">
           <div class="flex-shrink-0 relative z-10">
             <div class="w-20 h-20 rounded-2xl bg-white dark:bg-muted border-2 border-zinc-200 dark:border-border flex items-center justify-center group-hover:border-primary/50 transition-all duration-300 shadow-sm box-border">
