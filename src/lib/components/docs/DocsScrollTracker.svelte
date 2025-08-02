@@ -1,96 +1,96 @@
 <script>
-  import { browser } from '$app/environment';
-  import DocsSidebar from './DocsSidebar.svelte';
+	import { browser } from '$app/environment';
+	import DocsSidebar from './DocsSidebar.svelte';
 
-  /**
-   * @typedef {Object} Section
-   * @property {string} id
-   * @property {string} title
-   */
+	/**
+	 * @typedef {Object} Section
+	 * @property {string} id
+	 * @property {string} title
+	 */
 
-  /** @type {{ sections: Section[] }} */
-  let { sections } = $props();
+	/** @type {{ sections: Section[] }} */
+	let { sections } = $props();
 
-  let activeSection = $state('overview');
+	let activeSection = $state('overview');
 
-  const HEADER_OFFSET = 90;
+	const HEADER_OFFSET = 90;
 
-  function updateActiveSection() {
-    if (!browser) return;
-    
-    const scrollY = window.scrollY + HEADER_OFFSET;
-    
-    // Get all section elements
-    const sectionElements = sections
-      .map(section => ({
-        ...section,
-        element: document.getElementById(section.id)
-      }))
-      .filter(section => section.element !== null);
+	function updateActiveSection() {
+		if (!browser) return;
 
-    if (sectionElements.length === 0) return;
+		const scrollY = window.scrollY + HEADER_OFFSET;
 
-    // Find the current active section
-    let currentActiveSection = sectionElements[0].id;
+		// Get all section elements
+		const sectionElements = sections
+			.map((section) => ({
+				...section,
+				element: document.getElementById(section.id)
+			}))
+			.filter((section) => section.element !== null);
 
-    for (let i = 0; i < sectionElements.length; i++) {
-      const current = sectionElements[i];
-      const next = sectionElements[i + 1];
+		if (sectionElements.length === 0) return;
 
-      const currentTop = current.element.offsetTop;
-      const nextTop = next ? next.element.offsetTop : Infinity;
+		// Find the current active section
+		let currentActiveSection = sectionElements[0].id;
 
-      if (scrollY >= currentTop && scrollY < nextTop) {
-        currentActiveSection = current.id;
-        break;
-      }
-    }
+		for (let i = 0; i < sectionElements.length; i++) {
+			const current = sectionElements[i];
+			const next = sectionElements[i + 1];
 
-    // Handle edge case for last section
-    const lastSection = sectionElements[sectionElements.length - 1];
-    if (scrollY >= lastSection.element.offsetTop) {
-      currentActiveSection = lastSection.id;
-    }
+			const currentTop = current.element.offsetTop;
+			const nextTop = next ? next.element.offsetTop : Infinity;
 
-    if (activeSection !== currentActiveSection) {
-      activeSection = currentActiveSection;
-    }
-  }
+			if (scrollY >= currentTop && scrollY < nextTop) {
+				currentActiveSection = current.id;
+				break;
+			}
+		}
 
-  /** @type {number | null} */
-  let throttleTimeout = null;
+		// Handle edge case for last section
+		const lastSection = sectionElements[sectionElements.length - 1];
+		if (scrollY >= lastSection.element.offsetTop) {
+			currentActiveSection = lastSection.id;
+		}
 
-  function handleScroll() {
-    if (throttleTimeout) return;
-    
-    throttleTimeout = window.setTimeout(() => {
-      updateActiveSection();
-      throttleTimeout = null;
-    }, 16); // ~60fps
-  }
+		if (activeSection !== currentActiveSection) {
+			activeSection = currentActiveSection;
+		}
+	}
 
-  // Use $effect instead of onMount/onDestroy for Svelte 5
-  $effect(() => {
-    if (!browser) return;
-    
-    // Initial active section detection
-    updateActiveSection();
-    
-    // Add scroll listener
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
-    // Also listen for resize to recalculate positions
-    window.addEventListener('resize', updateActiveSection, { passive: true });
+	/** @type {number | null} */
+	let throttleTimeout = null;
 
-    // Cleanup function (equivalent to onDestroy)
-    return () => {
-      if (throttleTimeout) {
-        clearTimeout(throttleTimeout);
-      }
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', updateActiveSection);
-    };
-  });
+	function handleScroll() {
+		if (throttleTimeout) return;
+
+		throttleTimeout = window.setTimeout(() => {
+			updateActiveSection();
+			throttleTimeout = null;
+		}, 16); // ~60fps
+	}
+
+	// Use $effect instead of onMount/onDestroy for Svelte 5
+	$effect(() => {
+		if (!browser) return;
+
+		// Initial active section detection
+		updateActiveSection();
+
+		// Add scroll listener
+		window.addEventListener('scroll', handleScroll, { passive: true });
+
+		// Also listen for resize to recalculate positions
+		window.addEventListener('resize', updateActiveSection, { passive: true });
+
+		// Cleanup function (equivalent to onDestroy)
+		return () => {
+			if (throttleTimeout) {
+				clearTimeout(throttleTimeout);
+			}
+			window.removeEventListener('scroll', handleScroll);
+			window.removeEventListener('resize', updateActiveSection);
+		};
+	});
 </script>
 
 <DocsSidebar {sections} {activeSection} />

@@ -18,13 +18,14 @@
 
 /** @type {PromptConfig[]} */
 export const prompts = [
-  {
-    id: 'implementation-architect',
-    slug: 'implementation-architect',
-    title: 'Implementation Architect',
-    description: 'System prompt for planning and architecting code implementations across AI platforms.',
-    icon: 'BrainCircuit',
-    file: 'implementation-architect.md',
-    content: '', // Will be loaded dynamically
-  },
+	{
+		id: 'implementation-architect',
+		slug: 'implementation-architect',
+		title: 'Implementation Architect',
+		description:
+			'System prompt for planning and architecting code implementations across AI platforms.',
+		icon: 'BrainCircuit',
+		file: 'implementation-architect.md',
+		content: '' // Will be loaded dynamically
+	}
 ];

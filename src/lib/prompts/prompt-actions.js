@@ -6,34 +6,38 @@ import { prompts } from './prompts-config.js';
  * @returns {Promise<{prompts: import('./prompts-config.js').PromptConfig[], sections: import('./prompts-config.js').PromptSection[]}>}
  */
 export async function loadPrompts(fetch) {
-  // Load content for all prompts from static files
-  /** @type {import('./prompts-config.js').PromptConfig[]} */
-  const promptsWithContent = [];
-  
-  for (const prompt of prompts) {
-    try {
-      const response = await fetch(`/prompts/${prompt.file}`);
-      const content = await response.text();
-      promptsWithContent.push({ ...prompt, content });
-    } catch (error) {
-      console.error(`Failed to load prompt ${prompt.file}:`, error);
-      promptsWithContent.push({ ...prompt, content: 'Failed to load content' });
-    }
-  }
+	// Load content for all prompts from static files
+	/** @type {import('./prompts-config.js').PromptConfig[]} */
+	const promptsWithContent = [];
 
-  // Parse sections from the first prompt for backward compatibility
-  const sections = promptsWithContent[0]?.content
-    .split('## ')
-    .slice(1)
-    .map(section => {
-      const lines = section.split('\n');
-      const title = lines[0].replace(/\*\*/g, '').trim();
-      const content = lines.slice(1).join('\n').trim();
-      const id = title.toLowerCase().replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, '-');
-      return { id, title, content };
-    }) || [];
+	for (const prompt of prompts) {
+		try {
+			const response = await fetch(`/prompts/${prompt.file}`);
+			const content = await response.text();
+			promptsWithContent.push({ ...prompt, content });
+		} catch (error) {
+			console.error(`Failed to load prompt ${prompt.file}:`, error);
+			promptsWithContent.push({ ...prompt, content: 'Failed to load content' });
+		}
+	}
 
-  return { prompts: promptsWithContent, sections };
+	// Parse sections from the first prompt for backward compatibility
+	const sections =
+		promptsWithContent[0]?.content
+			.split('## ')
+			.slice(1)
+			.map((section) => {
+				const lines = section.split('\n');
+				const title = lines[0].replace(/\*\*/g, '').trim();
+				const content = lines.slice(1).join('\n').trim();
+				const id = title
+					.toLowerCase()
+					.replace(/[^a-z0-9\s]/g, '')
+					.replace(/\s+/g, '-');
+				return { id, title, content };
+			}) || [];
+
+	return { prompts: promptsWithContent, sections };
 }
 
 /**
@@ -43,15 +47,15 @@ export async function loadPrompts(fetch) {
  * @returns {Promise<import('./prompts-config.js').PromptConfig | null>}
  */
 export async function loadPromptBySlug(slug, fetch) {
-  const prompt = prompts.find(p => p.slug === slug);
-  if (!prompt) return null;
+	const prompt = prompts.find((p) => p.slug === slug);
+	if (!prompt) return null;
 
-  try {
-    const response = await fetch(`/prompts/${prompt.file}`);
-    const content = await response.text();
-    return { ...prompt, content };
-  } catch (error) {
-    console.error(`Failed to load prompt ${prompt.file}:`, error);
-    return null;
-  }
+	try {
+		const response = await fetch(`/prompts/${prompt.file}`);
+		const content = await response.text();
+		return { ...prompt, content };
+	} catch (error) {
+		console.error(`Failed to load prompt ${prompt.file}:`, error);
+		return null;
+	}
 }

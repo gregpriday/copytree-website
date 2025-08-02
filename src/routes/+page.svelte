@@ -9,7 +9,10 @@
 
 <svelte:head>
 	<title>CopyTree - AI-Friendly File Sharing</title>
-	<meta name="description" content="Transform how you share files with AI. CopyTree creates intelligent, structured representations of your projects that AI models can easily understand and work with." />
+	<meta
+		name="description"
+		content="Transform how you share files with AI. CopyTree creates intelligent, structured representations of your projects that AI models can easily understand and work with."
+	/>
 </svelte:head>
 
 <Hero />

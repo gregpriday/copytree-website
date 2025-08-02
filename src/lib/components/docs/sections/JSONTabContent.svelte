@@ -1,14 +1,14 @@
 <script>
-  import CodeBlock from '../shared/CodeBlock.svelte';
+	import CodeBlock from '../shared/CodeBlock.svelte';
 </script>
 
 <div>
-  <p class="text-muted-foreground mb-4">
-    JSON format provides structured, machine-readable output perfect for programmatic processing.
-  </p>
-  
-  <CodeBlock
-    code={`{
+	<p class="mb-4 text-muted-foreground">
+		JSON format provides structured, machine-readable output perfect for programmatic processing.
+	</p>
+
+	<CodeBlock
+		code={`{
   "metadata": {
     "timestamp": "2024-01-15T10:30:00Z",
     "source": "/path/to/project",
@@ -25,7 +25,7 @@
     }
   ]
 }`}
-    language="json"
-    filename="output.json"
-  />
+		language="json"
+		filename="output.json"
+	/>
 </div>

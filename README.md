@@ -23,23 +23,27 @@ CopyTree revolutionizes how developers share codebases with AI assistants like C
 ## Features
 
 ### 🎨 **Modern Design System**
+
 - OKLCH color definitions for precise color reproduction
 - Glass morphism effects with backdrop blur
 - Responsive design with mobile-first approach
 - Professional typography using Inter and Space Grotesk
 
 ### 🖼️ **Optimized Media**
+
 - Enhanced image processing with multiple format generation
 - Automatic AVIF/WebP/PNG optimization
 - Proper aspect ratio handling and responsive images
 
 ### 📝 **Comprehensive Documentation**
+
 - Interactive documentation with search functionality
 - Syntax-highlighted code examples
 - Tabbed content organization
 - Scroll-tracking navigation
 
 ### 🎯 **Interactive Components**
+
 - Animated terminal demonstrations
 - Live code copying functionality
 - Theme switching with system preference detection
@@ -139,6 +143,7 @@ The website is optimized for static deployment and can be deployed to:
 ### Build Output
 
 The production build generates:
+
 - Optimized JavaScript bundles with code splitting
 - Enhanced images in multiple formats (AVIF, WebP, PNG)
 - Minified CSS with critical path optimization
@@ -177,19 +182,20 @@ The theme system uses CSS custom properties with OKLCH color space:
 
 ```css
 :root {
-  --primary: oklch(0.7 0.15 250);
-  --background: oklch(0.98 0.01 250);
+	--primary: oklch(0.7 0.15 250);
+	--background: oklch(0.98 0.01 250);
 }
 
-[data-theme="dark"] {
-  --primary: oklch(0.8 0.15 250);
-  --background: oklch(0.08 0.01 250);
+[data-theme='dark'] {
+	--primary: oklch(0.8 0.15 250);
+	--background: oklch(0.08 0.01 250);
 }
 ```
 
 ### Component Architecture
 
 Components follow a consistent pattern:
+
 - Props defined with JSDoc types
 - State management using Svelte 5 runes
 - Responsive design with Tailwind classes

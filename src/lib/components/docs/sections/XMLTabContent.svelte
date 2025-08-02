@@ -1,14 +1,15 @@
 <script>
-  import CodeBlock from '../shared/CodeBlock.svelte';
+	import CodeBlock from '../shared/CodeBlock.svelte';
 </script>
 
 <div>
-  <p class="text-muted-foreground mb-4">
-    XML format (default) provides structured, hierarchical output that's ideal for AI consumption with clear file boundaries.
-  </p>
-  
-  <CodeBlock
-    code={`<?xml version="1.0" encoding="UTF-8"?>
+	<p class="mb-4 text-muted-foreground">
+		XML format (default) provides structured, hierarchical output that's ideal for AI consumption
+		with clear file boundaries.
+	</p>
+
+	<CodeBlock
+		code={`<?xml version="1.0" encoding="UTF-8"?>
 <project>
   <metadata>
     <timestamp>2024-01-15T10:30:00Z</timestamp>
@@ -25,7 +26,7 @@
     </file>
   </files>
 </project>`}
-    language="xml"
-    filename="output.xml"
-  />
+		language="xml"
+		filename="output.xml"
+	/>
 </div>

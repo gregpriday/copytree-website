@@ -35,9 +35,9 @@ When creating Tailwind CSS v4 styles or configurations, you will:
 
 - Optimize for modern browsers: Target Safari 16.4+, Chrome 111+, Firefox 128+
 
-- Apply logical properties for RTL (start-*, end-*)
+- Apply logical properties for RTL (start-_, end-_)
 
-- Use container queries (@container, size-* utilities)
+- Use container queries (@container, size-\* utilities)
 
 - Follow purge and content detection: Use @source for explicit paths
 
@@ -99,10 +99,10 @@ Tailwind v4 emphasizes performance with a rewritten engine, CSS-first config, an
 
 - **Configuration**: Prefer CSS config:
   ```css
-  @import "tailwindcss/theme" {
-    --color-primary: oklch(70% 0.2 160);
+  @import 'tailwindcss/theme' {
+  	--color-primary: oklch(70% 0.2 160);
   }
-  @import "tailwindcss";
+  @import 'tailwindcss';
   ```
 - **Utilities**: Use arbitrary values [ ], e.g., bg-[oklch(50%_0.1_200)]. Logical: ms-4 for margin-start.
 
@@ -140,15 +140,15 @@ Adapt to modern, developer-first aesthetics with minimalism, AI-forward design, 
 
 ```css
 :root {
-  --primary: oklch(70% 0.2 160); /* Vibrant green */
-  --primary-hover: oklch(65% 0.2 160);
-  --secondary: oklch(70% 0.15 220); /* Bright blue */
-  --background: oklch(10% 0 0); /* Near black */
-  --text-primary: oklch(100% 0 0); /* White */
-  --error: oklch(60% 0.25 20); /* Red */
+	--primary: oklch(70% 0.2 160); /* Vibrant green */
+	--primary-hover: oklch(65% 0.2 160);
+	--secondary: oklch(70% 0.15 220); /* Bright blue */
+	--background: oklch(10% 0 0); /* Near black */
+	--text-primary: oklch(100% 0 0); /* White */
+	--error: oklch(60% 0.25 20); /* Red */
 }
 .dark {
-  /* Inversions */
+	/* Inversions */
 }
 ```
 
@@ -156,10 +156,18 @@ Adapt to modern, developer-first aesthetics with minimalism, AI-forward design, 
 
 ```css
 @utility {
-  .display { @apply text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter; }
-  .h1 { @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight; }
-  .body { @apply text-base leading-relaxed; }
-  .code-inline { @apply font-mono text-sm bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded; }
+	.display {
+		@apply text-5xl font-bold tracking-tighter md:text-6xl lg:text-7xl;
+	}
+	.h1 {
+		@apply text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl;
+	}
+	.body {
+		@apply text-base leading-relaxed;
+	}
+	.code-inline {
+		@apply rounded bg-gray-100 px-1.5 py-0.5 font-mono text-sm dark:bg-gray-800;
+	}
 }
 ```
 
@@ -167,10 +175,18 @@ Adapt to modern, developer-first aesthetics with minimalism, AI-forward design, 
 
 ```css
 @utility {
-  .page-top { @apply pt-24 md:pt-32; }
-  .section-y { @apply py-20 md:py-32; }
-  .container-x { @apply px-4 sm:px-6 lg:px-8; }
-  .container-max { @apply max-w-7xl mx-auto; }
+	.page-top {
+		@apply pt-24 md:pt-32;
+	}
+	.section-y {
+		@apply py-20 md:py-32;
+	}
+	.container-x {
+		@apply px-4 sm:px-6 lg:px-8;
+	}
+	.container-max {
+		@apply mx-auto max-w-7xl;
+	}
 }
 ```
 
@@ -179,8 +195,10 @@ Adapt to modern, developer-first aesthetics with minimalism, AI-forward design, 
 #### Modern Button Styles
 
 ```html
-<button class="relative inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[--primary] to-[--primary-hover] rounded-lg shadow-lg hover:from-[--primary-hover] hover:to-[--primary] focus:outline-none focus:ring-2 focus:ring-[--primary] focus:ring-offset-2 transition-all duration-200">
-  Get Started
+<button
+	class="relative inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-[--primary] to-[--primary-hover] px-5 py-2.5 text-sm font-medium text-white shadow-lg transition-all duration-200 hover:from-[--primary-hover] hover:to-[--primary] focus:ring-2 focus:ring-[--primary] focus:ring-offset-2 focus:outline-none"
+>
+	Get Started
 </button>
 ```
 
@@ -188,21 +206,29 @@ Adapt to modern, developer-first aesthetics with minimalism, AI-forward design, 
 
 ```html
 <div class="group relative overflow-hidden rounded-xl bg-[--background] p-px">
-  <div class="absolute inset-0 bg-gradient-to-r from-[--primary] to-[--secondary] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-  <div class="relative bg-[--background] p-6 rounded-xl">
-    <h3 class="text-xl font-semibold text-[--text-primary] mb-2">Title</h3>
-    <p class="text-[--text-secondary] leading-relaxed">Description</p>
-  </div>
+	<div
+		class="absolute inset-0 bg-gradient-to-r from-[--primary] to-[--secondary] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+	/>
+	<div class="relative rounded-xl bg-[--background] p-6">
+		<h3 class="mb-2 text-xl font-semibold text-[--text-primary]">Title</h3>
+		<p class="leading-relaxed text-[--text-secondary]">Description</p>
+	</div>
 </div>
 ```
 
 #### Section Layout Patterns
 
 ```html
-<section class="relative h-[85vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-[--background]">
-  <div class="relative z-10 max-w-6xl mx-auto px-4 text-center">
-    <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-[--text-primary] mb-4">Heading</h1>
-  </div>
+<section
+	class="relative flex h-[85vh] min-h-[600px] items-center justify-center overflow-hidden bg-[--background]"
+>
+	<div class="relative z-10 mx-auto max-w-6xl px-4 text-center">
+		<h1
+			class="mb-4 text-5xl font-bold tracking-tighter text-[--text-primary] md:text-6xl lg:text-7xl"
+		>
+			Heading
+		</h1>
+	</div>
 </section>
 ```
 
@@ -217,8 +243,14 @@ Adapt to modern, developer-first aesthetics with minimalism, AI-forward design, 
 #### Animation Patterns
 
 ```css
-.hover\:scale-\[1\.02\] { transform: scale(1.02); }
-.transition-all { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
+.hover\:scale-\[1\.02\] {
+	transform: scale(1.02);
+}
+.transition-all {
+	transition-property: all;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-duration: 150ms;
+}
 ```
 
 ### Responsive Design
@@ -234,7 +266,7 @@ Adapt to modern, developer-first aesthetics with minimalism, AI-forward design, 
 ### Code Block Styling
 
 ```html
-<pre class="p-4 overflow-x-auto bg-[--code-bg] rounded-xl">
+<pre class="overflow-x-auto rounded-xl bg-[--code-bg] p-4">
   <code class="text-sm font-mono">code</code>
 </pre>
 ```
@@ -244,19 +276,19 @@ Adapt to modern, developer-first aesthetics with minimalism, AI-forward design, 
 #### Navigation
 
 ```html
-<nav class="fixed top-0 bg-[--background] border-b border-[--border]">
-  <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
-    <a href="/" class="text-[--text-primary]">Home</a>
-  </div>
+<nav class="fixed top-0 border-b border-[--border] bg-[--background]">
+	<div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
+		<a href="/" class="text-[--text-primary]">Home</a>
+	</div>
 </nav>
 ```
 
 #### Feature Showcase
 
 ```html
-<div class="bg-[--surface] p-8 rounded-xl">
-  <h3 class="text-lg font-semibold">Title</h3>
-  <p class="text-[--text-secondary]">Description</p>
+<div class="rounded-xl bg-[--surface] p-8">
+	<h3 class="text-lg font-semibold">Title</h3>
+	<p class="text-[--text-secondary]">Description</p>
 </div>
 ```
 
@@ -295,13 +327,15 @@ styles/
 #### Gradient Text
 
 ```html
-<h1 class="text-transparent bg-clip-text bg-gradient-to-r from-[--primary] to-[--secondary]">Text</h1>
+<h1 class="bg-gradient-to-r from-[--primary] to-[--secondary] bg-clip-text text-transparent">
+	Text
+</h1>
 ```
 
 #### Backdrop Effects
 
 ```html
-<div class="bg-[--surface]/50 backdrop-blur-xl border border-[--border]">Content</div>
+<div class="border border-[--border] bg-[--surface]/50 backdrop-blur-xl">Content</div>
 ```
 
 ### Style Architecture
@@ -316,7 +350,7 @@ styles/
 
 - Use @source for content paths
 
-- Avoid deprecated: No bg-opacity-*, use /50
+- Avoid deprecated: No bg-opacity-\*, use /50
 
 - Test with Tailwind Play
 

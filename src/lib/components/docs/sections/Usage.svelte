@@ -1,71 +1,73 @@
 <script>
-  import CodeBlock from '../shared/CodeBlock.svelte';
+	import CodeBlock from '../shared/CodeBlock.svelte';
 </script>
 
-<div class="prose prose-neutral dark:prose-invert max-w-none">
-  <h2 class="text-3xl font-bold text-foreground mb-4">Usage</h2>
-  
-  <p class="text-lg text-muted-foreground leading-relaxed mb-8">
-    Learn how to use CopyTree effectively with these comprehensive usage examples and patterns.
-  </p>
+<div class="prose max-w-none prose-neutral dark:prose-invert">
+	<h2 class="mb-4 text-3xl font-bold text-foreground">Usage</h2>
 
-  <!-- Basic Usage -->
-  <div class="my-8 not-prose">
-    <h3 class="text-xl font-semibold text-foreground mb-4">Basic Usage</h3>
-    <p class="text-muted-foreground mb-4">
-      The simplest form copies the current directory:
-    </p>
-    <CodeBlock code="copytree" language="bash" />
-    <p class="text-sm text-muted-foreground mt-2">
-      Output is automatically copied to your clipboard, ready to paste into your AI assistant.
-    </p>
-  </div>
+	<p class="mb-8 text-lg leading-relaxed text-muted-foreground">
+		Learn how to use CopyTree effectively with these comprehensive usage examples and patterns.
+	</p>
 
-  <!-- Command Syntax -->
-  <div class="my-8 not-prose">
-    <h3 class="text-xl font-semibold text-foreground mb-4">Command Syntax</h3>
-    <CodeBlock code="copytree [path] [options]" language="bash" />
-    <ul class="text-sm text-muted-foreground mt-4 space-y-1">
-      <li>• <strong>[path]</strong> - Optional path to directory or GitHub URL (defaults to current directory)</li>
-      <li>• <strong>[options]</strong> - Command-line options to customize behavior</li>
-    </ul>
-  </div>
+	<!-- Basic Usage -->
+	<div class="not-prose my-8">
+		<h3 class="mb-4 text-xl font-semibold text-foreground">Basic Usage</h3>
+		<p class="mb-4 text-muted-foreground">The simplest form copies the current directory:</p>
+		<CodeBlock code="copytree" language="bash" />
+		<p class="mt-2 text-sm text-muted-foreground">
+			Output is automatically copied to your clipboard, ready to paste into your AI assistant.
+		</p>
+	</div>
 
-  <!-- Key Options -->
-  <div class="my-8 not-prose">
-    <h3 class="text-xl font-semibold text-foreground mb-4">Key Options</h3>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div class="bg-muted rounded-lg p-4">
-        <code class="text-sm font-mono text-primary">--profile (-p)</code>
-        <p class="text-sm text-muted-foreground mt-1">Use custom profile (overrides default)</p>
-      </div>
-      <div class="bg-muted rounded-lg p-4">
-        <code class="text-sm font-mono text-primary">--filter (-f)</code>
-        <p class="text-sm text-muted-foreground mt-1">Additional patterns</p>
-      </div>
-      <div class="bg-muted rounded-lg p-4">
-        <code class="text-sm font-mono text-primary">--output (-o)</code>
-        <p class="text-sm text-muted-foreground mt-1">Save to file</p>
-      </div>
-      <div class="bg-muted rounded-lg p-4">
-        <code class="text-sm font-mono text-primary">--format</code>
-        <p class="text-sm text-muted-foreground mt-1">Output format (xml, json, tree)</p>
-      </div>
-      <div class="bg-muted rounded-lg p-4">
-        <code class="text-sm font-mono text-primary">--modified (-m)</code>
-        <p class="text-sm text-muted-foreground mt-1">Git modified files only</p>
-      </div>
-      <div class="bg-muted rounded-lg p-4">
-        <code class="text-sm font-mono text-primary">--dry-run</code>
-        <p class="text-sm text-muted-foreground mt-1">Preview without copying</p>
-      </div>
-    </div>
-  </div>
+	<!-- Command Syntax -->
+	<div class="not-prose my-8">
+		<h3 class="mb-4 text-xl font-semibold text-foreground">Command Syntax</h3>
+		<CodeBlock code="copytree [path] [options]" language="bash" />
+		<ul class="mt-4 space-y-1 text-sm text-muted-foreground">
+			<li>
+				• <strong>[path]</strong> - Optional path to directory or GitHub URL (defaults to current directory)
+			</li>
+			<li>• <strong>[options]</strong> - Command-line options to customize behavior</li>
+		</ul>
+	</div>
 
-  <!-- TODO: Add more detailed usage examples -->
-  <div class="my-8 bg-yellow-50 dark:bg-yellow-950/20 border border-yellow-200 dark:border-yellow-800 rounded-xl p-6">
-    <p class="text-sm text-yellow-700 dark:text-yellow-300">
-      This section is a placeholder. Full usage documentation with detailed examples will be added.
-    </p>
-  </div>
+	<!-- Key Options -->
+	<div class="not-prose my-8">
+		<h3 class="mb-4 text-xl font-semibold text-foreground">Key Options</h3>
+		<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+			<div class="rounded-lg bg-muted p-4">
+				<code class="font-mono text-sm text-primary">--profile (-p)</code>
+				<p class="mt-1 text-sm text-muted-foreground">Use custom profile (overrides default)</p>
+			</div>
+			<div class="rounded-lg bg-muted p-4">
+				<code class="font-mono text-sm text-primary">--filter (-f)</code>
+				<p class="mt-1 text-sm text-muted-foreground">Additional patterns</p>
+			</div>
+			<div class="rounded-lg bg-muted p-4">
+				<code class="font-mono text-sm text-primary">--output (-o)</code>
+				<p class="mt-1 text-sm text-muted-foreground">Save to file</p>
+			</div>
+			<div class="rounded-lg bg-muted p-4">
+				<code class="font-mono text-sm text-primary">--format</code>
+				<p class="mt-1 text-sm text-muted-foreground">Output format (xml, json, tree)</p>
+			</div>
+			<div class="rounded-lg bg-muted p-4">
+				<code class="font-mono text-sm text-primary">--modified (-m)</code>
+				<p class="mt-1 text-sm text-muted-foreground">Git modified files only</p>
+			</div>
+			<div class="rounded-lg bg-muted p-4">
+				<code class="font-mono text-sm text-primary">--dry-run</code>
+				<p class="mt-1 text-sm text-muted-foreground">Preview without copying</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- TODO: Add more detailed usage examples -->
+	<div
+		class="my-8 rounded-xl border border-yellow-200 bg-yellow-50 p-6 dark:border-yellow-800 dark:bg-yellow-950/20"
+	>
+		<p class="text-sm text-yellow-700 dark:text-yellow-300">
+			This section is a placeholder. Full usage documentation with detailed examples will be added.
+		</p>
+	</div>
 </div>

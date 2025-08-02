@@ -12,10 +12,10 @@
 // Extracted content from each documentation section
 /** @type {DocSection[]} */
 export const docsIndex = [
-  {
-    id: 'overview',
-    title: 'Overview',
-    content: `CopyTree revolutionizes how developers share codebases with AI, turning complex projects into optimized, AI-ready formats effortlessly. Compatible with Claude, ChatGPT, Grok, and Gemini through standardized output formats, with built-in AI features exclusively powered by Gemini integration. CopyTree solves the fundamental challenge of sharing complete code context with AI assistants.
+	{
+		id: 'overview',
+		title: 'Overview',
+		content: `CopyTree revolutionizes how developers share codebases with AI, turning complex projects into optimized, AI-ready formats effortlessly. Compatible with Claude, ChatGPT, Grok, and Gemini through standardized output formats, with built-in AI features exclusively powered by Gemini integration. CopyTree solves the fundamental challenge of sharing complete code context with AI assistants.
 
     Core Purpose:
     CopyTree addresses a critical workflow gap in AI-assisted development: how to efficiently share an entire codebase with an AI that has a limited context window. Rather than manually copying and pasting files, CopyTree automates this process with intelligent file selection, transformation, and formatting.
@@ -28,12 +28,12 @@ export const docsIndex = [
     Service Layer - AI integration (Gemini), caching, git operations  
     Transformer System - 16+ pluggable file transformers
     Profile Engine - YAML-based configuration templates`,
-    path: '#overview'
-  },
-  {
-    id: 'installation',
-    title: 'Installation',
-    content: `Prerequisites:
+		path: '#overview'
+	},
+	{
+		id: 'installation',
+		title: 'Installation',
+		content: `Prerequisites:
     Node.js Version 18.0.0 or higher, npm Version 8.0.0 or higher, Git for repository operations (optional), Pandoc for advanced document transformers (optional).
 
     Installation Methods:
@@ -55,12 +55,12 @@ export const docsIndex = [
     Common Installation Issues:
     Permission denied error - Use npm's global directory or sudo
     Node version too old - Update Node.js using nvm`,
-    path: '#installation'
-  },
-  {
-    id: 'quick-start',
-    title: 'Quick Start',
-    content: `Getting Started:
+		path: '#installation'
+	},
+	{
+		id: 'quick-start',
+		title: 'Quick Start',
+		content: `Getting Started:
     Step 1: Install CopyTree - npm install -g copytree
     Step 2: Copy Your Codebase - Run copytree in your project directory to copy it to your clipboard
     Step 3: Paste & Plan - Your codebase is now copied to clipboard in AI-ready format. Simply paste it into Claude, ChatGPT, Grok, or any AI assistant.
@@ -88,12 +88,12 @@ export const docsIndex = [
     Combine filters for precise control: --filter "src/**" "!**/*.test.js"
     Save frequently used commands as shell aliases for easy access
     Use --output to save results for team sharing or documentation`,
-    path: '#quick-start'
-  },
-  {
-    id: 'usage',
-    title: 'Usage',
-    content: `Basic Usage:
+		path: '#quick-start'
+	},
+	{
+		id: 'usage',
+		title: 'Usage',
+		content: `Basic Usage:
     The simplest form copies the current directory: copytree
     Output is automatically copied to your clipboard, ready to paste into your AI assistant.
 
@@ -136,48 +136,48 @@ export const docsIndex = [
     Combine multiple options: copytree --filter "src/**/*.ts" --modified --char-limit 100000 --format json
     Create comprehensive project snapshot: copytree --profile docs-custom --as-reference --output project-snapshot.xml --with-stats
     Debug production issues: copytree --filter "src/api/**" "src/services/**" --modified --format json`,
-    path: '#usage'
-  },
-  {
-    id: 'configuration',
-    title: 'Configuration',
-    content: `Configuration system settings profiles environment variables custom profiles YAML configuration file patterns include exclude transformers git integration AI settings caching performance tuning`,
-    path: '#configuration'
-  },
-  {
-    id: 'profiles',
-    title: 'Profiles',
-    content: `Profiles system default profiles custom profiles YAML templates profile creation profile management profile inheritance project-specific profiles framework profiles language profiles`,
-    path: '#profiles'
-  },
-  {
-    id: 'transformers',
-    title: 'Transformers',
-    content: `File transformers system 16+ transformers PDF transformer image transformer code transformer markdown transformer JSON transformer XML transformer CSV transformer binary file handling custom transformers transformer configuration`,
-    path: '#transformers'
-  },
-  {
-    id: 'features',
-    title: 'Features',
-    content: `Core features intelligent file selection AI-optimized output 15+ file transformers profile system git integration GitHub repo support clipboard automation XML JSON output formats filtering system character limits performance optimization`,
-    path: '#features'
-  },
-  {
-    id: 'advanced-features',
-    title: 'Advanced Features',
-    content: `Advanced features AI integration Gemini API caching system performance optimization git hooks custom transformers plugin system batch processing streaming output advanced filtering custom profiles enterprise features`,
-    path: '#advanced-features'
-  },
-  {
-    id: 'commands-reference',
-    title: 'Commands Reference',
-    content: `Commands reference CLI options command line interface all available commands detailed parameters examples usage patterns advanced options configuration commands profile commands git commands utility commands troubleshooting commands`,
-    path: '#commands-reference'
-  },
-  {
-    id: 'troubleshooting',
-    title: 'Troubleshooting',
-    content: `Troubleshooting common issues installation problems permission errors node version issues memory errors large files performance issues git integration problems API key issues configuration errors profile errors transformer errors output format issues`,
-    path: '#troubleshooting'
-  }
+		path: '#usage'
+	},
+	{
+		id: 'configuration',
+		title: 'Configuration',
+		content: `Configuration system settings profiles environment variables custom profiles YAML configuration file patterns include exclude transformers git integration AI settings caching performance tuning`,
+		path: '#configuration'
+	},
+	{
+		id: 'profiles',
+		title: 'Profiles',
+		content: `Profiles system default profiles custom profiles YAML templates profile creation profile management profile inheritance project-specific profiles framework profiles language profiles`,
+		path: '#profiles'
+	},
+	{
+		id: 'transformers',
+		title: 'Transformers',
+		content: `File transformers system 16+ transformers PDF transformer image transformer code transformer markdown transformer JSON transformer XML transformer CSV transformer binary file handling custom transformers transformer configuration`,
+		path: '#transformers'
+	},
+	{
+		id: 'features',
+		title: 'Features',
+		content: `Core features intelligent file selection AI-optimized output 15+ file transformers profile system git integration GitHub repo support clipboard automation XML JSON output formats filtering system character limits performance optimization`,
+		path: '#features'
+	},
+	{
+		id: 'advanced-features',
+		title: 'Advanced Features',
+		content: `Advanced features AI integration Gemini API caching system performance optimization git hooks custom transformers plugin system batch processing streaming output advanced filtering custom profiles enterprise features`,
+		path: '#advanced-features'
+	},
+	{
+		id: 'commands-reference',
+		title: 'Commands Reference',
+		content: `Commands reference CLI options command line interface all available commands detailed parameters examples usage patterns advanced options configuration commands profile commands git commands utility commands troubleshooting commands`,
+		path: '#commands-reference'
+	},
+	{
+		id: 'troubleshooting',
+		title: 'Troubleshooting',
+		content: `Troubleshooting common issues installation problems permission errors node version issues memory errors large files performance issues git integration problems API key issues configuration errors profile errors transformer errors output format issues`,
+		path: '#troubleshooting'
+	}
 ];

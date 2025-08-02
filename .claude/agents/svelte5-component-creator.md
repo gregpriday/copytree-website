@@ -100,18 +100,21 @@ Svelte 5 introduces runes for explicit reactivity and many breaking changes from
 #### **Critical Svelte 5 Migration Changes**
 
 **Reactivity System Overhaul:**
+
 - **`let` → `$state`**: `let count = 0` becomes `let count = $state(0)`
 - **`$:` → `$derived/$effect`**: `$: doubled = count * 2` becomes `let doubled = $derived(count * 2)`
 - **`export let` → `$props`**: `export let name` becomes `let { name } = $props()`
 - **Side effects**: `$: console.log(count)` becomes `$effect(() => console.log(count))`
 
 **Event Handler Changes:**
+
 - **`on:click` → `onclick`**: `on:click={handler}` becomes `onclick={handler}`
 - **No more `createEventDispatcher`**: Use callback props instead
 - **Event modifiers removed**: No `on:click|preventDefault`, use `event.preventDefault()` in handler
 - **Multiple handlers**: Can't do `on:click={one} on:click={two}`, combine into single handler
 
 **Slots → Snippets:**
+
 - **Default content**: `<slot />` becomes `{@render children?.()}`
 - **Named slots**: `<slot name="header" />` becomes `{@render header?.()}`
 - **Slot props**: `<slot item={data} />` becomes snippet parameters
@@ -133,13 +136,14 @@ Svelte 5 introduces runes for explicit reactivity and many breaking changes from
 #### **Component and Event Changes**
 
 **Components are Functions, Not Classes:**
+
 ```svelte
 <!-- Svelte 4 -->
 <script>
   import { createEventDispatcher } from 'svelte';
   const dispatch = createEventDispatcher();
   export let value;
-  
+
   function handleClick() {
     dispatch('change', { value: value + 1 });
   }
@@ -148,7 +152,7 @@ Svelte 5 introduces runes for explicit reactivity and many breaking changes from
 <!-- Svelte 5 -->
 <script>
   let { value, onchange } = $props();
-  
+
   function handleClick() {
     onchange?.({ value: value + 1 });
   }
@@ -156,22 +160,29 @@ Svelte 5 introduces runes for explicit reactivity and many breaking changes from
 ```
 
 **New Event Syntax:**
+
 ```svelte
 <!-- Svelte 4 -->
 <button on:click={handler} on:click|preventDefault={other}>Click</button>
 
 <!-- Svelte 5 -->
-<button onclick={(e) => { handler(e); other(e); }}>Click</button>
+<button
+	onclick={(e) => {
+		handler(e);
+		other(e);
+	}}>Click</button
+>
 <button onclickcapture={handler}>Capture</button>
 ```
 
 #### **Snippet System (Replaces Slots)**
 
 **Basic Snippets:**
+
 ```svelte
 <!-- Parent Component -->
 <script>
-  let { children, header } = $props();
+	let { children, header } = $props();
 </script>
 
 <header>{@render header?.()}</header>
@@ -179,51 +190,54 @@ Svelte 5 introduces runes for explicit reactivity and many breaking changes from
 
 <!-- Usage -->
 <Component>
-  {#snippet header()}
-    <h1>Page Title</h1>
-  {/snippet}
-  
-  <p>Default content goes here</p>
+	{#snippet header()}
+		<h1>Page Title</h1>
+	{/snippet}
+
+	<p>Default content goes here</p>
 </Component>
 ```
 
 **Snippets with Parameters:**
+
 ```svelte
 <!-- List Component -->
 <script>
-  let { items, item, empty } = $props();
+	let { items, item, empty } = $props();
 </script>
 
 {#if items.length}
-  {#each items as entry}
-    {@render item(entry)}
-  {/each}
+	{#each items as entry}
+		{@render item(entry)}
+	{/each}
 {:else}
-  {@render empty?.()}
+	{@render empty?.()}
 {/if}
 
 <!-- Usage -->
 <List {items}>
-  {#snippet item(data)}
-    <div>{data.name}</div>
-  {/snippet}
-  
-  {#snippet empty()}
-    <p>No items</p>
-  {/snippet}
+	{#snippet item(data)}
+		<div>{data.name}</div>
+	{/snippet}
+
+	{#snippet empty()}
+		<p>No items</p>
+	{/snippet}
 </List>
 ```
 
 #### **Breaking Changes in Runes Mode**
 
 **Binding Changes:**
+
 - Component exports can't be bound: No `<Component bind:exportedValue />`
 - Props need `$bindable()`: `let { value = $bindable() } = $props()`
 - Must pass non-undefined to bindable props with defaults
 
 **Removed/Changed Features:**
+
 - `accessors` option ignored
-- `immutable` option ignored  
+- `immutable` option ignored
 - Classes no longer auto-reactive (need `$state` fields)
 - `beforeUpdate`/`afterUpdate` → `$effect.pre`/`$effect`
 - Touch/wheel events are passive by default
@@ -233,6 +247,7 @@ Svelte 5 introduces runes for explicit reactivity and many breaking changes from
 #### **Component Instantiation Changes**
 
 **Svelte 4:**
+
 ```javascript
 import Component from './Component.svelte';
 const app = new Component({ target: document.body, props: { name: 'world' } });
@@ -241,6 +256,7 @@ app.$destroy();
 ```
 
 **Svelte 5:**
+
 ```javascript
 import { mount, unmount } from 'svelte';
 import Component from './Component.svelte';
@@ -257,37 +273,41 @@ unmount(app);
 #### **Advanced Patterns**
 
 **State Management:**
+
 ```svelte
 <script>
-  // Local state
-  let count = $state(0);
-  let doubled = $derived(count * 2);
-  
-  // Effect with cleanup
-  $effect(() => {
-    const interval = setInterval(() => count++, 1000);
-    return () => clearInterval(interval);
-  });
-  
-  // Deep vs shallow reactivity
-  let obj = $state({ nested: { value: 0 } }); // Deep reactive
-  let rawObj = $state.raw(new Map()); // Shallow reactive
+	// Local state
+	let count = $state(0);
+	let doubled = $derived(count * 2);
+
+	// Effect with cleanup
+	$effect(() => {
+		const interval = setInterval(() => count++, 1000);
+		return () => clearInterval(interval);
+	});
+
+	// Deep vs shallow reactivity
+	let obj = $state({ nested: { value: 0 } }); // Deep reactive
+	let rawObj = $state.raw(new Map()); // Shallow reactive
 </script>
 ```
 
 **Conditional Rendering & Loops:**
+
 - Same syntax: `{#if}`, `{#each}`, `{#await}` blocks unchanged
 - Reactive variables now use runes inside these blocks
 
 **Bindings:**
+
 ```svelte
 <script>
-  let { value = $bindable('') } = $props();
-  let inputValue = $state('');
+	let { value = $bindable('') } = $props();
+	let inputValue = $state('');
 </script>
 
 <input bind:value={inputValue} />
-<input bind:value />  <!-- Two-way binding to parent -->
+<input bind:value />
+<!-- Two-way binding to parent -->
 ```
 
 #### **Migration Tips**
@@ -303,41 +323,43 @@ unmount(app);
 #### **Common Patterns**
 
 **Loading States:**
+
 ```svelte
 <script>
-  let loading = $state(false);
-  let data = $state(null);
-  
-  $effect(async () => {
-    loading = true;
-    data = await fetchData();
-    loading = false;
-  });
+	let loading = $state(false);
+	let data = $state(null);
+
+	$effect(async () => {
+		loading = true;
+		data = await fetchData();
+		loading = false;
+	});
 </script>
 
 {#if loading}
-  <div class="animate-pulse">Loading...</div>
+	<div class="animate-pulse">Loading...</div>
 {:else if data}
-  <div>{data.content}</div>
+	<div>{data.content}</div>
 {/if}
 ```
 
 **Form Handling:**
+
 ```svelte
 <script>
-  let formData = $state({ name: '', email: '' });
-  let { onsubmit } = $props();
-  
-  function handleSubmit(event) {
-    event.preventDefault();
-    onsubmit?.(formData);
-  }
+	let formData = $state({ name: '', email: '' });
+	let { onsubmit } = $props();
+
+	function handleSubmit(event) {
+		event.preventDefault();
+		onsubmit?.(formData);
+	}
 </script>
 
 <form {onsubmit}>
-  <input bind:value={formData.name} />
-  <input bind:value={formData.email} />
-  <button type="submit">Submit</button>
+	<input bind:value={formData.name} />
+	<input bind:value={formData.email} />
+	<button type="submit">Submit</button>
 </form>
 ```
 
@@ -358,10 +380,10 @@ Use Tailwind CSS integration for consistency. Example setup in svelte.config.js 
 ```typescript
 // Example Typography
 const typography = {
-  display: 'text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter',
-  h1: 'text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight',
-  body: 'text-base leading-relaxed',
-  codeInline: 'font-mono text-sm bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded',
+	display: 'text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter',
+	h1: 'text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight',
+	body: 'text-base leading-relaxed',
+	codeInline: 'font-mono text-sm bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded'
 };
 ```
 
@@ -373,10 +395,10 @@ Global styles: Use :global(selector) or app.css.
 
 ```typescript
 const spacing = {
-  pageTop: 'pt-24 md:pt-32',
-  sectionY: 'py-20 md:py-32',
-  containerX: 'px-4 sm:px-6 lg:px-8',
-  containerMax: 'max-w-7xl mx-auto',
+	pageTop: 'pt-24 md:pt-32',
+	sectionY: 'py-20 md:py-32',
+	containerX: 'px-4 sm:px-6 lg:px-8',
+	containerMax: 'max-w-7xl mx-auto'
 };
 ```
 
@@ -386,8 +408,10 @@ const spacing = {
 
 ```svelte
 <!-- Primary Button -->
-<button class="relative inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-lg shadow-lg hover:from-emerald-600 hover:to-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all duration-200">
-  Get Started
+<button
+	class="relative inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-emerald-500 to-emerald-600 px-5 py-2.5 text-sm font-medium text-white shadow-lg transition-all duration-200 hover:from-emerald-600 hover:to-emerald-700 focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:outline-none"
+>
+	Get Started
 </button>
 ```
 
@@ -398,11 +422,13 @@ Use on:click={handler} for events.
 ```svelte
 <!-- Feature Card -->
 <div class="group relative overflow-hidden rounded-xl bg-gray-900 p-px">
-  <div class="absolute inset-0 bg-gradient-to-r from-emerald-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-  <div class="relative bg-gray-900 p-6 rounded-xl">
-    <h3 class="text-xl font-semibold text-white mb-2">Feature Title</h3>
-    <p class="text-gray-400 leading-relaxed">Description</p>
-  </div>
+	<div
+		class="absolute inset-0 bg-gradient-to-r from-emerald-500 to-blue-500 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+	/>
+	<div class="relative rounded-xl bg-gray-900 p-6">
+		<h3 class="mb-2 text-xl font-semibold text-white">Feature Title</h3>
+		<p class="leading-relaxed text-gray-400">Description</p>
+	</div>
 </div>
 ```
 
@@ -410,10 +436,14 @@ Use on:click={handler} for events.
 
 ```svelte
 <!-- Hero Section -->
-<section class="relative h-[85vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-gray-950">
-  <div class="relative z-10 max-w-6xl mx-auto px-4 text-center">
-    <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-white mb-4">Heading</h1>
-  </div>
+<section
+	class="relative flex h-[85vh] min-h-[600px] items-center justify-center overflow-hidden bg-gray-950"
+>
+	<div class="relative z-10 mx-auto max-w-6xl px-4 text-center">
+		<h1 class="mb-4 text-5xl font-bold tracking-tighter text-white md:text-6xl lg:text-7xl">
+			Heading
+		</h1>
+	</div>
 </section>
 ```
 
@@ -440,8 +470,8 @@ Use SVG inline or components like <Icon name="icon" class="w-5 h-5" />.
 ### Code Block Styling
 
 ```svelte
-<pre class="p-4 overflow-x-auto bg-gray-900 rounded-xl">
-  <code class="text-sm font-mono">code here</code>
+<pre class="overflow-x-auto rounded-xl bg-gray-900 p-4">
+  <code class="font-mono text-sm">code here</code>
 </pre>
 ```
 
@@ -451,13 +481,13 @@ Use SVG inline or components like <Icon name="icon" class="w-5 h-5" />.
 
 ```svelte
 <script>
-  import { page } from '$app/stores';
-  import { Button } from '$lib/components/shared';
+	import { page } from '$app/stores';
+	import { Button } from '$lib/components/shared';
 </script>
 
 <nav class="fixed top-0 bg-gray-950">
-  <a href="/" class:active={$page.url.pathname === '/'}>Home</a>
-  <Button>Action</Button>
+	<a href="/" class:active={$page.url.pathname === '/'}>Home</a>
+	<Button>Action</Button>
 </nav>
 ```
 
@@ -465,14 +495,14 @@ Use SVG inline or components like <Icon name="icon" class="w-5 h-5" />.
 
 ```svelte
 <script>
-  import { cn } from '$lib/utils';
-  /** @type {{ title: string, description: string, class?: string }} */
-  let { title, description, class: className = '' } = $props();
+	import { cn } from '$lib/utils';
+	/** @type {{ title: string, description: string, class?: string }} */
+	let { title, description, class: className = '' } = $props();
 </script>
 
-<div class={cn("bg-gray-900 p-8 rounded-xl", className)}>
-  <h3>{title}</h3>
-  <p>{description}</p>
+<div class={cn('rounded-xl bg-gray-900 p-8', className)}>
+	<h3>{title}</h3>
+	<p>{description}</p>
 </div>
 ```
 
@@ -516,6 +546,7 @@ src/
 ```
 
 **Import Pattern Notes:**
+
 - SvelteKit automatically aliases `src/lib` to `$lib` - no setup required
 - Import components directly by their full path: `import Button from '$lib/components/Button.svelte'`
 - No `index.js` files needed in component directories - they're optional for convenience only
@@ -548,7 +579,7 @@ Use prefers-color-scheme or store.
 #### Gradient Text
 
 ```svelte
-<h1 class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-400">Text</h1>
+<h1 class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">Text</h1>
 ```
 
 #### Effects

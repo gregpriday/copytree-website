@@ -1,18 +1,22 @@
 <script>
-  import CodeBlock from '../shared/CodeBlock.svelte';
+	import CodeBlock from '../shared/CodeBlock.svelte';
 </script>
 
-<div class="prose prose-neutral dark:prose-invert max-w-none">
-  <h2 class="text-3xl font-bold text-foreground mb-4">Configuration</h2>
-  
-  <p class="text-lg text-muted-foreground leading-relaxed mb-8">
-    Configure CopyTree to match your workflow with environment variables, profiles, and custom settings.
-  </p>
+<div class="prose max-w-none prose-neutral dark:prose-invert">
+	<h2 class="mb-4 text-3xl font-bold text-foreground">Configuration</h2>
 
-  <!-- TODO: Add configuration documentation -->
-  <div class="my-8 bg-yellow-50 dark:bg-yellow-950/20 border border-yellow-200 dark:border-yellow-800 rounded-xl p-6">
-    <p class="text-sm text-yellow-700 dark:text-yellow-300">
-      Configuration documentation will be added here, including environment variables, YAML configuration, and custom profiles.
-    </p>
-  </div>
+	<p class="mb-8 text-lg leading-relaxed text-muted-foreground">
+		Configure CopyTree to match your workflow with environment variables, profiles, and custom
+		settings.
+	</p>
+
+	<!-- TODO: Add configuration documentation -->
+	<div
+		class="my-8 rounded-xl border border-yellow-200 bg-yellow-50 p-6 dark:border-yellow-800 dark:bg-yellow-950/20"
+	>
+		<p class="text-sm text-yellow-700 dark:text-yellow-300">
+			Configuration documentation will be added here, including environment variables, YAML
+			configuration, and custom profiles.
+		</p>
+	</div>
 </div>

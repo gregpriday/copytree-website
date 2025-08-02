@@ -1,14 +1,14 @@
 <script>
-  import CodeBlock from '../shared/CodeBlock.svelte';
+	import CodeBlock from '../shared/CodeBlock.svelte';
 </script>
 
 <div>
-  <p class="text-muted-foreground mb-4">
-    Tree format provides a visual directory structure, perfect for project overviews and navigation.
-  </p>
-  
-  <CodeBlock
-    code={`my-project/
+	<p class="mb-4 text-muted-foreground">
+		Tree format provides a visual directory structure, perfect for project overviews and navigation.
+	</p>
+
+	<CodeBlock
+		code={`my-project/
 ├── src/
 │   ├── components/
 │   │   ├── Header.js
@@ -20,7 +20,7 @@
 │   └── app.test.js
 ├── package.json
 └── README.md`}
-    language="text"
-    filename="project-tree.txt"
-  />
+		language="text"
+		filename="project-tree.txt"
+	/>
 </div>
