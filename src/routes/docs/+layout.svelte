@@ -1,0 +1,2 @@
+<!-- Docs layout wrapper -->
+<slot />

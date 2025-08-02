@@ -1,13 +1,22 @@
-<!-- src/app/+layout.svelte -->
+<!-- src/routes/+layout.svelte -->
 <script lang="ts">
 	import '../app.css';
+	import { Header, Footer } from '$lib/components/layout';
 </script>
 
 <svelte:head>
-	<title>SvelteKit App</title>
-	<meta name="description" content="SvelteKit with Svelte 5 and Tailwind 4" />
+	<title>CopyTree - AI-Friendly File Sharing</title>
+	<meta name="description" content="Transform how you share files with AI. CopyTree creates intelligent, structured representations of your projects that AI models can easily understand and work with." />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </svelte:head>
 
-<main class="min-h-screen bg-gray-50">
-	<slot />
-</main>
+<div class="min-h-screen bg-background text-foreground">
+	<Header />
+	<main>
+		<slot />
+	</main>
+	<Footer />
+</div>
