@@ -1,5 +1,6 @@
 <script lang="ts">
   import { Copy, Check } from 'lucide-svelte';
+  import { browser } from '$app/environment';
 
   interface CodeBlockProps {
     code: string;
@@ -177,8 +178,10 @@
 
   // Lifecycle effects
   $effect(() => {
-    // Start syntax highlighting
-    highlightCode();
+    // Start syntax highlighting only on the client
+    if (browser) {
+      highlightCode();
+    }
     
     // Setup animation observer
     setupIntersectionObserver();
@@ -189,7 +192,7 @@
 
   // Watch for code changes
   $effect(() => {
-    if (code) {
+    if (browser && code) {
       highlightCode();
     }
   });
