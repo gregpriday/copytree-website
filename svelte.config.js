@@ -8,7 +8,15 @@ export default defineConfig({
 		adapter: adapter(),
 		prerender: {
 			crawl: true,
-			entries: ['*']
+			entries: ['*'],
+			handleHttpError: ({ path, referrer, message }) => {
+				// Ignore favicon 404 errors during prerendering
+				if (path === '/favicon.png') {
+					return;
+				}
+				// Throw other errors to be caught during development
+				throw new Error(message);
+			}
 		}
 	}
 });
