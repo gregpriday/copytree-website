@@ -2,7 +2,7 @@
   import { Button } from '../shared';
 </script>
 
-<section class="relative py-16 bg-background overflow-hidden">
+<section class="relative py-16 bg-zinc-900 overflow-hidden">
   <!-- Forest background pattern -->
   <div 
     class="absolute inset-0 opacity-[0.05] mix-blend-overlay pointer-events-none z-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZDEiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMjJDNTVFO3N0b3Atb3BhY2l0eTowLjMiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMTBCOTgxO3N0b3Atb3BhY2l0eTowLjIiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzE0QjhBNjtzdG9wLW9wYWNpdHk6MC4xIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2dyYWQxKSIgc3Ryb2tlLXdpZHRoPSIwLjUiPgogICAgPHBhdGggZD0iTTIwLDEwIEwzMCw1IEw0MCwxMCBMNDAsMjAgTDMwLDI1IEwyMCwyMCBaIiAvPgogICAgPHBhdGggZD0iTTQwLDEwIEw1MCwxNSBMNTAsMjUgTDQwLDMwIEwzMCwyNSBMMzAsMTUgWiIgLz4KICAgIDxwYXRoIGQ9Ik0xMCwyMCBMMjAsMjAgTDIwLDMwIEwxMCwzNSBMMCwzMCBMMCwyMCBaIiAvPgogICAgPHBhdGggZD0iTTMwLDM1IEw0MCwzMCBMNTAsMzUgTDUwLDQ1IEw0MCw1MCBMMzAsNDUgWiIgLz4KICAgIDxwYXRoIGQ9Ik0xMCwzNSBMMjAsNDAgTDIwLDUwIEwxMCw1NSBMMCw1MCBMMCw0MCBaIiAvPgogICAgPHBhdGggZD0iTTIwLDQwIEwzMCwzNSBMMzAsNDUgTDIwLDUwIFoiIC8+CiAgPC9nPgogIDxnIGZpbGw9InVybCgjZ3JhZDEpIiBvcGFjaXR5PSIwLjE1Ij4KICAgIDxjaXJjbGUgY3g9IjE1IiBjeT0iMTUiIHI9IjEuNSIgLz4KICAgIDxjaXJjbGUgY3g9IjQ1IiBjeT0iOCIgcj0iMSIgLz4KICAgIDxjaXJjbGUgY3g9IjM1IiBjeT0iNTIiIHI9IjEuMiIgLz4KICAgIDxjaXJjbGUgY3g9IjgiIGN5PSI0NSIgcj0iMC44IiAvPgogICAgPGNpcmNsZSBjeD0iNTIiIGN5PSIzMCIgcj0iMSIgLz4KICA8L2c+Cjwvc3ZnPg==')] bg-[length:120px_120px]"
@@ -29,14 +29,14 @@
   </div>
   
   <!-- Gradient overlay for better text readability -->
-  <div class="absolute inset-0 bg-gradient-to-r from-transparent via-background/90 to-transparent z-10"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-transparent via-zinc-900/90 to-transparent z-10"></div>
   
   <div class="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-foreground mb-4">
+    <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-white mb-4">
       Ready to Transform Your Workflow?
     </h2>
     
-    <p class="max-w-2xl mx-auto text-lg text-muted-foreground leading-relaxed mb-8">
+    <p class="max-w-2xl mx-auto text-lg text-zinc-300 leading-relaxed mb-8">
       Install CopyTree Now and Unlock AI-Powered Coding.
     </p>
     
@@ -50,7 +50,7 @@
       </a>
       
       <a href="/docs">
-        <Button variant="ghost" class="text-muted-foreground hover:text-foreground hover:bg-muted transition-all">
+        <Button variant="ghost" class="text-zinc-300 hover:text-white hover:bg-zinc-800 transition-all">
           Read Documentation
         </Button>
       </a>
@@ -60,16 +60,16 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Button variant="ghost" class="text-muted-foreground hover:text-foreground hover:bg-muted transition-all">
+        <Button variant="ghost" class="text-zinc-300 hover:text-white hover:bg-zinc-800 transition-all">
           View on GitHub
         </Button>
       </a>
     </div>
     
-    <p class="mt-8 text-sm text-muted-foreground">
+    <p class="mt-8 text-sm text-zinc-400">
       Free and open-source CLI tool
     </p>
   </div>
   
-  <div class="relative z-20 h-px bg-gradient-to-r from-transparent via-border to-transparent mt-8 opacity-50"></div>
+  <div class="relative z-20 h-px bg-gradient-to-r from-transparent via-zinc-700 to-transparent mt-8 opacity-50"></div>
 </section>
