@@ -223,7 +223,7 @@ options:
 		<h3 class="mb-4 text-xl font-semibold text-foreground">Configuration Best Practices</h3>
 
 		<div
-			class="from-primary-50 border-primary-100 dark:border-primary-800 rounded-xl border bg-gradient-to-br to-blue-50 p-6"
+			class="rounded-xl border border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 p-6 dark:border-green-800 dark:from-green-950/20 dark:to-emerald-950/20"
 		>
 			<ul class="space-y-3">
 				<li class="flex gap-3">

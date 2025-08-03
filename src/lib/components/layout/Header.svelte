@@ -34,7 +34,7 @@
 <header class="sticky top-0 z-50 w-full">
 	<nav class="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
 		<div
-			class="relative overflow-hidden rounded-b-lg border border-zinc-200/20 transition-all duration-300 lg:rounded-b-2xl dark:border-zinc-800/30"
+			class="relative overflow-hidden rounded-b-lg border-b border-border/50 transition-all duration-300 lg:rounded-b-2xl"
 		>
 			<!-- Layer 1: Glass tint + Backdrop blur -->
 			<div class="absolute inset-0 bg-white/75 backdrop-blur-xl dark:bg-zinc-950/60"></div>

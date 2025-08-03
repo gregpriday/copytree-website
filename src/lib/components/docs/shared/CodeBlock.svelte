@@ -34,8 +34,8 @@
 
 	// Derived values
 	const shouldShowAnimated = $derived(animate && !hasAnimated);
-	const codeToDisplay = $derived(shouldShowAnimated ? displayedCode : code);
-	const lines = $derived(codeToDisplay.trim().split('\n'));
+	const lines = $derived(code.trim().split('\n'));
+	const codeToDisplay = $derived(shouldShowAnimated ? displayedCode : code.trim());
 
 	// Copy functionality
 	async function handleCopy() {
@@ -108,7 +108,7 @@
 		} catch (error) {
 			console.warn(`Failed to highlight ${language} code:`, error);
 			// Fallback to escaped HTML
-			highlightedHtml = `<pre class="shiki-pre"><code class="shiki-code block font-mono">${escapeHtml(code)}</code></pre>`;
+			highlightedHtml = `<div class="shiki-pre"><div class="shiki-code block font-mono">${lines.map((line, i) => `<div class="shiki-line">${escapeHtml(line) || ' '}</div>`).join('')}</div></div>`;
 			highlightingError = true;
 		} finally {
 			isHighlighting = false;
@@ -231,10 +231,7 @@
 					<span class="text-xs font-medium text-zinc-400">{language}</span>
 				{/if}
 
-				<!-- Loading indicator -->
-				{#if isHighlighting}
-					<span class="animate-pulse text-xs text-zinc-500">Highlighting...</span>
-				{:else if highlightingError}
+				{#if highlightingError}
 					<span class="text-xs text-amber-500">Plain text</span>
 				{/if}
 			</div>
@@ -288,41 +285,38 @@
               </span>
 						{/if}
           </pre>
-				{:else if isHighlighting}
-					<!-- Loading state -->
-					<div class="animate-pulse">
-						<pre class="font-mono text-zinc-400">
-              {#if showLineNumbers}
-								{#each Array(Math.min(5, code.trim().split('\n').length)) as _, i}
-									<div class="mb-1 flex">
-                    <span class="mr-4 w-8 text-right text-zinc-600 select-none">{i + 1}</span>
-                    <div class="h-4 max-w-md flex-1 rounded bg-zinc-800"></div>
-                  </div>
+				{:else}
+					<!-- Always show content, either plain or highlighted -->
+					<div class="font-mono {showLineNumbers ? 'line-numbers' : ''}">
+						{#if isHighlighting || !highlightedHtml}
+							<!-- Plain code during loading or as fallback -->
+							{#if showLineNumbers}
+								{#each lines as line, i}
+									<div class="flex">
+										<span class="text-zinc-500 mr-4 select-none w-8 text-right font-mono tabular-nums">{i + 1}</span>
+										<span class="flex-1 text-zinc-300">{escapeHtml(line) || ' '}</span>
+									</div>
 								{/each}
 							{:else}
-								<div class="space-y-2">
-                  <div class="h-4 w-3/4 rounded bg-zinc-800"></div>
-                  <div class="h-4 w-1/2 rounded bg-zinc-800"></div>
-                  <div class="h-4 w-2/3 rounded bg-zinc-800"></div>
-                </div>
+								{#each lines as line}
+									<div class="shiki-line text-zinc-300">{escapeHtml(line) || ' '}</div>
+								{/each}
 							{/if}
-            </pre>
-					</div>
-				{:else}
-					<!-- Syntax highlighted content -->
-					<div class="font-mono {showLineNumbers ? 'line-numbers' : ''}">
-						{#if showLineNumbers}
-							{@html highlightedHtml
-								.replace(/<pre[^>]*><code[^>]*>/g, '')
-								.replace(/<\/code><\/pre>/g, '')
-								.split('\n')
-								.map(
-									(line, i) =>
-										`<div class="flex"><span class="text-zinc-500 mr-4 select-none w-8 text-right font-mono tabular-nums">${i + 1}</span><span class="flex-1">${line || ' '}</span></div>`
-								)
-								.join('')}
 						{:else}
-							{@html highlightedHtml}
+							<!-- Highlighted code -->
+							{#if showLineNumbers}
+								{@html highlightedHtml
+									.replace(/<pre[^>]*><code[^>]*>/g, '')
+									.replace(/<\/code><\/pre>/g, '')
+									.split('\n')
+									.map(
+										(line, i) =>
+											`<div class="flex"><span class="text-zinc-500 mr-4 select-none w-8 text-right font-mono tabular-nums">${i + 1}</span><span class="flex-1">${line || ' '}</span></div>`
+									)
+									.join('')}
+							{:else}
+								{@html highlightedHtml}
+							{/if}
 						{/if}
 					</div>
 				{/if}

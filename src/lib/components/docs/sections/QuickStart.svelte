@@ -161,12 +161,12 @@
 		<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
 			<!-- Debugging Recent Changes -->
 			<div
-				class="from-primary-50 dark:from-primary-950/20 border-primary-200 dark:border-primary-800 rounded-xl border bg-gradient-to-br to-green-50 p-6 dark:to-green-950/20"
+				class="rounded-xl border border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 p-6 dark:border-green-800 dark:from-green-950/20 dark:to-emerald-950/20"
 			>
 				<div class="mb-3 flex items-center gap-3">
-					<div class="bg-primary-100 dark:bg-primary-900/30 rounded-lg p-2">
+					<div class="rounded-lg bg-green-100 p-2 dark:bg-green-900/30">
 						<svg
-							class="text-primary-600 dark:text-primary-400 h-5 w-5"
+							class="h-5 w-5 text-green-600 dark:text-green-400"
 							fill="none"
 							stroke="currentColor"
 							viewBox="0 0 24 24"
@@ -184,7 +184,7 @@
 				<p class="mb-3 text-sm text-muted-foreground">
 					Focus on modified files to identify issues.
 				</p>
-				<CodeBlock code="copytree --modified --format xml" language="bash" />
+				<CodeBlock code="copytree --modified" language="bash" />
 			</div>
 
 			<!-- Code Review Preparation -->
