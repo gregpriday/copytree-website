@@ -1,13 +1,13 @@
-import { prompts, type PromptConfig, type PromptSection } from './prompts-config.js';
+import { prompts } from './prompts-config.js';
 
 /**
  * Load prompts with their content from static files
+ * @param {any} fetch - Fetch function
+ * @returns {Promise<{prompts: PromptConfig[], sections: PromptSection[]}>}
  */
-export async function loadPrompts(
-	fetch: any
-): Promise<{ prompts: PromptConfig[]; sections: PromptSection[] }> {
+export async function loadPrompts(fetch) {
 	// Load content for all prompts from static files
-	const promptsWithContent: PromptConfig[] = [];
+	const promptsWithContent = [];
 
 	for (const prompt of prompts) {
 		try {
@@ -25,7 +25,7 @@ export async function loadPrompts(
 		promptsWithContent[0]?.content
 			.split('## ')
 			.slice(1)
-			.map((section: string) => {
+			.map((section) => {
 				const lines = section.split('\n');
 				const title = lines[0].replace(/\*\*/g, '').trim();
 				const content = lines.slice(1).join('\n').trim();
@@ -41,8 +41,11 @@ export async function loadPrompts(
 
 /**
  * Load a specific prompt by slug
+ * @param {string} slug - The prompt slug
+ * @param {any} fetch - Fetch function
+ * @returns {Promise<PromptConfig | null>}
  */
-export async function loadPromptBySlug(slug: string, fetch: any): Promise<PromptConfig | null> {
+export async function loadPromptBySlug(slug, fetch) {
 	const prompt = prompts.find((p) => p.slug === slug);
 	if (!prompt) return null;
 
