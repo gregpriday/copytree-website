@@ -34,7 +34,7 @@
 	];
 </script>
 
-<section class="relative overflow-hidden bg-zinc-900 px-4 py-24 sm:px-6 md:py-32 lg:px-8">
+<section class="relative overflow-hidden bg-zinc-950 px-4 py-24 sm:px-6 md:py-32 lg:px-8">
 	<!-- Consistent Grid Pattern Background -->
 	<div
 		class="absolute inset-0 z-[1] opacity-20"

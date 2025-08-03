@@ -2,7 +2,7 @@
 	import { Button } from '../shared';
 </script>
 
-<section class="relative overflow-hidden bg-zinc-900 py-16">
+<section class="relative overflow-hidden bg-zinc-950 py-16">
 	<!-- Forest background pattern -->
 	<div
 		class="pointer-events-none absolute inset-0 z-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZDEiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMjJDNTVFO3N0b3Atb3BhY2l0eTowLjMiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMTBCOTgxO3N0b3Atb3BhY2l0eTowLjIiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzE0QjhBNjtzdG9wLW9wYWNpdHk6MC4xIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2dyYWQxKSIgc3Ryb2tlLXdpZHRoPSIwLjUiPgogICAgPHBhdGggZD0iTTIwLDEwIEwzMCw1IEw0MCwxMCBMNDAsMjAgTDMwLDI1IEwyMCwyMCBaIiAvPgogICAgPHBhdGggZD0iTTQwLDEwIEw1MCwxNSBMNTAsMjUgTDQwLDMwIEwzMCwyNSBMMzAsMTUgWiIgLz4KICAgIDxwYXRoIGQ9Ik0xMCwyMCBMMjAsMjAgTDIwLDMwIEwxMCwzNSBMMCwzMCBMMCwyMCBaIiAvPgogICAgPHBhdGggZD0iTTMwLDM1IEw0MCwzMCBMNTAsMzUgTDUwLDQ1IEw0MCw1MCBMMzAsNDUgWiIgLz4KICAgIDxwYXRoIGQ9Ik0xMCwzNSBMMjAsNDAgTDIwLDUwIEwxMCw1NSBMMCw1MCBMMCw0MCBaIiAvPgogICAgPHBhdGggZD0iTTIwLDQwIEwzMCwzNSBMMzAsNDUgTDIwLDUwIFoiIC8+CiAgPC9nPgogIDxnIGZpbGw9InVybCgjZ3JhZDEpIiBvcGFjaXR5PSIwLjE1Ij4KICAgIDxjaXJjbGUgY3g9IjE1IiBjeT0iMTUiIHI9IjEuNSIgLz4KICAgIDxjaXJjbGUgY3g9IjQ1IiBjeT0iOCIgcj0iMSIgLz4KICAgIDxjaXJjbGUgY3g9IjM1IiBjeT0iNTIiIHI9IjEuMiIgLz4KICAgIDxjaXJjbGUgY3g9IjgiIGN5PSI0NSIgcj0iMC44IiAvPgogICAgPGNpcmNsZSBjeD0iNTIiIGN5PSIzMCIgcj0iMSIgLz4KICA8L2c+Cjwvc3ZnPg==')] bg-[length:120px_120px] opacity-[0.05] mix-blend-overlay"
@@ -30,7 +30,7 @@
 
 	<!-- Gradient overlay for better text readability -->
 	<div
-		class="absolute inset-0 z-10 bg-gradient-to-r from-transparent via-zinc-900/90 to-transparent"
+		class="absolute inset-0 z-10 bg-gradient-to-r from-transparent via-zinc-950/90 to-transparent"
 	></div>
 
 	<div class="relative z-20 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
