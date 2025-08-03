@@ -40,7 +40,7 @@
 	// Copy functionality
 	async function handleCopy() {
 		try {
-			await navigator.clipboard.writeText(code);
+			await navigator.clipboard.writeText(code.trim());
 			copied = true;
 			setTimeout(() => (copied = false), 2000);
 		} catch (error) {
@@ -290,18 +290,9 @@
 					<div class="font-mono {showLineNumbers ? 'line-numbers' : ''}">
 						{#if isHighlighting || !highlightedHtml}
 							<!-- Plain code during loading or as fallback -->
-							{#if showLineNumbers}
-								{#each lines as line, i}
-									<div class="flex">
-										<span class="text-zinc-500 mr-4 select-none w-8 text-right font-mono tabular-nums">{i + 1}</span>
-										<span class="flex-1 text-zinc-300">{escapeHtml(line) || ' '}</span>
-									</div>
-								{/each}
-							{:else}
-								{#each lines as line}
-									<div class="shiki-line text-zinc-300">{escapeHtml(line) || ' '}</div>
-								{/each}
-							{/if}
+							<pre
+								class="!m-0 !p-0 font-mono text-zinc-300"
+								style="background: transparent; white-space: pre-wrap; word-break: break-word; line-height: 1.5;">{#if showLineNumbers}{#each lines as line, i}<div class="flex" style="line-height: 1.5;"><span class="mr-4 w-8 flex-shrink-0 text-right font-mono text-zinc-500 tabular-nums select-none">{i + 1}</span><span class="flex-1">{escapeHtml(line) || ' '}</span></div>{/each}{:else}{escapeHtml(code.trim())}{/if}</pre>
 						{:else}
 							<!-- Highlighted code -->
 							{#if showLineNumbers}
