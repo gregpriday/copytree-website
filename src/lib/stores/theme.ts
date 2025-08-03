@@ -21,8 +21,7 @@ function initTheme() {
 	};
 
 	// Function to apply theme to DOM
-	/** @param {string} currentTheme */
-	const applyTheme = (currentTheme) => {
+	const applyTheme = (currentTheme: string) => {
 		const root = document.documentElement;
 		const systemTheme = getSystemPreference();
 		const effectiveTheme = currentTheme === 'system' ? systemTheme : currentTheme;
@@ -65,8 +64,7 @@ function initTheme() {
 }
 
 // Set theme function
-/** @param {string} newTheme */
-export function setTheme(newTheme) {
+export function setTheme(newTheme: string) {
 	theme.set(newTheme);
 }
 

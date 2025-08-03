@@ -2,14 +2,6 @@
 	import { slide } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 
-	/**
-	 * @typedef {Object} AccordionItem
-	 * @property {string} id
-	 * @property {string} title
-	 * @property {() => void} content
-	 */
-
-	/** @type {{ items: AccordionItem[], defaultOpen?: string[], allowMultiple?: boolean, class?: string }} */
 	let { items, defaultOpen = [], allowMultiple = true, class: className = '' } = $props();
 
 	// State management using Svelte 5 runes
@@ -17,7 +9,6 @@
 
 	/**
 	 * Toggle accordion item
-	 * @param {string} itemId
 	 */
 	function toggleItem(itemId) {
 		const newOpenItems = new Set(openItems);
@@ -39,8 +30,6 @@
 
 	/**
 	 * Handle keyboard navigation
-	 * @param {KeyboardEvent} event
-	 * @param {string} itemId
 	 */
 	function handleKeydown(event, itemId) {
 		if (event.key === 'Enter' || event.key === ' ') {
@@ -51,8 +40,6 @@
 
 	/**
 	 * Check if item is open
-	 * @param {string} itemId
-	 * @returns {boolean}
 	 */
 	function isOpen(itemId) {
 		return openItems.has(itemId);

@@ -87,6 +87,7 @@
 			window.addEventListener('keydown', handleKeyDown);
 			return () => window.removeEventListener('keydown', handleKeyDown);
 		}
+		return () => {}; // No-op cleanup for SSR
 	});
 
 	// Handle clicking outside to close dropdown
@@ -101,6 +102,7 @@
 			document.addEventListener('mousedown', handleClickOutside);
 			return () => document.removeEventListener('mousedown', handleClickOutside);
 		}
+		return () => {}; // No-op cleanup for SSR
 	});
 
 	// Handle result click

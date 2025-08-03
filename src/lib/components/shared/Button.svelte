@@ -26,19 +26,18 @@
 		}
 	);
 
-	/** @type {{ class?: string, variant?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link', size?: 'default' | 'sm' | 'lg', type?: 'button' | 'submit' | 'reset', disabled?: boolean, onclick?: (event: MouseEvent) => void, children?: any }} */
 	let {
 		class: className = '',
 		variant = 'default',
 		size = 'default',
 		type = 'button',
 		disabled = false,
-		onclick,
+		'aria-label': ariaLabel,
+		onclick = () => {},
 		children,
 		...props
 	} = $props();
 
-	/** @type {HTMLButtonElement} */
 	let buttonElement;
 
 	export { buttonElement as element };
@@ -50,6 +49,7 @@
 	{type}
 	{disabled}
 	{onclick}
+	aria-label={ariaLabel}
 	{...props}
 >
 	{@render children?.()}

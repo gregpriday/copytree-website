@@ -50,6 +50,7 @@
 		<h3 class="mb-4 text-xl font-semibold text-foreground">Installation Methods</h3>
 
 		<TabGroup
+			defaultTab="global"
 			tabs={[
 				{
 					id: 'global',

@@ -61,7 +61,7 @@ When creating Svelte components, you will:
 
 - Implement responsive design following the project's breakpoint system (e.g., via Tailwind or media queries)
 
-- Include proper error boundaries and fallback UI where appropriate (e.g., <svelte:component this={ErrorFallback}>)
+- Include proper error boundaries and fallback UI where appropriate (e.g., {@const ErrorComponent = ErrorFallback} <ErrorComponent />)
 
 - Add performance optimizations (e.g., $effect.pre for effects, lazy loading with dynamic imports)
 

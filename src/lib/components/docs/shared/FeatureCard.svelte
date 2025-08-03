@@ -14,11 +14,12 @@
 		<div class="flex h-full flex-col p-6">
 			<!-- Icon -->
 			{#if icon}
+				{@const IconComponent = icon}
 				<div class="mb-4 flex-shrink-0">
 					<div
 						class="inline-flex h-12 w-12 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 transition-all duration-300 group-hover:border-primary/50 group-hover:bg-primary/20"
 					>
-						<svelte:component this={icon} class="h-6 w-6 text-primary" />
+						<IconComponent class="h-6 w-6 text-primary" />
 					</div>
 				</div>
 			{/if}

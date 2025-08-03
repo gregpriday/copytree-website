@@ -19,6 +19,9 @@
 			description: 'Supports any project, any framework.'
 		}
 	];
+
+	// Enhanced images have an 'img' property that contains the traditional image object
+	const posterUrl = intelligentFileCopyingImg.img.src;
 </script>
 
 <section
@@ -68,7 +71,7 @@
 				></div>
 				<VideoPlayer
 					youtubeVideoId="jGztGfRujSE"
-					poster={intelligentFileCopyingImg.src || intelligentFileCopyingImg.fallback}
+					poster={posterUrl}
 					title="CopyTree Getting Started"
 				/>
 			</div>
@@ -76,7 +79,7 @@
 
 		<!-- Video features -->
 		<div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
-			{#each features as feature}
+			{#each features as feature (feature.title)}
 				<div
 					class="rounded-xl border border-border bg-background p-6 shadow-sm transition-shadow duration-200 hover:shadow-md"
 				>

@@ -17,5 +17,9 @@
 		</div>
 	{/if}
 
-	<CodeBlock {code} {language} {filename} />
+	{#if filename}
+		<CodeBlock {code} {language} {filename} />
+	{:else}
+		<CodeBlock {code} {language} />
+	{/if}
 </div>

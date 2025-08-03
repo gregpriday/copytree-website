@@ -1,12 +1,4 @@
 <script>
-	/**
-	 * @typedef {Object} Tab
-	 * @property {string} id
-	 * @property {string} label
-	 * @property {() => void} content
-	 */
-
-	/** @type {{ tabs: Tab[], defaultTab?: string }} */
 	let { tabs, defaultTab } = $props();
 	let activeTab = $state(defaultTab || tabs[0]?.id || '');
 </script>

@@ -58,7 +58,7 @@
 							? 'bg-muted/20'
 							: ''}"
 					>
-						{#each row as cell, _cellIndex}
+						{#each row as cell}
 							<td
 								class="px-{compact ? '3' : '6'} py-{compact
 									? '2'
@@ -69,7 +69,8 @@
 								{:else if isSnippet(cell)}
 									{@render cell()}
 								{:else if cell}
-									<svelte:component this={cell} />
+									{@const Component = cell}
+									<Component />
 								{/if}
 							</td>
 						{/each}

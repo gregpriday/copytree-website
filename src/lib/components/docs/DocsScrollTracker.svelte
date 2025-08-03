@@ -2,13 +2,6 @@
 	import { browser } from '$app/environment';
 	import DocsSidebar from './DocsSidebar.svelte';
 
-	/**
-	 * @typedef {Object} Section
-	 * @property {string} id
-	 * @property {string} title
-	 */
-
-	/** @type {{ sections: Section[] }} */
 	let { sections } = $props();
 
 	let activeSection = $state('overview');
@@ -20,13 +13,13 @@
 
 		const scrollY = window.scrollY + HEADER_OFFSET;
 
-		// Get all section elements
+		// Get all section elements with proper null filtering
 		const sectionElements = sections
-			.map((section) => ({
-				...section,
-				element: document.getElementById(section.id)
-			}))
-			.filter((section) => section.element !== null);
+			.map((section) => {
+				const element = document.getElementById(section.id);
+				return element ? { ...section, element } : null;
+			})
+			.filter((section) => section !== null);
 
 		if (sectionElements.length === 0) return;
 
@@ -37,8 +30,9 @@
 			const current = sectionElements[i];
 			const next = sectionElements[i + 1];
 
+			// These are now guaranteed to be non-null due to our filtering above
 			const currentTop = current.element.offsetTop;
-			const nextTop = next ? next.element.offsetTop : Infinity;
+			const nextTop = next?.element.offsetTop ?? Infinity;
 
 			if (scrollY >= currentTop && scrollY < nextTop) {
 				currentActiveSection = current.id;
@@ -48,7 +42,8 @@
 
 		// Handle edge case for last section
 		const lastSection = sectionElements[sectionElements.length - 1];
-		if (scrollY >= lastSection.element.offsetTop) {
+		// This is now guaranteed to be non-null due to our filtering above
+		if (lastSection && scrollY >= lastSection.element.offsetTop) {
 			currentActiveSection = lastSection.id;
 		}
 
@@ -57,7 +52,6 @@
 		}
 	}
 
-	/** @type {number | null} */
 	let throttleTimeout = null;
 
 	function handleScroll() {
