@@ -330,6 +330,50 @@ body {
 		0 0 0 4px var(--color-ring);
 }
 
+/* Visible link underline for accessibility (applied on :focus-visible only) */
+.a11y-underline:focus-visible {
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+/* Consistent hairline separators */
+.hairline-x {
+	height: 1px;
+	background-image: linear-gradient(
+		to right,
+		transparent,
+		color-mix(in oklch, var(--color-border) 55%, transparent),
+		transparent
+	);
+}
+
+/* Micro-interaction utility: subtle hover surface */
+.hover-surface:hover {
+	background-color: color-mix(in oklch, var(--color-muted) 40%, transparent);
+}
+
+/* Button lift effect as utility (for non-Button.svelte cases) */
+.btn-lift {
+	transition: transform 150ms ease, box-shadow 150ms ease;
+}
+.btn-lift:hover {
+	transform: translateY(-1px);
+}
+
+/* Loading shimmer (reusable) */
+@keyframes shimmer {
+	0% { background-position: -200% 0; }
+	100% { background-position: 200% 0; }
+}
+.skeleton {
+	background: linear-gradient(90deg, rgba(255,255,255,0) 0%, color-mix(in oklch, var(--color-muted) 55%, transparent) 50%, rgba(255,255,255,0) 100%);
+	background-size: 200% 100%;
+	animation: shimmer 1.5s infinite;
+}
+.dark .skeleton {
+	background: linear-gradient(90deg, rgba(0,0,0,0) 0%, color-mix(in oklch, var(--color-zinc-800) 55%, transparent) 50%, rgba(0,0,0,0) 100%);
+}
+
 /* Subtle hover lift */
 .hover-lift {
 	transition:

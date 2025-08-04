@@ -45,16 +45,17 @@
 		$page.url.pathname === href || $page.url.pathname.startsWith(href + '/');
 </script>
 
-<header class="sticky top-0 z-50 w-full">
+<header class="sticky top-0 z-50 w-full supports-[backdrop-filter]:backdrop-saturate-150" role="banner">
 	<nav class="max-w-container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Primary">
 		<div
-			class="relative overflow-hidden rounded-b-xl border border-border/60 transition-all duration-300 lg:rounded-b-2xl"
+			class="relative overflow-hidden rounded-b-xl border border-border/60 shadow-sm transition-all duration-300 lg:rounded-b-2xl"
 		>
 			<!-- Glass + blur (scroll-reactive) -->
 			<div
 				class="absolute inset-0 transition-all duration-300 {isScrolled
 					? 'bg-white/85 backdrop-blur-2xl dark:bg-zinc-950/75'
 					: 'bg-white/70 backdrop-blur-xl dark:bg-zinc-950/55'}"
+				aria-hidden="true"
 			></div>
 
 			<!-- Noise -->
@@ -67,13 +68,15 @@
 			<!-- Edge gradients -->
 			<div
 				class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent dark:via-zinc-300/10"
+				aria-hidden="true"
 			></div>
 			<div
 				class="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-black/5 to-transparent dark:via-black/30"
+				aria-hidden="true"
 			></div>
 
 			<!-- Content -->
-			<div class="relative flex h-[60px] items-center justify-between px-2 lg:h-16">
+			<div class="relative flex h-[60px] items-center justify-between px-2 lg:h-16" role="navigation">
 				<!-- Brand -->
 				<a href="/" class="group flex items-center gap-2.5 lg:px-2" aria-label="CopyTree home">
 					<LogoIcon size="sm" class="transition duration-200 group-hover:brightness-110" />
@@ -97,10 +100,12 @@
 									{item.label}
 									<span
 										class="pointer-events-none absolute -bottom-1.5 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded bg-primary/70 transition-[width] duration-200 group-hover:w-7"
+										aria-hidden="true"
 									></span>
 									{#if isActive(item.href)}
 										<span
 											class="pointer-events-none absolute -bottom-1.5 left-1/2 h-[2px] w-7 -translate-x-1/2 rounded bg-primary"
+											aria-hidden="true"
 										></span>
 									{/if}
 								</span>
@@ -185,10 +190,12 @@
 			class="origin-top transition-all duration-200 ease-out lg:hidden {isMenuOpen
 				? 'visible scale-y-100 opacity-100'
 				: 'invisible max-h-0 scale-y-95 opacity-0'}"
+			role="region"
+			aria-label="Mobile navigation"
 		>
-			<div class="relative mt-2 overflow-hidden rounded-xl border border-border/50">
+			<div class="relative mt-2 overflow-hidden rounded-xl border border-border/50 shadow-md">
 				<!-- Blur + tint -->
-				<div class="absolute inset-0 bg-background/85 backdrop-blur-xl dark:bg-zinc-950/85"></div>
+				<div class="absolute inset-0 bg-background/85 backdrop-blur-xl dark:bg-zinc-950/85" aria-hidden="true"></div>
 				<!-- Noise -->
 				<div
 					class="absolute inset-0 opacity-[0.04] mix-blend-overlay"
@@ -204,6 +211,7 @@
 								onclick={closeMenu}
 								class="rounded-md px-4 py-3 text-[15px] text-muted-foreground transition-colors duration-150 hover:bg-muted hover:text-foreground focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background focus:outline-none"
 								aria-current={isActive(item.href) ? 'page' : undefined}
+								role="menuitem"
 							>
 								{item.label}
 							</a>
@@ -211,6 +219,7 @@
 
 						<div
 							class="mx-4 my-3 h-px bg-gradient-to-r from-transparent via-border/50 to-transparent"
+							aria-hidden="true"
 						></div>
 
 						<a
@@ -232,6 +241,7 @@
 										viewBox="0 0 24 24"
 										fill="none"
 										stroke="currentColor"
+										aria-hidden="true"
 									>
 										<path
 											stroke-linecap="round"

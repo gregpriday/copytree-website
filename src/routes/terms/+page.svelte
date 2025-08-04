@@ -1,10 +1,4 @@
-<svelte:head>
-	<title>Terms of Service - CopyTree</title>
-	<meta
-		name="description"
-		content="Terms governing the use of the CopyTree website and open-source tool."
-	/>
-</svelte:head>
+<!-- SEO handled by +layout.svelte -->
 
 <main class="min-h-screen bg-background pt-8 text-foreground md:pt-12">
 	<div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">

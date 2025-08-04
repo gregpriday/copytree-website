@@ -1,6 +1,22 @@
 <!-- Docs layout wrapper -->
 <script>
-	let { children } = $props();
+	let { children, data } = $props();
+	const docsStructuredData = data?.docsStructuredData || {};
 </script>
+
+<svelte:head>
+	<!-- Documentation-specific structured data -->
+	{#if docsStructuredData.software}
+		<script type="application/ld+json">
+			{JSON.stringify(docsStructuredData.software)}
+		</script>
+	{/if}
+	
+	{#if docsStructuredData.faq}
+		<script type="application/ld+json">
+			{JSON.stringify(docsStructuredData.faq)}
+		</script>
+	{/if}
+</svelte:head>
 
 {@render children?.()}

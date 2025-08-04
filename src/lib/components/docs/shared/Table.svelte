@@ -40,6 +40,7 @@
 				<tr>
 					{#each headers as header}
 						<th
+							scope="col"
 							class="px-{compact ? '3' : '6'} py-{compact
 								? '2'
 								: '4'} text-left text-sm font-semibold tracking-wider text-foreground"
@@ -54,15 +55,16 @@
 			<tbody class="divide-y divide-border">
 				{#each rows as row, rowIndex}
 					<tr
-						class="transition-colors duration-200 hover:bg-muted/30 {striped && rowIndex % 2 === 1
+						class="transition-colors duration-200 hover:bg-muted/30 focus-within:bg-muted/40 {striped && rowIndex % 2 === 1
 							? 'bg-muted/20'
 							: ''}"
 					>
-						{#each row as cell}
+						{#each row as cell, cellIndex}
 							<td
 								class="px-{compact ? '3' : '6'} py-{compact
 									? '2'
 									: '4'} align-top text-sm text-muted-foreground"
+								role="cell"
 							>
 								{#if isString(cell)}
 									<span class="leading-relaxed">{cell}</span>

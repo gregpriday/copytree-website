@@ -1,19 +1,26 @@
 {
-  "name": "CopyTree",
+  "name": "CopyTree - AI-Friendly File Sharing",
   "short_name": "CopyTree",
+  "description": "Transform how you share files with AI. CopyTree creates intelligent, structured representations of your projects that AI models can easily understand and work with.",
+  "start_url": "/",
+  "scope": "/",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "maskable any"
     },
     {
       "src": "/android-chrome-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "maskable any"
     }
   ],
-  "theme_color": "#000000",
-  "background_color": "#000000",
-  "display": "standalone"
+  "theme_color": "#16a34a",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "categories": ["developer", "productivity", "utilities"]
 }
