@@ -89,8 +89,9 @@
 			<!-- Immediate plain, escaped text. Preserves whitespace and wrapping similar to docs CodeBlock -->
 			<pre
 				class="!m-0 !p-0 font-mono text-zinc-300"
-				style="background: transparent; white-space: pre-wrap; word-break: break-word; line-height: 1.5;"
-			>{escapeHtml((code ?? '').trim())}</pre>
+				style="background: transparent; white-space: pre-wrap; word-break: break-word; line-height: 1.5;">{escapeHtml(
+					(code ?? '').trim()
+				)}</pre>
 			{#if highlightingError}
 				<div class="mt-2 text-xs text-amber-500">Plain text</div>
 			{/if}

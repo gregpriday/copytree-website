@@ -64,19 +64,19 @@
 			</div>
 
 			<!-- REFINED MESSAGING -->
-			<p class="mb-3 text-sm font-medium uppercase tracking-widest text-muted-foreground">
+			<p class="mb-3 text-sm font-medium tracking-widest text-muted-foreground uppercase">
 				AI-Optimized Developer Workflow
 			</p>
 			<h1
-				class="mb-5 font-bold tracking-tight text-foreground text-5xl md:text-6xl lg:text-7xl"
+				class="mb-5 text-5xl font-bold tracking-tight text-foreground md:text-6xl lg:text-7xl"
 				style="letter-spacing:-0.02em"
 			>
 				Copy your entire codebase to AI in seconds
 			</h1>
 
 			<p class="mx-auto mb-10 max-w-3xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-				Stop wrangling files. <code
-					class="rounded-md bg-muted/50 px-2 py-1 text-base text-primary">copytree</code
+				Stop wrangling files. <code class="rounded-md bg-muted/50 px-2 py-1 text-base text-primary"
+					>copytree</code
 				> packages any project into a clean, AI-ready context for Claude, ChatGPT, Grok, and Gemini.
 			</p>
 
@@ -92,7 +92,7 @@
 				<a href="#getting-started" aria-label="Install and Get Started">
 					<Button
 						size="lg"
-						class="group relative inline-flex items-center justify-center overflow-visible rounded-lg bg-primary px-8 py-3 text-base font-medium text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-200 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+						class="group relative inline-flex items-center justify-center overflow-visible rounded-lg bg-primary px-8 py-3 text-base font-medium text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-200 hover:brightness-110 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
 					>
 						<span class="relative z-10 flex items-center gap-2">
 							Get Started
@@ -124,7 +124,7 @@
 					<Button
 						variant="secondary"
 						size="lg"
-						class="inline-flex items-center justify-center gap-2 rounded-lg border border-border bg-secondary/50 px-6 py-3 text-base font-medium text-muted-foreground backdrop-blur-sm transition-all duration-200 hover:border-border/70 hover:bg-secondary hover:text-secondary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+						class="inline-flex items-center justify-center gap-2 rounded-lg border border-border bg-secondary/50 px-6 py-3 text-base font-medium text-muted-foreground backdrop-blur-sm transition-all duration-200 hover:border-border/70 hover:bg-secondary hover:text-secondary-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
 					>
 						<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 							<path

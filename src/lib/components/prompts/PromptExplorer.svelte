@@ -27,7 +27,7 @@
 
 <!-- Sidebar Surface -->
 <aside
-	class="flex h-[70vh] md:h-[calc(100vh-22rem)] flex-col border-r border-border/60 bg-white/60 backdrop-blur-xl dark:bg-zinc-950/40"
+	class="flex h-[70vh] flex-col border-r border-border/60 bg-white/60 backdrop-blur-xl md:h-[calc(100vh-22rem)] dark:bg-zinc-950/40"
 >
 	<!-- Search and heading -->
 	<div class="border-b border-border/60 p-3 md:p-4">
@@ -39,10 +39,10 @@
 				type="text"
 				placeholder="Search prompts..."
 				bind:value={searchTerm}
-				class="w-full rounded-md border border-border/60 bg-background/60 px-3 py-1.5 pr-8 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary"
+				class="w-full rounded-md border border-border/60 bg-background/60 px-3 py-1.5 pr-8 text-sm text-foreground placeholder:text-muted-foreground focus:ring-1 focus:ring-primary focus:outline-none"
 			/>
 			<LucideIcons.Search
-				class="absolute right-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
+				class="absolute top-1/2 right-2.5 h-4 w-4 -translate-y-1/2 text-muted-foreground"
 			/>
 		</div>
 	</div>
@@ -61,7 +61,9 @@
 				>
 					<!-- left accent when active -->
 					<span
-						class="absolute left-0 top-1/2 hidden h-5 -translate-y-1/2 rounded-r-md bg-primary md:block {isActive ? 'w-1' : 'w-0'}"
+						class="absolute top-1/2 left-0 hidden h-5 -translate-y-1/2 rounded-r-md bg-primary md:block {isActive
+							? 'w-1'
+							: 'w-0'}"
 					></span>
 					<IconComponent
 						class="h-4 w-4 flex-shrink-0 transition-colors {isActive

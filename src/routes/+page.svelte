@@ -19,21 +19,37 @@
 <Hero />
 
 <!-- Divider -->
-<div class="h-px bg-gradient-to-r from-transparent via-border/60 to-transparent" role="separator" aria-hidden="true"></div>
+<div
+	class="h-px bg-gradient-to-r from-transparent via-border/60 to-transparent"
+	role="separator"
+	aria-hidden="true"
+></div>
 
 <VideoSection />
 
 <!-- Divider -->
-<div class="h-px bg-gradient-to-r from-transparent via-border/60 to-transparent" role="separator" aria-hidden="true"></div>
+<div
+	class="h-px bg-gradient-to-r from-transparent via-border/60 to-transparent"
+	role="separator"
+	aria-hidden="true"
+></div>
 
 <Features />
 
 <!-- Divider -->
-<div class="h-px bg-gradient-to-r from-transparent via-border/60 to-transparent" role="separator" aria-hidden="true"></div>
+<div
+	class="h-px bg-gradient-to-r from-transparent via-border/60 to-transparent"
+	role="separator"
+	aria-hidden="true"
+></div>
 
 <GettingStarted />
 
 <!-- Divider -->
-<div class="h-px bg-gradient-to-r from-transparent via-border/60 to-transparent" role="separator" aria-hidden="true"></div>
+<div
+	class="h-px bg-gradient-to-r from-transparent via-border/60 to-transparent"
+	role="separator"
+	aria-hidden="true"
+></div>
 
 <CallToAction />

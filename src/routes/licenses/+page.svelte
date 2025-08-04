@@ -10,11 +10,11 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.`;
 
 	const licenseParagraphs = [
-		"MIT License",
-		"Copyright (c) 2025 Greg Priday",
-		"Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:",
-		"The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.",
-		"THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+		'MIT License',
+		'Copyright (c) 2025 Greg Priday',
+		'Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:',
+		'The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.',
+		'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.'
 	];
 
 	// Local state for filtering when many items
@@ -33,9 +33,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		else next.add(k);
 		openItems = next;
 	};
-
-
-
 
 	/** Derived, filtered list */
 	const filtered = $derived(
@@ -98,32 +95,39 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 </svelte:head>
 
 <main class="min-h-screen bg-background text-foreground">
-	<div class="mx-auto max-w-5xl px-4 py-24 md:py-32 sm:px-6 lg:px-8">
-		<h1 class="mb-3 font-[var(--font-space-grotesk)] text-4xl font-bold md:text-5xl">License & Attribution</h1>
+	<div class="mx-auto max-w-5xl px-4 py-24 sm:px-6 md:py-32 lg:px-8">
+		<h1 class="mb-3 text-4xl font-[var(--font-space-grotesk)] font-bold md:text-5xl">
+			License & Attribution
+		</h1>
 		<p class="text-lg text-muted-foreground">
-			CopyTree is proudly built on open-source software. We are grateful to the community for their contributions.
+			CopyTree is proudly built on open-source software. We are grateful to the community for their
+			contributions.
 		</p>
 
 		<div class="mt-12 space-y-12">
 			<!-- Project License -->
 			<section>
-				<h2 class="mb-4 font-[var(--font-space-grotesk)] text-2xl font-semibold md:text-3xl">
+				<h2 class="mb-4 text-2xl font-[var(--font-space-grotesk)] font-semibold md:text-3xl">
 					Project License
 				</h2>
-				<p class="mb-6 text-muted-foreground">The CopyTree project is licensed under the MIT License.</p>
+				<p class="mb-6 text-muted-foreground">
+					The CopyTree project is licensed under the MIT License.
+				</p>
 
 				<div
 					class="w-full overflow-hidden rounded-xl border border-border bg-background/50 shadow-md backdrop-blur-sm transition-all duration-200 hover:shadow-lg"
 				>
 					<!-- Header with copy -->
-					<div class="flex items-center justify-between border-b border-border/60 bg-muted/30 px-6 py-3">
+					<div
+						class="flex items-center justify-between border-b border-border/60 bg-muted/30 px-6 py-3"
+					>
 						<div class="flex items-center gap-2">
 							<FileText class="h-4 w-4 text-muted-foreground" />
 							<span class="text-sm font-medium text-foreground">MIT License</span>
 						</div>
 						<button
 							onclick={copyProjectLicense}
-							class="inline-flex items-center gap-2 rounded-md border border-border bg-background/80 px-3 py-1.5 text-xs font-medium text-muted-foreground transition-all duration-150 hover:bg-muted/30 hover:text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+							class="inline-flex items-center gap-2 rounded-md border border-border bg-background/80 px-3 py-1.5 text-xs font-medium text-muted-foreground transition-all duration-150 hover:bg-muted/30 hover:text-foreground focus:ring-2 focus:ring-primary focus:outline-none"
 							aria-live="polite"
 						>
 							{#if projectLicenseCopied}
@@ -135,7 +139,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 							{/if}
 						</button>
 					</div>
-					<div class="w-full p-6 space-y-4">
+					<div class="w-full space-y-4 p-6">
 						{#each licenseParagraphs as paragraph}
 							<p class="w-full text-sm leading-relaxed text-muted-foreground">{paragraph}</p>
 						{/each}
@@ -145,11 +149,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 			<!-- Dependencies -->
 			<section>
-				<h2 class="mb-4 font-[var(--font-space-grotesk)] text-2xl font-semibold md:text-3xl">
+				<h2 class="mb-4 text-2xl font-[var(--font-space-grotesk)] font-semibold md:text-3xl">
 					Project Attribution (Dependencies)
 				</h2>
 				<p class="mb-6 text-muted-foreground">
-					This list is sourced from the CopyTree repository's develop branch and includes both production and development dependencies.
+					This list is sourced from the CopyTree repository's develop branch and includes both
+					production and development dependencies.
 				</p>
 
 				<!-- Optional search -->
@@ -162,7 +167,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 								type="text"
 								placeholder="Search by name, license, or version…"
 								bind:value={query}
-								class="w-full rounded-lg border border-border bg-background/80 px-4 py-3 text-sm text-foreground shadow-sm backdrop-blur-sm transition-all duration-200 ease-out placeholder:text-muted-foreground/80 hover:border-primary/50 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary"
+								class="w-full rounded-lg border border-border bg-background/80 px-4 py-3 text-sm text-foreground shadow-sm backdrop-blur-sm transition-all duration-200 ease-out placeholder:text-muted-foreground/80 hover:border-primary/50 focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none"
 								aria-label="Search dependencies"
 							/>
 							<div
@@ -171,7 +176,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 							></div>
 						</div>
 						<p class="mt-3 text-sm text-muted-foreground">
-							{filtered.length} {filtered.length === 1 ? 'dependency' : 'dependencies'} shown
+							{filtered.length}
+							{filtered.length === 1 ? 'dependency' : 'dependencies'} shown
 						</p>
 					</div>
 				{/if}
@@ -180,17 +186,21 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 					{#if filtered.length}
 						<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
 							{#each filtered as dep, i (dep.name + '-' + i)}
-								<div class="group overflow-hidden rounded-lg border border-border bg-background/50 shadow-sm backdrop-blur-sm transition-all duration-200 hover:shadow-md hover:border-primary/30 hover:-translate-y-0.5">
+								<div
+									class="group overflow-hidden rounded-lg border border-border bg-background/50 shadow-sm backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md"
+								>
 									<div class="p-4">
 										<!-- Header -->
 										<div class="mb-3">
-											<h3 class="font-medium text-foreground truncate" title={dep.name}>
+											<h3 class="truncate font-medium text-foreground" title={dep.name}>
 												{dep.name}
 											</h3>
 											<div class="mt-1 flex items-center gap-2 text-xs text-muted-foreground">
 												<span class="font-mono">v{dep.version}</span>
 												<span class="h-1 w-1 rounded-full bg-muted-foreground/50"></span>
-												<span class="inline-flex items-center gap-1 rounded-md bg-muted/60 px-2 py-0.5">
+												<span
+													class="inline-flex items-center gap-1 rounded-md bg-muted/60 px-2 py-0.5"
+												>
 													<FileText class="h-3 w-3" />
 													{dep.license}
 												</span>
@@ -200,7 +210,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 										<!-- URL -->
 										<div class="mb-3">
 											<a
-												class="text-sm text-primary hover:text-primary/80 transition-colors truncate block"
+												class="block truncate text-sm text-primary transition-colors hover:text-primary/80"
 												href={dep.url}
 												target="_blank"
 												rel="noopener noreferrer"
@@ -214,22 +224,36 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 										<div class="flex items-center justify-between">
 											<button
 												onclick={() => toggle(dep, i)}
-												class="text-xs text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
+												class="flex items-center gap-1 text-xs text-muted-foreground transition-colors hover:text-foreground"
 												aria-expanded={isOpen(dep, i)}
-												aria-controls={"accordion-content-" + keyFor(dep, i)}
-												id={"accordion-button-" + keyFor(dep, i)}
+												aria-controls={'accordion-content-' + keyFor(dep, i)}
+												id={'accordion-button-' + keyFor(dep, i)}
 											>
 												<span>{isOpen(dep, i) ? 'Hide' : 'Show'} details</span>
-												<div class="transition-transform duration-200 {isOpen(dep, i) ? 'rotate-180' : 'rotate-0'}">
-													<svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-														<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+												<div
+													class="transition-transform duration-200 {isOpen(dep, i)
+														? 'rotate-180'
+														: 'rotate-0'}"
+												>
+													<svg
+														class="h-3 w-3"
+														fill="none"
+														viewBox="0 0 24 24"
+														stroke="currentColor"
+													>
+														<path
+															stroke-linecap="round"
+															stroke-linejoin="round"
+															stroke-width="2"
+															d="M19 9l-7 7-7-7"
+														/>
 													</svg>
 												</div>
 											</button>
 
 											<button
 												onclick={() => copyDepInfo(dep)}
-												class="inline-flex items-center gap-1 rounded-md border border-border bg-background/70 px-2 py-1 text-xs font-medium text-muted-foreground transition-all duration-150 hover:bg-muted/30 hover:text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+												class="inline-flex items-center gap-1 rounded-md border border-border bg-background/70 px-2 py-1 text-xs font-medium text-muted-foreground transition-all duration-150 hover:bg-muted/30 hover:text-foreground focus:ring-2 focus:ring-primary focus:outline-none"
 												aria-live="polite"
 											>
 												{#if copiedMap[dep.name]}
@@ -245,16 +269,24 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 										<!-- Expandable content -->
 										{#if isOpen(dep, i)}
 											<div
-												id={"accordion-content-" + keyFor(dep, i)}
-												class="mt-3 pt-3 border-t border-border/50"
+												id={'accordion-content-' + keyFor(dep, i)}
+												class="mt-3 border-t border-border/50 pt-3"
 												role="region"
-												aria-labelledby={"accordion-button-" + keyFor(dep, i)}
+												aria-labelledby={'accordion-button-' + keyFor(dep, i)}
 											>
-												<div class="text-xs text-muted-foreground space-y-1">
+												<div class="space-y-1 text-xs text-muted-foreground">
 													<p><span class="font-medium">Package:</span> {dep.name}</p>
 													<p><span class="font-medium">Version:</span> {dep.version}</p>
 													<p><span class="font-medium">License:</span> {dep.license}</p>
-													<p><span class="font-medium">URL:</span> <a href={dep.url} target="_blank" rel="noopener noreferrer" class="text-primary hover:underline break-all">{dep.url}</a></p>
+													<p>
+														<span class="font-medium">URL:</span>
+														<a
+															href={dep.url}
+															target="_blank"
+															rel="noopener noreferrer"
+															class="break-all text-primary hover:underline">{dep.url}</a
+														>
+													</p>
 												</div>
 											</div>
 										{/if}
@@ -263,8 +295,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 							{/each}
 						</div>
 					{:else}
-						<div class="text-center py-12">
-							<FileText class="h-12 w-12 text-muted-foreground/50 mx-auto mb-4" />
+						<div class="py-12 text-center">
+							<FileText class="mx-auto mb-4 h-12 w-12 text-muted-foreground/50" />
 							<p class="text-sm text-muted-foreground">No matching dependencies.</p>
 						</div>
 					{/if}

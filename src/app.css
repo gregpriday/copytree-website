@@ -286,7 +286,7 @@ body {
 
 /* Glassmorphism surface */
 .glass-surface {
-	@apply bg-background/50 backdrop-blur-sm border border-border/60;
+	@apply border border-border/60 bg-background/50 backdrop-blur-sm;
 }
 
 /* Edge gradient hairline (top/bottom) */
@@ -325,12 +325,16 @@ body {
 /* Focus ring that respects tokens */
 .focus-ring {
 	outline: none;
-	box-shadow: 0 0 0 2px var(--color-background), 0 0 0 4px var(--color-ring);
+	box-shadow:
+		0 0 0 2px var(--color-background),
+		0 0 0 4px var(--color-ring);
 }
 
 /* Subtle hover lift */
 .hover-lift {
-	transition: transform 150ms ease, box-shadow 150ms ease;
+	transition:
+		transform 150ms ease,
+		box-shadow 150ms ease;
 }
 .hover-lift:hover {
 	transform: translateY(-2px);
@@ -338,7 +342,8 @@ body {
 
 /* Button glow on hover (uses tokenized glow colors) */
 .btn-glow:hover {
-	box-shadow: 0 0 0 0 rgba(0, 0, 0, 0),
+	box-shadow:
+		0 0 0 0 rgba(0, 0, 0, 0),
 		0 0 24px 8px color-mix(in oklch, var(--color-primary) 20%, transparent);
 }
 

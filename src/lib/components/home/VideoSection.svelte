@@ -68,7 +68,7 @@
 		<div class="relative mx-auto w-full max-w-4xl">
 			<!-- Video wrapper with hover effects constrained to video dimensions -->
 			<div
-				class="group relative aspect-video overflow-hidden rounded-xl border border-border bg-muted transition-all duration-300 hover:border-primary/30 focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 focus-within:ring-offset-background"
+				class="group relative aspect-video overflow-hidden rounded-xl border border-border bg-muted transition-all duration-300 focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 focus-within:ring-offset-background hover:border-primary/30"
 			>
 				<!-- Subtle border highlight on hover - constrained to video dimensions -->
 				<div

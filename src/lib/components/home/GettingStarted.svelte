@@ -71,7 +71,7 @@
 						<!-- Step number -->
 						<div class="relative z-10 flex-shrink-0">
 							<div
-								class="box-border flex h-16 w-16 items-center justify-center rounded-xl border-2 border-border bg-background shadow-sm transition-all duration-300 group-hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+								class="box-border flex h-16 w-16 items-center justify-center rounded-xl border-2 border-border bg-background shadow-sm transition-all duration-300 group-hover:border-primary/50 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
 							>
 								{#if step.isProTip}
 									<div class="h-10 w-10">

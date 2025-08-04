@@ -34,7 +34,11 @@
 	];
 </script>
 
-<section role="region" aria-label="Features" class="relative overflow-hidden bg-zinc-950 px-4 py-24 sm:px-6 md:py-32 lg:px-8">
+<section
+	role="region"
+	aria-label="Features"
+	class="relative overflow-hidden bg-zinc-950 px-4 py-24 sm:px-6 md:py-32 lg:px-8"
+>
 	<!-- Edge gradients for subtle depth -->
 	<div
 		class="pointer-events-none absolute inset-x-0 top-0 z-[2] h-px bg-gradient-to-r from-transparent via-border/60 to-transparent"
@@ -69,11 +73,11 @@
 			</p>
 		</div>
 
-		<div class="grid auto-rows-fr grid-cols-1 gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-4">
+		<div class="grid auto-rows-fr grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-4">
 			{#each features as feature, index}
 				<div class="group relative transition-all duration-300 ease-out hover:-translate-y-0.5">
 					<div
-						class="subtle-gradient-border-hover relative h-full overflow-hidden rounded-xl border border-zinc-700 bg-zinc-900/70 shadow-sm transition-all duration-200 hover:shadow-md backdrop-blur-sm flex flex-col"
+						class="subtle-gradient-border-hover relative flex h-full flex-col overflow-hidden rounded-xl border border-zinc-700 bg-zinc-900/70 shadow-sm backdrop-blur-sm transition-all duration-200 hover:shadow-md"
 					>
 						<!-- Image container -->
 						<div class="relative h-44 overflow-hidden">
@@ -88,7 +92,7 @@
 						</div>
 
 						<!-- Text content -->
-						<div class="p-6 bg-gradient-to-b from-zinc-950 to-zinc-900/70 flex-1">
+						<div class="flex-1 bg-gradient-to-b from-zinc-950 to-zinc-900/70 p-6">
 							<h3 class="mb-2 text-lg font-semibold tracking-tight text-white">
 								{feature.title}
 							</h3>

@@ -204,17 +204,14 @@
 						Try a different search term, or check the full docs index below.
 					</p>
 					<div class="mt-4 space-y-2">
-						<a
-							href="/docs"
-							class="block text-primary hover:underline"
-						>
+						<a href="/docs" class="block text-primary hover:underline">
 							Browse Full Documentation
 						</a>
 						<a
 							href="https://github.com/gregpriday/copytree-website/issues"
 							target="_blank"
 							rel="noopener noreferrer"
-							class="block text-muted-foreground hover:text-foreground transition-colors"
+							class="block text-muted-foreground transition-colors hover:text-foreground"
 						>
 							Suggest Improvements on GitHub
 						</a>
