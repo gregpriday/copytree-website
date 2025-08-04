@@ -259,7 +259,19 @@
 			<div class="min-h-[50px] p-4 text-sm">
 				{#if shouldShowAnimated}
 					<!-- Animated content with basic styling -->
-					<pre class="font-mono">{#if showLineNumbers}{#each lines as line, i}<div class="flex"><span class="mr-4 w-8 text-right font-mono text-zinc-500 tabular-nums select-none">{i + 1}</span><span class="text-zinc-300">{line || ' '}{#if isAnimating && i === lines.length - 1}<span class="ml-0.5 inline-block h-4 w-0.5 animate-pulse bg-emerald-400 align-text-bottom"></span>{/if}</span></div>{/each}{:else}<span class="text-zinc-300">{codeToDisplay}{#if isAnimating}<span class="ml-0.5 inline-block h-4 w-0.5 animate-pulse bg-emerald-400 align-text-bottom"></span>{/if}</span>{/if}</pre>
+					<pre class="font-mono">{#if showLineNumbers}{#each lines as line, i}<div
+									class="flex"><span
+										class="mr-4 w-8 text-right font-mono text-zinc-500 tabular-nums select-none"
+										>{i + 1}</span
+									><span class="text-zinc-300"
+										>{line || ' '}{#if isAnimating && i === lines.length - 1}<span
+												class="ml-0.5 inline-block h-4 w-0.5 animate-pulse bg-emerald-400 align-text-bottom"
+											></span>{/if}</span
+									></div>{/each}{:else}<span class="text-zinc-300"
+								>{codeToDisplay}{#if isAnimating}<span
+										class="ml-0.5 inline-block h-4 w-0.5 animate-pulse bg-emerald-400 align-text-bottom"
+									></span>{/if}</span
+							>{/if}</pre>
 				{:else}
 					<!-- Always show content, either plain or highlighted -->
 					<!-- Simple, clean fallback that works in all cases -->
@@ -282,7 +294,9 @@
 						</div>
 					{:else}
 						<!-- Basic pre block - no complex conditionals -->
-						<pre class="font-mono whitespace-pre-wrap text-zinc-300" style="line-height: 1.5">{code.trim()}</pre>
+						<pre
+							class="font-mono whitespace-pre-wrap text-zinc-300"
+							style="line-height: 1.5">{code.trim()}</pre>
 					{/if}
 				{/if}
 			</div>

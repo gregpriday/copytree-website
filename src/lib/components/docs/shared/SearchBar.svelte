@@ -140,30 +140,24 @@
 	}
 </script>
 
-<div class="relative z-50 mx-auto max-w-2xl" bind:this={dropdownRef}>
+<div class="relative z-50 w-full" bind:this={dropdownRef}>
 	<!-- Search Input Container -->
 	<div class="relative">
 		<Search
-			class="pointer-events-none absolute top-1/2 left-4 z-10 h-5 w-5 -translate-y-1/2 text-muted-foreground/80 transition-colors duration-200"
+			class="pointer-events-none absolute top-1/2 left-3 z-10 h-4 w-4 -translate-y-1/2 text-muted-foreground/80 transition-colors duration-200"
 		/>
 		<input
 			bind:this={inputRef}
 			type="text"
-			placeholder="Search documentation..."
+			placeholder="Search docs..."
 			bind:value={query}
 			onkeydown={handleKeyDown}
 			onfocus={() => {
 				if (query.length > 1) isOpen = true;
 			}}
-			class="w-full rounded-md border border-border bg-background py-3 pr-20 pl-12 font-sans text-foreground shadow-sm backdrop-blur-sm transition-all duration-200 ease-out placeholder:text-muted-foreground placeholder:opacity-80 hover:border-primary/50 hover:shadow-md focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none dark:bg-zinc-900/50"
+			class="w-full rounded-md border border-border bg-background py-2 pr-3 pl-10 font-sans text-sm text-foreground shadow-sm backdrop-blur-sm transition-all duration-200 ease-out placeholder:text-muted-foreground placeholder:opacity-80 hover:border-primary/50 hover:shadow-md focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none dark:bg-zinc-900/50"
 			aria-label="Search documentation"
 		/>
-		<!-- Keyboard Shortcut Hint -->
-		<div
-			class="pointer-events-none absolute top-1/2 right-3 hidden -translate-y-1/2 items-center gap-1 rounded-md bg-muted/80 px-2 py-1 text-xs text-muted-foreground/90 backdrop-blur-sm sm:flex"
-		>
-			⌘K
-		</div>
 	</div>
 
 	<!-- Dropdown -->

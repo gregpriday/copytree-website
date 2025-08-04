@@ -1,4 +1,6 @@
 <script>
+	import SearchBar from './shared/SearchBar.svelte';
+
 	/**
 	 * @typedef {Object} Section
 	 * @property {string} id
@@ -63,6 +65,11 @@
 
 <aside class="hidden w-56 flex-shrink-0 lg:block">
 	<nav class="sticky transition-all duration-300 {isSticky ? 'top-20' : 'top-8'}">
+		<!-- Search Bar at top of sidebar -->
+		<div class="mb-6">
+			<SearchBar />
+		</div>
+
 		<div class="relative">
 			<!-- Animated indicator pill -->
 			<div

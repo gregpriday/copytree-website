@@ -342,7 +342,7 @@
 
 		<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 			<div
-				class="rounded-lg border border-green-200 bg-gradient-to-br from-primary-50 to-green-50 p-4 dark:border-green-800 dark:from-primary-950/20 dark:to-green-950/20"
+				class="from-primary-50 dark:from-primary-950/20 rounded-lg border border-green-200 bg-gradient-to-br to-green-50 p-4 dark:border-green-800 dark:to-green-950/20"
 			>
 				<h4 class="mb-2 font-medium text-foreground">Complex filtering</h4>
 				<CodeBlock

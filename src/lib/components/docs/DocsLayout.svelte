@@ -1,5 +1,5 @@
 <script>
-	import DocsHero from './DocsHero.svelte';
+	import { SharedHero } from '../shared/index.js';
 	import DocsScrollTracker from './DocsScrollTracker.svelte';
 	import { GeometricDivider } from '../shared/index.js';
 
@@ -38,7 +38,7 @@
 </script>
 
 <!-- Hero Section -->
-<DocsHero />
+<SharedHero title="Documentation" />
 
 <!-- Main Content Area -->
 <div class="relative">

@@ -1,5 +1,5 @@
 <script>
-	import PromptsHero from '$lib/components/prompts/PromptsHero.svelte';
+	import { SharedHero } from '$lib/components/shared';
 
 	let { children } = $props();
 </script>
@@ -12,7 +12,7 @@
 	/>
 </svelte:head>
 
-<PromptsHero />
+<SharedHero title="System Prompts" />
 <div class="max-w-container mx-auto px-6 py-8 md:px-9">
 	{@render children?.()}
 </div>
