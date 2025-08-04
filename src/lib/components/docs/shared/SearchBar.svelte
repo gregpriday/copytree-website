@@ -2,6 +2,8 @@
 	import { FileText, Search } from 'lucide-svelte';
 	import Fuse from 'fuse.js';
 	import { docsIndex } from '$lib/docsIndex.js';
+	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 
 	// State management using Svelte 5 runes
 	let query = $state('');
@@ -108,7 +110,20 @@
 	// Handle result click
 	/** @param {any} item */
 	function handleResultClick(item) {
-		const element = document.querySelector(item.path);
+		const currentPath = $page.url.pathname;
+		const targetHash = item.path; // e.g., #section-id
+
+		// If not currently on /docs, navigate there with the hash first
+		if (!currentPath.startsWith('/docs')) {
+			goto(`/docs${targetHash}`);
+			isOpen = false;
+			query = '';
+			inputRef?.blur();
+			return;
+		}
+
+		// Already on /docs, smooth scroll to the section
+		const element = document.querySelector(targetHash);
 		if (element) {
 			const top = element.getBoundingClientRect().top + window.pageYOffset - 80; // 80px offset for header
 			window.scrollTo({ top, behavior: 'smooth' });
@@ -185,7 +200,25 @@
 				<div class="p-6 text-center">
 					<Search class="mx-auto mb-3 h-8 w-8 text-muted-foreground opacity-40" />
 					<p class="font-sans font-semibold text-foreground">No results found</p>
-					<p class="mt-1 text-sm text-muted-foreground opacity-80">Try a different search term.</p>
+					<p class="mt-1 text-sm text-muted-foreground opacity-80">
+						Try a different search term, or check the full docs index below.
+					</p>
+					<div class="mt-4 space-y-2">
+						<a
+							href="/docs"
+							class="block text-primary hover:underline"
+						>
+							Browse Full Documentation
+						</a>
+						<a
+							href="https://github.com/gregpriday/copytree-website/issues"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="block text-muted-foreground hover:text-foreground transition-colors"
+						>
+							Suggest Improvements on GitHub
+						</a>
+					</div>
 				</div>
 			{/if}
 		</div>
