@@ -8,7 +8,8 @@
 		{
 			variants: {
 				variant: {
-					primary: 'bg-primary text-primary-foreground shadow-sm hover:bg-primary/90 active:bg-primary/95 focus-visible:shadow-md',
+					primary:
+						'bg-primary text-primary-foreground shadow-sm hover:bg-primary/90 active:bg-primary/95 focus-visible:shadow-md',
 					secondary:
 						'border border-input bg-background/70 text-foreground hover:bg-accent hover:text-accent-foreground',
 					link: 'bg-transparent underline-offset-4 text-primary hover:underline focus-visible:ring-0 focus-visible:ring-offset-0',

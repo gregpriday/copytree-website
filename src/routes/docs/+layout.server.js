@@ -9,7 +9,7 @@ export async function load() {
 	// Generate docs-specific structured data
 	const softwareSchema = generateSoftwareApplicationSchema();
 	const faqSchema = generateFAQSchema();
-	
+
 	return {
 		docsStructuredData: {
 			software: softwareSchema,

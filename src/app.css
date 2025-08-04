@@ -276,10 +276,24 @@
 }
 
 /* Base styles */
+:root {
+	/* Hint browsers to render forms/scrollbars for both schemes but we control colors */
+	color-scheme: light dark;
+}
+
+/* Ensure the page base is always the solid themed background */
+html,
 body {
 	background-color: var(--color-background);
+	min-height: 100%;
+}
+
+/* Body text and layout defaults */
+body {
 	color: var(--color-foreground);
 	line-height: 1.7; /* Enhanced for better scannability */
+	/* Prevent rubber-band overscroll showing UA background */
+	overscroll-behavior-y: none;
 }
 
 /* Design utilities for homepage refinements */
@@ -354,7 +368,9 @@ body {
 
 /* Button lift effect as utility (for non-Button.svelte cases) */
 .btn-lift {
-	transition: transform 150ms ease, box-shadow 150ms ease;
+	transition:
+		transform 150ms ease,
+		box-shadow 150ms ease;
 }
 .btn-lift:hover {
 	transform: translateY(-1px);
@@ -362,16 +378,30 @@ body {
 
 /* Loading shimmer (reusable) */
 @keyframes shimmer {
-	0% { background-position: -200% 0; }
-	100% { background-position: 200% 0; }
+	0% {
+		background-position: -200% 0;
+	}
+	100% {
+		background-position: 200% 0;
+	}
 }
 .skeleton {
-	background: linear-gradient(90deg, rgba(255,255,255,0) 0%, color-mix(in oklch, var(--color-muted) 55%, transparent) 50%, rgba(255,255,255,0) 100%);
+	background: linear-gradient(
+		90deg,
+		rgba(255, 255, 255, 0) 0%,
+		color-mix(in oklch, var(--color-muted) 55%, transparent) 50%,
+		rgba(255, 255, 255, 0) 100%
+	);
 	background-size: 200% 100%;
 	animation: shimmer 1.5s infinite;
 }
 .dark .skeleton {
-	background: linear-gradient(90deg, rgba(0,0,0,0) 0%, color-mix(in oklch, var(--color-zinc-800) 55%, transparent) 50%, rgba(0,0,0,0) 100%);
+	background: linear-gradient(
+		90deg,
+		rgba(0, 0, 0, 0) 0%,
+		color-mix(in oklch, var(--color-zinc-800) 55%, transparent) 50%,
+		rgba(0, 0, 0, 0) 100%
+	);
 }
 
 /* Subtle hover lift */
@@ -459,9 +489,10 @@ h6 {
 
 /* Scrollbar styling removed - can be added back as utility class if needed */
 
-/* Prevent layout shift from scrollbar */
+/* Prevent layout shift from scrollbar and ensure solid background during overscroll */
 html {
 	scrollbar-gutter: stable;
+	background: var(--color-background);
 }
 
 /* Animation delays - use animate-delay-[2s] or animate-delay-[4s] instead */

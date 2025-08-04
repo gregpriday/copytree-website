@@ -45,7 +45,10 @@
 		$page.url.pathname === href || $page.url.pathname.startsWith(href + '/');
 </script>
 
-<header class="sticky top-0 z-50 w-full supports-[backdrop-filter]:backdrop-saturate-150" role="banner">
+<header
+	class="sticky top-0 z-50 w-full"
+	role="banner"
+>
 	<nav class="max-w-container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Primary">
 		<div
 			class="relative overflow-hidden rounded-b-xl border border-border/60 shadow-sm transition-all duration-300 lg:rounded-b-2xl"
@@ -53,14 +56,15 @@
 			<!-- Glass + blur (scroll-reactive) -->
 			<div
 				class="absolute inset-0 transition-all duration-300 {isScrolled
-					? 'bg-white/85 backdrop-blur-2xl dark:bg-zinc-950/75'
-					: 'bg-white/70 backdrop-blur-xl dark:bg-zinc-950/55'}"
+					? 'bg-white/70 dark:bg-zinc-950/70'
+					: 'bg-white/50 dark:bg-zinc-950/50'}"
+				style="backdrop-filter: blur({isScrolled ? '8px' : '6px'}); -webkit-backdrop-filter: blur({isScrolled ? '8px' : '6px'});"
 				aria-hidden="true"
 			></div>
 
 			<!-- Noise -->
 			<div
-				class="absolute inset-0 opacity-[0.05] mix-blend-overlay dark:opacity-[0.08]"
+				class="absolute inset-0 opacity-[0.12] mix-blend-overlay dark:opacity-[0.15]"
 				style="background-image: url(/noise-texture.png); background-size: 128px 128px; background-repeat: repeat;"
 				aria-hidden="true"
 			></div>
@@ -76,7 +80,10 @@
 			></div>
 
 			<!-- Content -->
-			<div class="relative flex h-[60px] items-center justify-between px-2 lg:h-16" role="navigation">
+			<div
+				class="relative flex h-[60px] items-center justify-between px-2 lg:h-16"
+				role="navigation"
+			>
 				<!-- Brand -->
 				<a href="/" class="group flex items-center gap-2.5 lg:px-2" aria-label="CopyTree home">
 					<LogoIcon size="sm" class="transition duration-200 group-hover:brightness-110" />
@@ -195,10 +202,14 @@
 		>
 			<div class="relative mt-2 overflow-hidden rounded-xl border border-border/50 shadow-md">
 				<!-- Blur + tint -->
-				<div class="absolute inset-0 bg-background/85 backdrop-blur-xl dark:bg-zinc-950/85" aria-hidden="true"></div>
+				<div
+					class="absolute inset-0 bg-background/75 dark:bg-zinc-950/75"
+					style="backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);"
+					aria-hidden="true"
+				></div>
 				<!-- Noise -->
 				<div
-					class="absolute inset-0 opacity-[0.04] mix-blend-overlay"
+					class="absolute inset-0 opacity-[0.12] mix-blend-overlay dark:opacity-[0.15]"
 					style="background-image: url(/noise-texture.png); background-repeat: repeat; background-size: 128px 128px;"
 					aria-hidden="true"
 				></div>

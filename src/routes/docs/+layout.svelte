@@ -7,15 +7,11 @@
 <svelte:head>
 	<!-- Documentation-specific structured data -->
 	{#if docsStructuredData.software}
-		<script type="application/ld+json">
-			{JSON.stringify(docsStructuredData.software)}
-		</script>
+		{@html `<script type="application/ld+json">${JSON.stringify(docsStructuredData.software)}</script>`}
 	{/if}
-	
+
 	{#if docsStructuredData.faq}
-		<script type="application/ld+json">
-			{JSON.stringify(docsStructuredData.faq)}
-		</script>
+		{@html `<script type="application/ld+json">${JSON.stringify(docsStructuredData.faq)}</script>`}
 	{/if}
 </svelte:head>
 

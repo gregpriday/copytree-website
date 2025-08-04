@@ -19,7 +19,7 @@ const SITE_URL = 'https://copytree.dev';
  */
 function getStaticPages() {
 	const currentDate = new Date().toISOString().split('T')[0];
-	
+
 	return [
 		{
 			loc: `${SITE_URL}/`,
@@ -60,8 +60,8 @@ function getStaticPages() {
  */
 function getPromptPages() {
 	const currentDate = new Date().toISOString().split('T')[0];
-	
-	return prompts.map(prompt => ({
+
+	return prompts.map((prompt) => ({
 		loc: `${SITE_URL}/prompts/${prompt.slug}`,
 		lastmod: currentDate,
 		changefreq: 'monthly',
@@ -76,7 +76,8 @@ function getPromptPages() {
  */
 function generateSitemap(urls) {
 	const urlEntries = urls
-		.map(url => `
+		.map(
+			(url) => `
 	<url>
 		<loc>${url.loc}</loc>
 		<lastmod>${url.lastmod}</lastmod>
@@ -99,10 +100,10 @@ export async function GET() {
 		const staticPages = getStaticPages();
 		const promptPages = getPromptPages();
 		const allPages = [...staticPages, ...promptPages];
-		
+
 		// Generate XML sitemap
 		const sitemap = generateSitemap(allPages);
-		
+
 		return new Response(sitemap, {
 			headers: {
 				'Content-Type': 'application/xml',
@@ -111,7 +112,7 @@ export async function GET() {
 		});
 	} catch (error) {
 		console.error('Error generating sitemap:', error);
-		return new Response('Error generating sitemap', { 
+		return new Response('Error generating sitemap', {
 			status: 500,
 			headers: {
 				'Content-Type': 'text/plain'

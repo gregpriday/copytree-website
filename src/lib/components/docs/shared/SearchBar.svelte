@@ -165,7 +165,9 @@
 			aria-label="Search documentation"
 		/>
 		<!-- KBD shortcut helper (non-interactive) -->
-		<span class="pointer-events-none absolute right-2 top-1/2 hidden -translate-y-1/2 items-center gap-0.5 rounded-md border border-border bg-muted/60 px-1.5 py-0.5 text-[11px] text-muted-foreground/90 sm:flex">
+		<span
+			class="pointer-events-none absolute top-1/2 right-2 hidden -translate-y-1/2 items-center gap-0.5 rounded-md border border-border bg-muted/60 px-1.5 py-0.5 text-[11px] text-muted-foreground/90 sm:flex"
+		>
 			<kbd class="font-mono">⌘</kbd><span>K</span>
 		</span>
 	</div>
@@ -179,7 +181,12 @@
 				<div class="border-b border-border/50 p-2">
 					<p class="px-2 text-xs font-semibold tracking-wide text-muted-foreground/90">RESULTS</p>
 				</div>
-				<div class="max-h-[400px] overflow-y-auto p-1" role="listbox" id="search-results" aria-label="Search results">
+				<div
+					class="max-h-[400px] overflow-y-auto p-1"
+					role="listbox"
+					id="search-results"
+					aria-label="Search results"
+				>
 					{#each results as result, index}
 						<button
 							onclick={() => handleResultClick(result.item)}

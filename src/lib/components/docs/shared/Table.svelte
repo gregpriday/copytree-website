@@ -55,7 +55,8 @@
 			<tbody class="divide-y divide-border">
 				{#each rows as row, rowIndex}
 					<tr
-						class="transition-colors duration-200 hover:bg-muted/30 focus-within:bg-muted/40 {striped && rowIndex % 2 === 1
+						class="transition-colors duration-200 focus-within:bg-muted/40 hover:bg-muted/30 {striped &&
+						rowIndex % 2 === 1
 							? 'bg-muted/20'
 							: ''}"
 					>

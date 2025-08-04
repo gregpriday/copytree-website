@@ -17,7 +17,8 @@
 const SITE_CONFIG = {
 	name: 'CopyTree',
 	url: 'https://copytree.dev',
-	description: 'Transform how you share files with AI. CopyTree creates intelligent, structured representations of your projects that AI models can easily understand and work with.',
+	description:
+		'Transform how you share files with AI. CopyTree creates intelligent, structured representations of your projects that AI models can easily understand and work with.',
 	image: '/og-image.png', // We'll need to create this
 	twitter: '@copytree_dev' // Update if different
 };
@@ -30,10 +31,10 @@ const SITE_CONFIG = {
  */
 export function generateMetadata(pathname, overrides = {}) {
 	const canonical = `${SITE_CONFIG.url}${pathname}`;
-	
+
 	// Default metadata based on pathname
 	const defaults = getDefaultMetadata(pathname);
-	
+
 	return {
 		title: overrides.title || defaults.title,
 		description: overrides.description || defaults.description,
@@ -56,54 +57,60 @@ function getDefaultMetadata(pathname) {
 	// Remove trailing slash and split path
 	const path = pathname.replace(/\/$/, '') || '/';
 	const segments = path.split('/').filter(Boolean);
-	
+
 	switch (segments[0]) {
 		case undefined: // Homepage
 			return {
 				title: 'CopyTree - AI-Friendly File Sharing',
-				description: 'Transform how you share files with AI. CopyTree creates intelligent, structured representations of your projects that AI models can easily understand and work with.'
+				description:
+					'Transform how you share files with AI. CopyTree creates intelligent, structured representations of your projects that AI models can easily understand and work with.'
 			};
-			
+
 		case 'docs':
 			if (segments.length === 1) {
 				return {
 					title: 'Documentation - CopyTree',
-					description: 'Learn how to use CopyTree to transform your codebase into AI-ready formats. Complete guides for installation, usage, and advanced features.'
+					description:
+						'Learn how to use CopyTree to transform your codebase into AI-ready formats. Complete guides for installation, usage, and advanced features.'
 				};
 			}
 			return {
 				title: `${segments[1]} - CopyTree Documentation`,
 				description: `Learn about ${segments[1]} in CopyTree - comprehensive guides and examples for AI-friendly file sharing.`
 			};
-			
+
 		case 'prompts':
 			if (segments.length === 1) {
 				return {
 					title: 'AI Prompts - CopyTree',
-					description: 'Explore curated AI prompts for development workflows. Ready-to-use prompts for Claude, ChatGPT, and other AI assistants.'
+					description:
+						'Explore curated AI prompts for development workflows. Ready-to-use prompts for Claude, ChatGPT, and other AI assistants.'
 				};
 			}
 			// Dynamic prompt pages
-			const promptTitle = segments[1].split('-').map(word => 
-				word.charAt(0).toUpperCase() + word.slice(1)
-			).join(' ');
+			const promptTitle = segments[1]
+				.split('-')
+				.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+				.join(' ');
 			return {
 				title: `${promptTitle} Prompt - CopyTree`,
 				description: `${promptTitle} AI prompt for development workflows. Copy and use with Claude, ChatGPT, or your preferred AI assistant.`
 			};
-			
+
 		case 'privacy':
 			return {
 				title: 'Privacy Policy - CopyTree',
-				description: 'CopyTree privacy policy - how we handle your data and protect your privacy when using our AI-friendly file sharing tool.'
+				description:
+					'CopyTree privacy policy - how we handle your data and protect your privacy when using our AI-friendly file sharing tool.'
 			};
-			
+
 		case 'terms':
 			return {
 				title: 'Terms of Service - CopyTree',
-				description: 'CopyTree terms of service - legal terms and conditions for using our AI-friendly file sharing platform.'
+				description:
+					'CopyTree terms of service - legal terms and conditions for using our AI-friendly file sharing platform.'
 			};
-			
+
 		default:
 			return {
 				title: `${segments[0]} - CopyTree`,
@@ -124,9 +131,7 @@ export function generateOrganizationSchema() {
 		url: SITE_CONFIG.url,
 		description: SITE_CONFIG.description,
 		logo: `${SITE_CONFIG.url}/logo/copytree-logo-light.svg`,
-		sameAs: [
-			'https://github.com/gregpriday/copytree'
-		],
+		sameAs: ['https://github.com/gregpriday/copytree'],
 		contactPoint: {
 			'@type': 'ContactPoint',
 			contactType: 'customer service',
@@ -146,7 +151,8 @@ export function generateSoftwareApplicationSchema() {
 		name: 'CopyTree',
 		applicationCategory: 'DeveloperApplication',
 		operatingSystem: ['Windows', 'macOS', 'Linux'],
-		description: 'AI-friendly file sharing tool that transforms codebases into optimized formats for AI assistants like Claude, ChatGPT, and Gemini.',
+		description:
+			'AI-friendly file sharing tool that transforms codebases into optimized formats for AI assistants like Claude, ChatGPT, and Gemini.',
 		url: SITE_CONFIG.url,
 		downloadUrl: 'https://www.npmjs.com/package/copytree',
 		installUrl: 'https://www.npmjs.com/package/copytree',
@@ -182,9 +188,9 @@ export function generateSoftwareApplicationSchema() {
 export function generateBreadcrumbSchema(pathname) {
 	const path = pathname.replace(/\/$/, '') || '/';
 	const segments = path.split('/').filter(Boolean);
-	
+
 	if (segments.length === 0) return null; // No breadcrumbs for homepage
-	
+
 	const breadcrumbs = [
 		{
 			'@type': 'ListItem',
@@ -193,12 +199,12 @@ export function generateBreadcrumbSchema(pathname) {
 			item: SITE_CONFIG.url
 		}
 	];
-	
+
 	let currentPath = '';
 	segments.forEach((segment, index) => {
 		currentPath += `/${segment}`;
 		const name = segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' ');
-		
+
 		breadcrumbs.push({
 			'@type': 'ListItem',
 			position: index + 2,
@@ -206,7 +212,7 @@ export function generateBreadcrumbSchema(pathname) {
 			item: `${SITE_CONFIG.url}${currentPath}`
 		});
 	});
-	
+
 	return {
 		'@context': 'https://schema.org',
 		'@type': 'BreadcrumbList',
@@ -252,7 +258,7 @@ export function generateFAQSchema() {
 				name: 'Is CopyTree free to use?',
 				acceptedAnswer: {
 					'@type': 'Answer',
-					text: 'Yes, CopyTree is open source and free to use. It\'s available under the MIT license on GitHub and npm.'
+					text: "Yes, CopyTree is open source and free to use. It's available under the MIT license on GitHub and npm."
 				}
 			}
 		]
