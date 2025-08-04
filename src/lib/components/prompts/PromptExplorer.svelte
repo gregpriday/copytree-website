@@ -6,6 +6,15 @@
 	/** @type {{ currentSlug: string }} */
 	let { currentSlug } = $props();
 
+	let searchTerm = $state('');
+
+	// Derived value in runes mode (replaces legacy $: statement)
+	let filteredPrompts = $derived.by(() =>
+		searchTerm
+			? prompts.filter((p) => p.title.toLowerCase().includes(searchTerm.toLowerCase()))
+			: prompts
+	);
+
 	/**
 	 * Get the icon component by name
 	 * @param {string} iconName
@@ -16,30 +25,57 @@
 	};
 </script>
 
-<div class="flex h-full w-80 flex-col border-r border-border bg-background">
-	<div class="flex-1 space-y-4 overflow-y-auto p-2">
-		<div class="space-y-2">
-			<div class="px-2 py-1">
-				<h2 class="text-sm font-semibold text-foreground">System Prompts</h2>
-			</div>
-			<nav class="space-y-1">
-				{#each prompts as prompt (prompt.id)}
-					{@const isActive = currentSlug === prompt.slug}
-					{@const IconComponent = getIconComponent(prompt.icon)}
-					<a
-						href="/prompts/{prompt.slug}"
-						class="flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-all duration-200 {isActive
-							? 'bg-primary/10 font-medium text-primary'
-							: 'text-muted-foreground hover:bg-muted/50 hover:text-foreground'}"
-					>
-						<IconComponent class="h-4 w-4 flex-shrink-0 {isActive ? 'text-primary' : ''}" />
-						<span class="truncate">{prompt.title}</span>
-					</a>
-				{/each}
-			</nav>
+<!-- Sidebar Surface -->
+<aside
+	class="flex h-[70vh] md:h-[calc(100vh-22rem)] flex-col border-r border-border/60 bg-white/60 backdrop-blur-xl dark:bg-zinc-950/40"
+>
+	<!-- Search and heading -->
+	<div class="border-b border-border/60 p-3 md:p-4">
+		<div class="mb-2 flex items-center justify-between">
+			<h2 class="text-sm font-semibold text-foreground">System Prompts</h2>
+		</div>
+		<div class="relative">
+			<input
+				type="text"
+				placeholder="Search prompts..."
+				bind:value={searchTerm}
+				class="w-full rounded-md border border-border/60 bg-background/60 px-3 py-1.5 pr-8 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary"
+			/>
+			<LucideIcons.Search
+				class="absolute right-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
+			/>
 		</div>
 	</div>
-	<div class="border-t border-border bg-background p-4">
+
+	<!-- List -->
+	<div class="flex-1 space-y-2 overflow-y-auto p-2 md:p-3">
+		<nav class="space-y-1 transition-colors">
+			{#each filteredPrompts as prompt (prompt.id)}
+				{@const isActive = currentSlug === prompt.slug}
+				{@const IconComponent = getIconComponent(prompt.icon)}
+				<a
+					href="/prompts/{prompt.slug}"
+					class="group relative flex items-center gap-3 rounded-lg border px-3 py-2 text-sm transition-colors duration-200 {isActive
+						? 'border-primary/50 bg-primary/5 text-primary'
+						: 'border-transparent text-muted-foreground hover:border-border/60 hover:bg-muted/40 hover:text-foreground'}"
+				>
+					<!-- left accent when active -->
+					<span
+						class="absolute left-0 top-1/2 hidden h-5 -translate-y-1/2 rounded-r-md bg-primary md:block {isActive ? 'w-1' : 'w-0'}"
+					></span>
+					<IconComponent
+						class="h-4 w-4 flex-shrink-0 transition-colors {isActive
+							? 'text-primary'
+							: 'group-hover:text-foreground'}"
+					/>
+					<span class="truncate">{prompt.title ?? prompt?.slug ?? '(untitled prompt)'}</span>
+				</a>
+			{/each}
+		</nav>
+	</div>
+
+	<!-- Footer -->
+	<div class="border-t border-border/60 bg-background/60 p-3 md:p-4">
 		<PromptsVideo />
 	</div>
-</div>
+</aside>

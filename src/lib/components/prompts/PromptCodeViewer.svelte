@@ -26,32 +26,13 @@
 				if (!highlighter) {
 					highlighter = await createHighlighter({
 						themes: ['github-dark'],
-						langs: [
-							'markdown',
-							'typescript',
-							'javascript',
-							'json',
-							'yaml',
-							'xml',
-							'html',
-							'css',
-							'shell',
-							'bash',
-							'python',
-							'java',
-							'go',
-							'rust',
-							'php',
-							'sql',
-							'dockerfile',
-							'svelte'
-						]
+						langs: ['markdown']
 					});
 				}
 
-				// Highlight the code with consistent dark theme
+				// Force consistent dark theme for markdown
 				highlightedCode = highlighter.codeToHtml(code, {
-					lang: language,
+					lang: 'markdown',
 					theme: 'github-dark'
 				});
 			} catch (err) {
@@ -66,14 +47,15 @@
 	});
 </script>
 
-<div class="h-full overflow-y-auto p-4 text-sm" style="background-color: rgb(13 13 13);">
+<!-- Code surface (force dark background for editor area) -->
+<div class="h-full overflow-y-auto bg-[rgb(13,13,13)] p-3 text-sm md:p-4">
 	{#if isLoading}
 		<!-- Loading state with skeleton -->
 		<div class="animate-pulse space-y-2">
 			{#each Array(5) as _}
-				<div class="h-4 w-full rounded bg-zinc-800"></div>
-				<div class="h-4 w-3/4 rounded bg-zinc-800"></div>
-				<div class="h-4 w-5/6 rounded bg-zinc-800"></div>
+				<div class="h-4 w-full rounded bg-zinc-800/80"></div>
+				<div class="h-4 w-3/4 rounded bg-zinc-800/80"></div>
+				<div class="h-4 w-5/6 rounded bg-zinc-800/80"></div>
 			{/each}
 		</div>
 	{:else if error}
@@ -127,10 +109,5 @@
 		white-space: pre-wrap;
 		word-break: break-word;
 		overflow: visible;
-	}
-
-	/* Apply consistent dark theme styling */
-	:global(.shiki) {
-		background: rgb(13 13 13) !important; /* zinc-950 equivalent */
 	}
 </style>

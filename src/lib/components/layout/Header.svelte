@@ -1,9 +1,15 @@
 <script>
+	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
 	import LogoIcon from '../shared/LogoIcon.svelte';
 	import ThemeToggle from '../shared/ThemeToggle.svelte';
 
 	let isMenuOpen = $state(false);
+	let isScrolled = $state(false);
+
+	const handleScroll = () => {
+		isScrolled = window.scrollY > 10;
+	};
 
 	const closeMenu = () => (isMenuOpen = false);
 
@@ -20,6 +26,14 @@
 		closeMenu();
 	});
 
+	// Track scroll for glassmorphism enhancement
+	$effect(() => {
+		if (!browser) return;
+		window.addEventListener('scroll', handleScroll, { passive: true });
+		handleScroll(); // initialize on mount
+		return () => window.removeEventListener('scroll', handleScroll);
+	});
+
 	const nav = [
 		{ href: '/docs', label: 'Documentation' },
 		{ href: '/prompts', label: 'Prompts' },
@@ -33,10 +47,14 @@
 <header class="sticky top-0 z-50 w-full">
 	<nav class="max-w-container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Primary">
 		<div
-			class="relative overflow-hidden rounded-b-xl border border-transparent border-b-border/60 transition-all duration-300 lg:rounded-b-2xl"
+			class="relative overflow-hidden rounded-b-xl border border-border/60 transition-all duration-300 lg:rounded-b-2xl"
 		>
-			<!-- Glass + blur -->
-			<div class="absolute inset-0 bg-white/70 backdrop-blur-xl dark:bg-zinc-950/55"></div>
+			<!-- Glass + blur (scroll-reactive) -->
+			<div
+				class="absolute inset-0 transition-all duration-300 {isScrolled
+					? 'bg-white/85 backdrop-blur-2xl dark:bg-zinc-950/75'
+					: 'bg-white/70 backdrop-blur-xl dark:bg-zinc-950/55'}"
+			></div>
 
 			<!-- Noise -->
 			<div
