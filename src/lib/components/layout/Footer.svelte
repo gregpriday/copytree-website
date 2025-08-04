@@ -64,6 +64,12 @@
 							Privacy
 						</a>
 						<a
+							href="/licenses"
+							class="rounded-md text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background focus:outline-none"
+						>
+							Licenses
+						</a>
+						<a
 							href="/terms"
 							class="rounded-md text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background focus:outline-none"
 						>
