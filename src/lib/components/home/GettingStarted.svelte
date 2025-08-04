@@ -43,15 +43,17 @@
 
 <section
 	id="getting-started"
-	class="overflow-visible bg-background px-4 py-16 sm:px-6 md:py-20 lg:px-8"
+	role="region"
+	aria-label="Getting started"
+	class="overflow-visible bg-background px-4 py-24 sm:px-6 md:py-32 lg:px-8"
 >
 	<div class="mx-auto max-w-5xl overflow-visible">
-		<div class="mb-12 text-center">
+		<div class="mb-12 text-center md:mb-16">
 			<h2 class="mb-4 text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
-				Install in three simple steps.
+				Install in three simple steps
 			</h2>
 			<p class="mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground">
-				From installation to AI-ready code in just a few steps
+				From installation to AI-ready code in minutes
 			</p>
 		</div>
 
@@ -69,7 +71,7 @@
 						<!-- Step number -->
 						<div class="relative z-10 flex-shrink-0">
 							<div
-								class="box-border flex h-16 w-16 items-center justify-center rounded-xl border-2 border-border bg-background shadow-sm transition-all duration-300 group-hover:border-primary/50"
+								class="box-border flex h-16 w-16 items-center justify-center rounded-xl border-2 border-border bg-background shadow-sm transition-all duration-300 group-hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
 							>
 								{#if step.isProTip}
 									<div class="h-10 w-10">

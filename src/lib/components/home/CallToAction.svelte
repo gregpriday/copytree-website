@@ -2,14 +2,28 @@
 	import { Button } from '../shared';
 </script>
 
-<section class="relative overflow-hidden bg-zinc-950 py-16">
-	<!-- Forest background pattern -->
+<section role="region" aria-label="Call to Action" class="relative overflow-hidden bg-zinc-950 py-24 md:py-32">
+	<!-- Force consistent dark motif with dark grid only; remove light fallback -->
 	<div
-		class="pointer-events-none absolute inset-0 z-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZDEiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMjJDNTVFO3N0b3Atb3BhY2l0eTowLjMiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMTBCOTgxO3N0b3Atb3BhY2l0eTowLjIiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzE0QjhBNjtzdG9wLW9wYWNpdHk6MC4xIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2dyYWQxKSIgc3Ryb2tlLXdpZHRoPSIwLjUiPgogICAgPHBhdGggZD0iTTIwLDEwIEwzMCw1IEw0MCwxMCBMNDAsMjAgTDMwLDI1IEwyMCwyMCBaIiAvPgogICAgPHBhdGggZD0iTTQwLDEwIEw1MCwxNSBMNTAsMjUgTDQwLDMwIEwzMCwyNSBMMzAsMTUgWiIgLz4KICAgIDxwYXRoIGQ9Ik0xMCwyMCBMMjAsMjAgTDIwLDMwIEwxMCwzNSBMMCwzMCBMMCwyMCBaIiAvPgogICAgPHBhdGggZD0iTTMwLDM1IEw0MCwzMCBMNTAsMzUgTDUwLDQ1IEw0MCw1MCBMMzAsNDUgWiIgLz4KICAgIDxwYXRoIGQ9Ik0xMCwzNSBMMjAsNDAgTDIwLDUwIEwxMCw1NSBMMCw1MCBMMCw0MCBaIiAvPgogICAgPHBhdGggZD0iTTIwLDQwIEwzMCwzNSBMMzAsNDUgTDIwLDUwIFoiIC8+CiAgPC9nPgogIDxnIGZpbGw9InVybCgjZ3JhZDEpIiBvcGFjaXR5PSIwLjE1Ij4KICAgIDxjaXJjbGUgY3g9IjE1IiBjeT0iMTUiIHI9IjEuNSIgLz4KICAgIDxjaXJjbGUgY3g9IjQ1IiBjeT0iOCIgcj0iMSIgLz4KICAgIDxjaXJjbGUgY3g9IjM1IiBjeT0iNTIiIHI9IjEuMiIgLz4KICAgIDxjaXJjbGUgY3g9IjgiIGN5PSI0NSIgcj0iMC44IiAvPgogICAgPGNpcmNsZSBjeD0iNTIiIGN5PSIzMCIgcj0iMSIgLz4KICA8L2c+Cjwvc3ZnPg==')] bg-[length:120px_120px] opacity-[0.05] mix-blend-overlay"
+		class="pointer-events-none absolute inset-0 z-0 opacity-20"
+		style="
+			background-image: url('/grid-pattern-dark.svg');
+			background-position: center;
+			background-size: 60px 60px;
+			background-repeat: repeat;
+			mask-image: radial-gradient(ellipse at center, white 22%, transparent 62%);
+			-webkit-mask-image: radial-gradient(ellipse at center, white 22%, transparent 62%);
+		"
 	></div>
 
 	<!-- Left side background image -->
-	<div class="absolute top-1/2 -left-1/4 left-0 z-0 -translate-y-1/2 opacity-20 blur-sm">
+	<div 
+		class="absolute top-1/2 -left-1/4 left-0 z-0 -translate-y-1/2 opacity-20 blur-sm"
+		style="
+			mask-image: radial-gradient(ellipse 70% 80% at center, white 20%, transparent 80%);
+			-webkit-mask-image: radial-gradient(ellipse 70% 80% at center, white 20%, transparent 80%);
+		"
+	>
 		<enhanced:img
 			src="$lib/assets/images/home/intelligent-file-copying.png"
 			alt="Background decoration"
@@ -19,7 +33,13 @@
 	</div>
 
 	<!-- Right side background image -->
-	<div class="absolute top-1/2 -right-1/4 right-0 z-0 -translate-y-1/2 opacity-20 blur-sm">
+	<div 
+		class="absolute top-1/2 -right-1/4 right-0 z-0 -translate-y-1/2 opacity-20 blur-sm"
+		style="
+			mask-image: radial-gradient(ellipse 70% 80% at center, white 20%, transparent 80%);
+			-webkit-mask-image: radial-gradient(ellipse 70% 80% at center, white 20%, transparent 80%);
+		"
+	>
 		<enhanced:img
 			src="$lib/assets/images/home/ai-friendly.png"
 			alt="Background decoration"
@@ -28,47 +48,42 @@
 		/>
 	</div>
 
-	<!-- Gradient overlay for better text readability -->
-	<div
-		class="absolute inset-0 z-10 bg-gradient-to-r from-transparent via-zinc-950/90 to-transparent"
-	></div>
+	<!-- Dark-only readability gradient (further reduced intensity to soften contrast) -->
+	<div class="absolute inset-0 z-10 bg-gradient-to-r from-transparent via-zinc-900/60 to-transparent"></div>
 
 	<div class="relative z-20 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-		<h2 class="mb-4 text-3xl font-semibold tracking-tight text-white md:text-4xl">
-			Ready to Transform Your Workflow?
+		<h2 class="mb-4 text-3xl font-semibold tracking-tight text-zinc-100 md:text-4xl">
+			Ready to transform your workflow?
 		</h2>
 
-		<p class="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-zinc-300">
-			Install CopyTree Now and Unlock AI-Powered Coding.
+		<p class="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-zinc-300/80">
+			Install CopyTree and start sharing AI-ready codebases in seconds.
 		</p>
 
 		<div class="flex flex-col items-center justify-center gap-4 p-4 sm:flex-row">
-			<a href="#getting-started">
+			<a href="#getting-started" aria-label="Install CopyTree and get started">
 				<Button
 					size="lg"
-					class="group relative overflow-visible rounded-lg bg-gradient-to-r from-emerald-600 to-emerald-700 px-5 py-2.5 text-base font-medium text-white transition-all duration-200 hover:scale-[1.02] hover:from-emerald-700 hover:to-emerald-800 hover:shadow-lg hover:brightness-110 active:scale-[0.98]"
+					class="group relative overflow-visible rounded-lg bg-primary px-6 py-3 text-base font-medium text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-200 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
 				>
-					<!-- Subtle ambient glow -->
-					<div
-						class="absolute -inset-0.5 rounded-lg bg-emerald-500/30 opacity-0 blur-sm transition-opacity duration-300 group-hover:opacity-100"
-					></div>
-					<span class="relative z-10">Get CopyTree</span>
+					<!-- Removed green glow to avoid over-the-top effect on non-white backgrounds -->
+					<span class="relative z-10">Install CopyTree</span>
 				</Button>
 			</a>
 
-			<a href="/docs">
+			<a href="/docs" aria-label="Read documentation">
 				<Button
-					variant="ghost"
-					class="text-zinc-300 transition-all hover:bg-zinc-800 hover:text-white"
+					variant="secondary"
+					class="rounded-lg border border-zinc-700 bg-zinc-800/60 px-6 py-3 text-base text-zinc-300 backdrop-blur-sm transition-all duration-200 hover:border-primary/50 hover:bg-primary/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
 				>
 					Read Documentation
 				</Button>
 			</a>
 
-			<a href="https://github.com/gregpriday/copytree" target="_blank" rel="noopener noreferrer">
+			<a href="https://github.com/gregpriday/copytree" target="_blank" rel="noopener noreferrer" aria-label="View CopyTree on GitHub">
 				<Button
-					variant="ghost"
-					class="text-zinc-300 transition-all hover:bg-zinc-800 hover:text-white"
+					variant="secondary"
+					class="rounded-lg border border-zinc-700 bg-zinc-800/60 px-6 py-3 text-base text-zinc-300 backdrop-blur-sm transition-all duration-200 hover:border-primary/50 hover:bg-primary/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
 				>
 					View on GitHub
 				</Button>
@@ -77,8 +92,4 @@
 
 		<p class="mt-8 text-sm text-zinc-400">Free and open-source CLI tool</p>
 	</div>
-
-	<div
-		class="relative z-20 mt-8 h-px bg-gradient-to-r from-transparent via-zinc-700 to-transparent opacity-50"
-	></div>
 </section>

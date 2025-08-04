@@ -282,6 +282,79 @@ body {
 	line-height: 1.7; /* Enhanced for better scannability */
 }
 
+/* Design utilities for homepage refinements */
+
+/* Glassmorphism surface */
+.glass-surface {
+	@apply bg-background/50 backdrop-blur-sm border border-border/60;
+}
+
+/* Edge gradient hairline (top/bottom) */
+.edge-hairline {
+	background-image: linear-gradient(
+		to right,
+		rgba(0, 0, 0, 0),
+		color-mix(in oklch, var(--color-border) 60%, transparent),
+		rgba(0, 0, 0, 0)
+	);
+}
+
+/* Section edge gradient at top */
+.section-top-gradient {
+	background: var(--color-subtle-gradient);
+}
+
+/* Noise overlay helper (theme-aware opacity) */
+.noise-overlay {
+	background-image: url('/noise-texture.png');
+	background-repeat: repeat;
+	opacity: 0.04;
+}
+.dark .noise-overlay {
+	opacity: 0.06;
+}
+
+/* Reduce motion helper for elements that animate on hover/scroll */
+@media (prefers-reduced-motion: reduce) {
+	.rm-transition-none {
+		transition: none !important;
+		animation: none !important;
+	}
+}
+
+/* Focus ring that respects tokens */
+.focus-ring {
+	outline: none;
+	box-shadow: 0 0 0 2px var(--color-background), 0 0 0 4px var(--color-ring);
+}
+
+/* Subtle hover lift */
+.hover-lift {
+	transition: transform 150ms ease, box-shadow 150ms ease;
+}
+.hover-lift:hover {
+	transform: translateY(-2px);
+}
+
+/* Button glow on hover (uses tokenized glow colors) */
+.btn-glow:hover {
+	box-shadow: 0 0 0 0 rgba(0, 0, 0, 0),
+		0 0 24px 8px color-mix(in oklch, var(--color-primary) 20%, transparent);
+}
+
+/* Clamp utilities for readability (fallbacks if plugin absent) */
+.clamp-2 {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+.clamp-3 {
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
 /* Body and utility styles */
 body {
 	@apply text-base leading-relaxed; /* Increased line-height for better readability */

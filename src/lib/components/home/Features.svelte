@@ -34,34 +34,33 @@
 	];
 </script>
 
-<section class="relative overflow-hidden bg-zinc-950 px-4 py-24 sm:px-6 md:py-32 lg:px-8">
+<section role="region" aria-label="Features" class="relative overflow-hidden bg-zinc-950 px-4 py-24 sm:px-6 md:py-32 lg:px-8">
 	<!-- Edge gradients for subtle depth -->
 	<div
-		class="pointer-events-none absolute inset-x-0 top-0 z-[2] h-px bg-gradient-to-r from-transparent via-zinc-700/70 to-transparent"
+		class="pointer-events-none absolute inset-x-0 top-0 z-[2] h-px bg-gradient-to-r from-transparent via-border/60 to-transparent"
 	></div>
 	<div
-		class="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent"
+		class="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-px bg-gradient-to-r from-transparent via-border/60 to-transparent"
 	></div>
 
 	<!-- Noise texture overlay -->
-	<div
-		class="absolute inset-0 z-[2] opacity-[0.03]"
-		style="background-image: url(/noise-texture.png); background-repeat: repeat;"
-	></div>
+	<div class="noise-overlay absolute inset-0 z-[2]"></div>
 
-	<!-- Consistent Grid Pattern Background -->
+	<!-- Consistent Grid Pattern Background - force dark pattern for visual consistency -->
 	<div
 		class="absolute inset-0 z-[1] opacity-20"
 		style="
-      background-image: url('/grid-pattern-dark.svg');
-      background-position: center;
-      mask-image: radial-gradient(ellipse at center, white 20%, transparent 60%);
-      -webkit-mask-image: radial-gradient(ellipse at center, white 20%, transparent 60%);
-    "
+	     background-image: url('/grid-pattern-dark.svg');
+	     background-position: center;
+	     background-size: 60px 60px;
+	     background-repeat: repeat;
+	     mask-image: radial-gradient(ellipse at center, white 22%, transparent 62%);
+	     -webkit-mask-image: radial-gradient(ellipse at center, white 22%, transparent 62%);
+	   "
 	></div>
 
 	<div class="relative z-10 mx-auto max-w-7xl">
-		<div class="mb-20 text-center">
+		<div class="mb-16 text-center">
 			<h2 class="mb-4 text-3xl font-semibold tracking-tight text-white md:text-4xl">
 				Core Features
 			</h2>
@@ -70,29 +69,27 @@
 			</p>
 		</div>
 
-		<div class="grid auto-rows-fr grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+		<div class="grid auto-rows-fr grid-cols-1 gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-4">
 			{#each features as feature, index}
-				<div
-					class="group relative transition-all duration-300 ease-out hover:-translate-y-0.5 hover:!opacity-100"
-				>
+				<div class="group relative transition-all duration-300 ease-out hover:-translate-y-0.5">
 					<div
-						class="subtle-gradient-border-hover relative h-full overflow-hidden rounded-lg border border-zinc-700 bg-zinc-800 shadow-sm transition-all duration-200 hover:shadow-md"
+						class="subtle-gradient-border-hover relative h-full overflow-hidden rounded-xl border border-zinc-700 bg-zinc-900/70 shadow-sm transition-all duration-200 hover:shadow-md backdrop-blur-sm flex flex-col"
 					>
 						<!-- Image container -->
-						<div class="relative h-48 overflow-hidden">
+						<div class="relative h-44 overflow-hidden">
 							<enhanced:img
 								src={feature.image}
 								alt={feature.alt}
 								class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
 								loading={index < 2 ? 'eager' : 'lazy'}
 							/>
-							<!-- Refined Image Blending -->
-							<div class="absolute inset-0 bg-gradient-to-t from-zinc-800 to-transparent"></div>
+							<!-- Keep overlay dark to avoid light-mode washout -->
+							<div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 to-transparent"></div>
 						</div>
 
 						<!-- Text content -->
-						<div class="p-6">
-							<h3 class="mb-3 text-xl font-bold tracking-tight text-white">
+						<div class="p-6 bg-gradient-to-b from-zinc-950 to-zinc-900/70 flex-1">
+							<h3 class="mb-2 text-lg font-semibold tracking-tight text-white">
 								{feature.title}
 							</h3>
 							<p class="text-base leading-relaxed text-zinc-300">
@@ -105,12 +102,12 @@
 		</div>
 
 		<!-- Refined "Also Includes" Pills -->
-		<div class="mt-20 text-center">
-			<p class="mb-6 text-base font-medium text-zinc-400">Also includes:</p>
+		<div class="mt-16 text-center">
+			<p class="mb-6 text-base font-medium text-muted-foreground">Also includes:</p>
 			<div class="flex flex-wrap justify-center gap-x-4 gap-y-3">
 				{#each ['Smart .gitignore parsing', 'Token counting', 'Custom transformers', 'CLI & API access'] as item}
 					<div
-						class="inline-flex items-center gap-2 rounded-full border border-zinc-700 bg-zinc-800/50 px-4 py-2 text-sm text-zinc-300 transition-all duration-200 hover:border-primary/50 hover:bg-primary/10 hover:text-white"
+						class="inline-flex items-center gap-2 rounded-full border border-zinc-700 bg-zinc-800/60 px-4 py-2 text-sm text-zinc-300 transition-all duration-200 hover:border-primary/50 hover:bg-primary/10 hover:text-white"
 					>
 						<svg
 							class="h-3.5 w-3.5 text-emerald-400"
@@ -118,6 +115,7 @@
 							fill="none"
 							stroke="currentColor"
 							stroke-width="3"
+							aria-hidden="true"
 						>
 							<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
 						</svg>

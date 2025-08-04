@@ -26,19 +26,24 @@
 
 <section
 	id="video"
+	role="region"
+	aria-label="Video demo"
 	class="relative overflow-hidden bg-background px-4 py-24 sm:px-6 md:py-32 lg:px-8"
 >
 	<!-- Subtle gradient background -->
 	<div
-		class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-900/10 via-background to-background"
+		class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/5 via-background to-background"
 	></div>
+	<!-- Noise overlay -->
+	<div class="noise-overlay absolute inset-0"></div>
 
 	<div class="relative z-10 mx-auto max-w-5xl">
 		<div class="mb-10 text-center md:mb-12">
 			<div
-				class="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs font-medium text-emerald-400"
+				class="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-medium text-primary"
+				aria-hidden="true"
 			>
-				<svg class="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
+				<svg class="h-3 w-3" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
 					<path
 						fill-rule="evenodd"
 						d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
@@ -49,8 +54,8 @@
 			</div>
 
 			<h2 class="mb-4 text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
-				Install and Copy
-				<span class="text-muted-foreground"> Your Codebase</span>
+				Install and copy
+				<span class="text-muted-foreground"> your codebase</span>
 			</h2>
 
 			<p class="mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
@@ -63,7 +68,7 @@
 		<div class="relative mx-auto w-full max-w-4xl">
 			<!-- Video wrapper with hover effects constrained to video dimensions -->
 			<div
-				class="group relative aspect-video overflow-hidden rounded-xl border border-border bg-muted transition-all duration-300 hover:border-primary/30"
+				class="group relative aspect-video overflow-hidden rounded-xl border border-border bg-muted transition-all duration-300 hover:border-primary/30 focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 focus-within:ring-offset-background"
 			>
 				<!-- Subtle border highlight on hover - constrained to video dimensions -->
 				<div
@@ -75,16 +80,19 @@
 					title="CopyTree Getting Started"
 				/>
 			</div>
+			<p class="mt-4 text-center text-sm text-muted-foreground">
+				Short demo: installation and first run in under a minute
+			</p>
 		</div>
 
 		<!-- Video features -->
 		<div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
 			{#each features as feature (feature.title)}
 				<div
-					class="rounded-xl border border-border bg-background p-6 shadow-sm transition-shadow duration-200 hover:shadow-md"
+					class="rounded-xl border border-border bg-background/50 p-6 shadow-sm backdrop-blur-sm transition-shadow duration-200 hover:shadow-md"
 				>
 					<div class="flex items-start gap-4">
-						<div class="flex-shrink-0 rounded-lg bg-primary/10 p-3 text-primary">
+						<div class="flex-shrink-0 rounded-lg bg-primary/10 p-3 text-primary" aria-hidden="true">
 							{#if feature.icon === 'zap'}
 								<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 									<path
