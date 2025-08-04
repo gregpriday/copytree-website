@@ -33,7 +33,7 @@
 					</p>
 					<ul class="mt-2 space-y-1 text-sm text-yellow-700 dark:text-yellow-300">
 						<li>
-							• <strong>Node.js</strong>: Version 20.0.0 or higher (check with
+							• <strong>Node.js</strong>: Version 18.0.0 or higher (check with
 							<code class="rounded bg-yellow-100 px-1 dark:bg-yellow-900/30">node --version</code>)
 						</li>
 						<li>• <strong>npm</strong>: Version 8.0.0 or higher (comes with Node.js)</li>

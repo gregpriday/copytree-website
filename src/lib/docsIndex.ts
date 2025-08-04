@@ -34,7 +34,7 @@ export const docsIndex = [
 		id: 'installation',
 		title: 'Installation',
 		content: `Prerequisites:
-    Node.js Version 20.0.0 or higher, npm Version 8.0.0 or higher, Git for repository operations (optional), Pandoc for advanced document transformers (optional).
+    Node.js Version 18.0.0 or higher, npm Version 8.0.0 or higher, Git for repository operations (optional), Pandoc for advanced document transformers (optional).
 
     Installation Methods:
     Global Installation: npm install -g copytree - Install globally for system-wide access. This is the recommended approach for most users.
