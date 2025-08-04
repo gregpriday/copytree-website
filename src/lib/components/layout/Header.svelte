@@ -26,12 +26,15 @@
 		{ href: '/#video', label: 'Demo' }
 	];
 
-	const isActive = (href) => $page.url.pathname === href || $page.url.pathname.startsWith(href + '/');
+	const isActive = (href) =>
+		$page.url.pathname === href || $page.url.pathname.startsWith(href + '/');
 </script>
 
 <header class="sticky top-0 z-50 w-full">
 	<nav class="max-w-container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Primary">
-		<div class="relative overflow-hidden rounded-b-xl border border-transparent border-b-border/60 transition-all duration-300 lg:rounded-b-2xl">
+		<div
+			class="relative overflow-hidden rounded-b-xl border border-transparent border-b-border/60 transition-all duration-300 lg:rounded-b-2xl"
+		>
 			<!-- Glass + blur -->
 			<div class="absolute inset-0 bg-white/70 backdrop-blur-xl dark:bg-zinc-950/55"></div>
 
@@ -43,15 +46,21 @@
 			></div>
 
 			<!-- Edge gradients -->
-			<div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent dark:via-zinc-300/10"></div>
-			<div class="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-black/5 to-transparent dark:via-black/30"></div>
+			<div
+				class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent dark:via-zinc-300/10"
+			></div>
+			<div
+				class="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-black/5 to-transparent dark:via-black/30"
+			></div>
 
 			<!-- Content -->
 			<div class="relative flex h-[60px] items-center justify-between px-2 lg:h-16">
 				<!-- Brand -->
 				<a href="/" class="group flex items-center gap-2.5 lg:px-2" aria-label="CopyTree home">
 					<LogoIcon size="sm" class="transition duration-200 group-hover:brightness-110" />
-					<span class="text-[17px] font-[var(--font-space-grotesk)] font-semibold tracking-tight text-foreground">
+					<span
+						class="text-[17px] font-[var(--font-space-grotesk)] font-semibold tracking-tight text-foreground"
+					>
 						CopyTree
 					</span>
 				</a>
@@ -62,7 +71,7 @@
 						{#each nav as item}
 							<a
 								href={item.href}
-								class="group relative rounded-md px-3 py-2 transition-colors duration-200 hover:text-foreground/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
+								class="group relative rounded-md px-3 py-2 transition-colors duration-200 hover:text-foreground/90 focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background focus:outline-none"
 								aria-current={isActive(item.href) ? 'page' : undefined}
 							>
 								<span class="relative">
@@ -71,7 +80,9 @@
 										class="pointer-events-none absolute -bottom-1.5 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded bg-primary/70 transition-[width] duration-200 group-hover:w-7"
 									></span>
 									{#if isActive(item.href)}
-										<span class="pointer-events-none absolute -bottom-1.5 left-1/2 h-[2px] w-7 -translate-x-1/2 rounded bg-primary"></span>
+										<span
+											class="pointer-events-none absolute -bottom-1.5 left-1/2 h-[2px] w-7 -translate-x-1/2 rounded bg-primary"
+										></span>
 									{/if}
 								</span>
 							</a>
@@ -82,21 +93,34 @@
 					<div class="ml-2 flex items-center gap-2">
 						<a
 							href="/docs#installation"
-							class="subtle-gradient-border-hover relative inline-flex items-center gap-2 rounded-lg bg-primary/95 px-3.5 py-2.5 text-sm font-semibold text-primary-foreground shadow-md transition-all duration-200 hover:bg-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
+							class="subtle-gradient-border-hover relative inline-flex items-center gap-2 rounded-lg bg-primary/95 px-3.5 py-2.5 text-sm font-semibold text-primary-foreground shadow-md transition-all duration-200 hover:bg-primary focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background focus:outline-none"
 						>
 							<span class="relative z-10">Install</span>
-							<svg class="relative z-10 h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+							<svg
+								class="relative z-10 h-4 w-4"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+								/>
 							</svg>
 							<!-- Glow halo -->
-							<span class="pointer-events-none absolute inset-0 -z-0 rounded-lg ring-1 ring-white/5"></span>
-							<span class="pointer-events-none absolute -inset-px -z-10 rounded-lg bg-[radial-gradient(closest-side,var(--color-button-glow-dark),transparent)] opacity-60 dark:opacity-70"></span>
+							<span class="pointer-events-none absolute inset-0 -z-0 rounded-lg ring-1 ring-white/5"
+							></span>
+							<span
+								class="pointer-events-none absolute -inset-px -z-10 rounded-lg bg-[radial-gradient(closest-side,var(--color-button-glow-dark),transparent)] opacity-60 dark:opacity-70"
+							></span>
 						</a>
 						<a
 							href="https://github.com/gregpriday/copytree"
 							target="_blank"
 							rel="noopener noreferrer"
-							class="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/60 px-3.5 py-2.5 text-sm font-medium text-foreground/85 shadow-sm transition-colors hover:bg-muted focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
+							class="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/60 px-3.5 py-2.5 text-sm font-medium text-foreground/85 shadow-sm transition-colors hover:bg-muted focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background focus:outline-none"
 						>
 							<svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 								<path
@@ -116,12 +140,20 @@
 					<ThemeToggle class="p-2" />
 					<button
 						onclick={() => (isMenuOpen = !isMenuOpen)}
-						class="relative rounded-md p-2 text-muted-foreground transition-colors duration-200 hover:text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
+						class="relative rounded-md p-2 text-muted-foreground transition-colors duration-200 hover:text-foreground focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background focus:outline-none"
 						aria-label="Toggle menu"
 						aria-expanded={isMenuOpen}
 						aria-controls="mobile-menu"
 					>
-						<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<svg
+							class="h-6 w-6"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
 							{#if isMenuOpen}
 								<path d="M6 18L18 6M6 6l12 12" />
 							{:else}
@@ -156,34 +188,46 @@
 							<a
 								href={item.href}
 								onclick={closeMenu}
-								class="rounded-md px-4 py-3 text-[15px] text-muted-foreground transition-colors duration-150 hover:bg-muted hover:text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
+								class="rounded-md px-4 py-3 text-[15px] text-muted-foreground transition-colors duration-150 hover:bg-muted hover:text-foreground focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background focus:outline-none"
 								aria-current={isActive(item.href) ? 'page' : undefined}
 							>
 								{item.label}
 							</a>
 						{/each}
 
-						<div class="mx-4 my-3 h-px bg-gradient-to-r from-transparent via-border/50 to-transparent"></div>
+						<div
+							class="mx-4 my-3 h-px bg-gradient-to-r from-transparent via-border/50 to-transparent"
+						></div>
 
 						<a
 							href="https://github.com/gregpriday/copytree"
 							target="_blank"
 							rel="noopener noreferrer"
 							onclick={closeMenu}
-							class="rounded-md px-4 py-3 text-[15px] text-muted-foreground transition-colors duration-150 hover:bg-muted hover:text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
+							class="rounded-md px-4 py-3 text-[15px] text-muted-foreground transition-colors duration-150 hover:bg-muted hover:text-foreground focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background focus:outline-none"
 						>
 							GitHub
 						</a>
 
-						<div class="px-4 pb-4 pt-2">
+						<div class="px-4 pt-2 pb-4">
 							<a
 								href="/docs#installation"
 								onclick={closeMenu}
-								class="group flex w-full items-center justify-between rounded-lg bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground shadow-md transition-colors hover:bg-primary/95 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
+								class="group flex w-full items-center justify-between rounded-lg bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground shadow-md transition-colors hover:bg-primary/95 focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background focus:outline-none"
 							>
 								<span>Install CopyTree</span>
-								<svg class="h-4 w-4 transition-transform group-hover:translate-y-px" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+								<svg
+									class="h-4 w-4 transition-transform group-hover:translate-y-px"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+									/>
 								</svg>
 							</a>
 							<p class="mt-2 px-0.5 text-xs text-muted-foreground/80">

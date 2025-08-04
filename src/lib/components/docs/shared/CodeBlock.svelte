@@ -292,7 +292,13 @@
 							<!-- Plain code during loading or as fallback -->
 							<pre
 								class="!m-0 !p-0 font-mono text-zinc-300"
-								style="background: transparent; white-space: pre-wrap; word-break: break-word; line-height: 1.5;">{#if showLineNumbers}{#each lines as line, i}<div class="flex" style="line-height: 1.5;"><span class="mr-4 w-8 flex-shrink-0 text-right font-mono text-zinc-500 tabular-nums select-none">{i + 1}</span><span class="flex-1">{escapeHtml(line) || ' '}</span></div>{/each}{:else}{escapeHtml(code.trim())}{/if}</pre>
+								style="background: transparent; white-space: pre-wrap; word-break: break-word; line-height: 1.5;">{#if showLineNumbers}{#each lines as line, i}<div
+											class="flex"
+											style="line-height: 1.5;"><span
+												class="mr-4 w-8 flex-shrink-0 text-right font-mono text-zinc-500 tabular-nums select-none"
+												>{i + 1}</span
+											><span class="flex-1">{escapeHtml(line) || ' '}</span
+											></div>{/each}{:else}{escapeHtml(code.trim())}{/if}</pre>
 						{:else}
 							<!-- Highlighted code -->
 							{#if showLineNumbers}
