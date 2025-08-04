@@ -2,110 +2,126 @@
 	import { page } from '$app/stores';
 	import LogoIcon from '../shared/LogoIcon.svelte';
 	import ThemeToggle from '../shared/ThemeToggle.svelte';
-	import CopyCommand from '../shared/CopyCommand.svelte';
 
 	let isMenuOpen = $state(false);
 
-	// Close mobile menu when clicking outside or on navigation
-	const closeMenu = () => {
-		isMenuOpen = false;
-	};
+	const closeMenu = () => (isMenuOpen = false);
 
-	// Handle escape key to close menu
+	// Close on escape
 	$effect(() => {
-		/** @param {KeyboardEvent} event */
-		const handleKeydown = (event) => {
-			if (event.key === 'Escape' && isMenuOpen) {
-				closeMenu();
-			}
-		};
-
-		document.addEventListener('keydown', handleKeydown);
-		return () => document.removeEventListener('keydown', handleKeydown);
+		const onKey = (e) => e.key === 'Escape' && isMenuOpen && closeMenu();
+		document.addEventListener('keydown', onKey);
+		return () => document.removeEventListener('keydown', onKey);
 	});
 
-	// Close menu on route change
+	// Close on route change
 	$effect(() => {
 		$page.url.pathname;
 		closeMenu();
 	});
+
+	const nav = [
+		{ href: '/docs', label: 'Documentation' },
+		{ href: '/prompts', label: 'Prompts' },
+		{ href: '/#video', label: 'Demo' }
+	];
+
+	const isActive = (href) => $page.url.pathname === href || $page.url.pathname.startsWith(href + '/');
 </script>
 
 <header class="sticky top-0 z-50 w-full">
-	<nav class="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
-		<div
-			class="relative overflow-hidden rounded-b-lg border-b border-border/50 transition-all duration-300 lg:rounded-b-2xl"
-		>
-			<!-- Layer 1: Glass tint + Backdrop blur -->
-			<div class="absolute inset-0 bg-white/75 backdrop-blur-xl dark:bg-zinc-950/60"></div>
+	<nav class="max-w-container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Primary">
+		<div class="relative overflow-hidden rounded-b-xl border border-transparent border-b-border/60 transition-all duration-300 lg:rounded-b-2xl">
+			<!-- Glass + blur -->
+			<div class="absolute inset-0 bg-white/70 backdrop-blur-xl dark:bg-zinc-950/55"></div>
 
-			<!-- Layer 2: Noise texture overlay -->
+			<!-- Noise -->
 			<div
 				class="absolute inset-0 opacity-[0.05] mix-blend-overlay dark:opacity-[0.08]"
-				style="background-image: url(/noise-texture.png); background-repeat: repeat;"
+				style="background-image: url(/noise-texture.png); background-size: 128px 128px; background-repeat: repeat;"
+				aria-hidden="true"
 			></div>
 
-			<!-- Content container -->
-			<div
-				class="relative flex h-[60px] items-center justify-between px-2 py-1.5 lg:py-[0.4375rem] lg:pr-[0.4375rem]"
-			>
-				<div class="flex items-center">
-					<a href="/" class="group flex items-center gap-2.5 lg:px-3">
-						<LogoIcon size="sm" class="group-hover:brightness-125" />
-						<span
-							class="text-lg font-[var(--font-space-grotesk)] font-semibold tracking-tight text-foreground"
+			<!-- Edge gradients -->
+			<div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent dark:via-zinc-300/10"></div>
+			<div class="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-black/5 to-transparent dark:via-black/30"></div>
+
+			<!-- Content -->
+			<div class="relative flex h-[60px] items-center justify-between px-2 lg:h-16">
+				<!-- Brand -->
+				<a href="/" class="group flex items-center gap-2.5 lg:px-2" aria-label="CopyTree home">
+					<LogoIcon size="sm" class="transition duration-200 group-hover:brightness-110" />
+					<span class="text-[17px] font-[var(--font-space-grotesk)] font-semibold tracking-tight text-foreground">
+						CopyTree
+					</span>
+				</a>
+
+				<!-- Desktop nav -->
+				<div class="hidden items-center gap-1.5 lg:flex">
+					<nav class="flex items-center gap-1.5 px-1 text-sm font-medium text-muted-foreground">
+						{#each nav as item}
+							<a
+								href={item.href}
+								class="group relative rounded-md px-3 py-2 transition-colors duration-200 hover:text-foreground/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
+								aria-current={isActive(item.href) ? 'page' : undefined}
+							>
+								<span class="relative">
+									{item.label}
+									<span
+										class="pointer-events-none absolute -bottom-1.5 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded bg-primary/70 transition-[width] duration-200 group-hover:w-7"
+									></span>
+									{#if isActive(item.href)}
+										<span class="pointer-events-none absolute -bottom-1.5 left-1/2 h-[2px] w-7 -translate-x-1/2 rounded bg-primary"></span>
+									{/if}
+								</span>
+							</a>
+						{/each}
+					</nav>
+
+					<!-- Actions -->
+					<div class="ml-2 flex items-center gap-2">
+						<a
+							href="/docs#installation"
+							class="subtle-gradient-border-hover relative inline-flex items-center gap-2 rounded-lg bg-primary/95 px-3.5 py-2.5 text-sm font-semibold text-primary-foreground shadow-md transition-all duration-200 hover:bg-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
 						>
-							CopyTree
-						</span>
-					</a>
+							<span class="relative z-10">Install</span>
+							<svg class="relative z-10 h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+							</svg>
+							<!-- Glow halo -->
+							<span class="pointer-events-none absolute inset-0 -z-0 rounded-lg ring-1 ring-white/5"></span>
+							<span class="pointer-events-none absolute -inset-px -z-10 rounded-lg bg-[radial-gradient(closest-side,var(--color-button-glow-dark),transparent)] opacity-60 dark:opacity-70"></span>
+						</a>
+						<a
+							href="https://github.com/gregpriday/copytree"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="inline-flex items-center gap-2 rounded-lg border border-border/60 bg-background/60 px-3.5 py-2.5 text-sm font-medium text-foreground/85 shadow-sm transition-colors hover:bg-muted focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
+						>
+							<svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+								<path
+									fill-rule="evenodd"
+									d="M12 .5C5.73.5.98 5.24.98 11.52c0 4.86 3.15 8.98 7.52 10.44.55.1.75-.24.75-.54 0-.27-.01-1.16-.02-2.1-3.06.66-3.71-1.31-3.71-1.31-.5-1.26-1.22-1.6-1.22-1.6-.99-.67.07-.66.07-.66 1.1.08 1.68 1.12 1.68 1.12.98 1.67 2.57 1.19 3.2.91.1-.71.38-1.19.69-1.47-2.44-.28-5.01-1.22-5.01-5.42 0-1.2.43-2.17 1.12-2.94-.11-.28-.49-1.43.11-2.98 0 0 .92-.3 3.02 1.13a10.5 10.5 0 0 1 5.5 0c2.1-1.43 3.02-1.13 3.02-1.13.6 1.55.22 2.7.11 2.98.7.77 1.12 1.74 1.12 2.94 0 4.21-2.57 5.13-5.01 5.41.39.34.73 1 .73 2.02 0 1.46-.01 2.64-.01 3 0 .3.2.65.76.54 4.36-1.46 7.5-5.58 7.5-10.44C23.02 5.24 18.27.5 12 .5Z"
+									clip-rule="evenodd"
+								/>
+							</svg>
+							<span>GitHub</span>
+						</a>
+						<ThemeToggle class="ml-1 p-2" />
+					</div>
 				</div>
 
-				<nav
-					class="hidden items-center gap-5 px-2 font-medium text-muted-foreground transition-colors duration-200 lg:flex xl:gap-6"
-					aria-label="Primary navigation"
-				>
-					<a
-						href="/docs"
-						class="rounded-md p-2 text-sm transition-colors duration-200 hover:bg-muted hover:text-foreground/90 focus:ring-2 focus:ring-primary focus:outline-none"
-					>
-						Documentation
-					</a>
-					<a
-						href="/prompts"
-						class="rounded-md p-2 text-sm transition-colors duration-200 hover:bg-muted hover:text-foreground/90 focus:ring-2 focus:ring-primary focus:outline-none"
-					>
-						Prompts
-					</a>
-					<a
-						href="/#video"
-						class="rounded-md p-2 text-sm transition-colors duration-200 hover:bg-muted hover:text-foreground/90 focus:ring-2 focus:ring-primary focus:outline-none"
-					>
-						Demo
-					</a>
-				</nav>
-
-				<div class="hidden items-center gap-3 lg:flex">
-					<CopyCommand command="npm install -g copytree" />
-					<ThemeToggle class="p-2" />
-				</div>
-
-				<div class="flex items-center gap-3 lg:hidden">
+				<!-- Mobile toggles -->
+				<div class="flex items-center gap-2 lg:hidden">
 					<ThemeToggle class="p-2" />
 					<button
 						onclick={() => (isMenuOpen = !isMenuOpen)}
-						class="relative rounded-md p-2 text-muted-foreground transition-colors duration-200 hover:text-foreground focus:ring-2 focus:ring-primary focus:outline-none"
+						class="relative rounded-md p-2 text-muted-foreground transition-colors duration-200 hover:text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
 						aria-label="Toggle menu"
 						aria-expanded={isMenuOpen}
+						aria-controls="mobile-menu"
 					>
-						<svg
-							class="h-6 w-6"
-							fill="none"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-						>
+						<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 							{#if isMenuOpen}
 								<path d="M6 18L18 6M6 6l12 12" />
 							{:else}
@@ -119,74 +135,60 @@
 
 		<!-- Mobile menu -->
 		<div
-			class="transition-all duration-300 ease-in-out lg:hidden {isMenuOpen
-				? 'visible max-h-screen opacity-100'
-				: 'invisible max-h-0 overflow-hidden opacity-0'}"
+			id="mobile-menu"
+			class="origin-top transition-all duration-200 ease-out lg:hidden {isMenuOpen
+				? 'visible scale-y-100 opacity-100'
+				: 'invisible max-h-0 scale-y-95 opacity-0'}"
 		>
-			<div
-				class="relative mt-2 overflow-hidden rounded-lg border border-zinc-200/20 dark:border-zinc-800/30"
-			>
-				<!-- Layer 1: Backdrop blur -->
-				<div class="absolute inset-0 backdrop-blur-xl"></div>
-
-				<!-- Layer 2: Glass tint -->
-				<div class="absolute inset-0 bg-background/80 dark:bg-zinc-950/80"></div>
-
-				<!-- Layer 3: Noise texture overlay -->
+			<div class="relative mt-2 overflow-hidden rounded-xl border border-border/50">
+				<!-- Blur + tint -->
+				<div class="absolute inset-0 bg-background/85 backdrop-blur-xl dark:bg-zinc-950/85"></div>
+				<!-- Noise -->
 				<div
 					class="absolute inset-0 opacity-[0.04] mix-blend-overlay"
 					style="background-image: url(/noise-texture.png); background-repeat: repeat; background-size: 128px 128px;"
+					aria-hidden="true"
 				></div>
 
-				<!-- Content container -->
-				<div class="relative py-4">
-					<div class="flex flex-col space-y-1">
-						<a
-							href="/docs"
-							class="rounded-lg px-4 py-3 text-sm text-muted-foreground transition-all duration-200 hover:bg-muted hover:text-foreground focus:ring-2 focus:ring-primary focus:outline-none"
-							onclick={closeMenu}
-						>
-							Documentation
-						</a>
-						<a
-							href="/prompts"
-							class="rounded-lg px-4 py-3 text-sm text-muted-foreground transition-all duration-200 hover:bg-muted hover:text-foreground focus:ring-2 focus:ring-primary focus:outline-none"
-							onclick={closeMenu}
-						>
-							Prompts
-						</a>
-						<a
-							href="/#video"
-							class="rounded-lg px-4 py-3 text-sm text-muted-foreground transition-all duration-200 hover:bg-muted hover:text-foreground focus:ring-2 focus:ring-primary focus:outline-none"
-							onclick={closeMenu}
-						>
-							Demo
-						</a>
+				<div class="relative py-2">
+					<div class="flex flex-col">
+						{#each nav as item}
+							<a
+								href={item.href}
+								onclick={closeMenu}
+								class="rounded-md px-4 py-3 text-[15px] text-muted-foreground transition-colors duration-150 hover:bg-muted hover:text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
+								aria-current={isActive(item.href) ? 'page' : undefined}
+							>
+								{item.label}
+							</a>
+						{/each}
+
+						<div class="mx-4 my-3 h-px bg-gradient-to-r from-transparent via-border/50 to-transparent"></div>
+
 						<a
 							href="https://github.com/gregpriday/copytree"
 							target="_blank"
 							rel="noopener noreferrer"
-							class="rounded-lg px-4 py-3 text-sm text-muted-foreground transition-all duration-200 hover:bg-muted hover:text-foreground focus:ring-2 focus:ring-primary focus:outline-none"
 							onclick={closeMenu}
+							class="rounded-md px-4 py-3 text-[15px] text-muted-foreground transition-colors duration-150 hover:bg-muted hover:text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
 						>
 							GitHub
 						</a>
-						<div class="px-4 pt-4">
+
+						<div class="px-4 pb-4 pt-2">
 							<a
 								href="/docs#installation"
-								class="flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-all duration-200 hover:bg-primary/90 focus:ring-2 focus:ring-primary focus:outline-none"
 								onclick={closeMenu}
+								class="group flex w-full items-center justify-between rounded-lg bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground shadow-md transition-colors hover:bg-primary/95 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
 							>
-								Install CopyTree
-								<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										stroke-width={2}
-										d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-									/>
+								<span>Install CopyTree</span>
+								<svg class="h-4 w-4 transition-transform group-hover:translate-y-px" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
 								</svg>
 							</a>
+							<p class="mt-2 px-0.5 text-xs text-muted-foreground/80">
+								One command to get started with AI-friendly file sharing.
+							</p>
 						</div>
 					</div>
 				</div>

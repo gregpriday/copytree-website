@@ -72,51 +72,45 @@
 	</div>
 
 	{#snippet globalContent()}
-		<div>
-			<p class="mb-4 text-muted-foreground">
+		<div class="space-y-6">
+			<p class="text-muted-foreground">
 				Install globally for system-wide access. This is the recommended approach for most users.
 			</p>
-			<CodeBlock
-				code={`# Install globally for system-wide access
-npm install -g copytree
 
-# Verify installation
-copytree --version`}
-				language="bash"
-			/>
+			<h4 class="text-sm font-semibold uppercase tracking-wide text-foreground/80">Install</h4>
+			<CodeBlock code={`npm install -g copytree`} language="bash" />
+
+			<h4 class="text-sm font-semibold uppercase tracking-wide text-foreground/80">Verify</h4>
+			<CodeBlock code={`copytree --version`} language="bash" />
 		</div>
 	{/snippet}
 
 	{#snippet localContent()}
-		<div>
-			<p class="mb-4 text-muted-foreground">
+		<div class="space-y-6">
+			<p class="text-muted-foreground">
 				Install as a project dependency for team consistency.
 			</p>
-			<CodeBlock
-				code={`# Install as project dependency
-npm install --save-dev copytree
 
-# Run with npx
-npx copytree`}
-				language="bash"
-			/>
+			<h4 class="text-sm font-semibold uppercase tracking-wide text-foreground/80">Install</h4>
+			<CodeBlock code={`npm install --save-dev copytree`} language="bash" />
+
+			<h4 class="text-sm font-semibold uppercase tracking-wide text-foreground/80">Run / Verify</h4>
+			<CodeBlock code={`npx copytree --version`} language="bash" />
 		</div>
 	{/snippet}
 
 	{#snippet yarnContent()}
-		<div>
-			<p class="mb-4 text-muted-foreground">If you prefer Yarn as your package manager.</p>
-			<CodeBlock
-				code={`# Global installation with Yarn
-yarn global add copytree
+		<div class="space-y-6">
+			<p class="text-muted-foreground">If you prefer Yarn as your package manager.</p>
 
-# Local installation
-yarn add --dev copytree
+			<h4 class="text-sm font-semibold uppercase tracking-wide text-foreground/80">Global Install</h4>
+			<CodeBlock code={`yarn global add copytree`} language="bash" />
 
-# Run locally
-yarn copytree`}
-				language="bash"
-			/>
+			<h4 class="text-sm font-semibold uppercase tracking-wide text-foreground/80">Local Install</h4>
+			<CodeBlock code={`yarn add --dev copytree`} language="bash" />
+
+			<h4 class="text-sm font-semibold uppercase tracking-wide text-foreground/80">Run / Verify</h4>
+			<CodeBlock code={`yarn copytree --version`} language="bash" />
 		</div>
 	{/snippet}
 

@@ -35,6 +35,13 @@
 </script>
 
 <section class="relative overflow-hidden bg-zinc-950 px-4 py-24 sm:px-6 md:py-32 lg:px-8">
+	<!-- Edge gradients for subtle depth -->
+	<div class="pointer-events-none absolute inset-x-0 top-0 z-[2] h-px bg-gradient-to-r from-transparent via-zinc-700/70 to-transparent"></div>
+	<div class="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent"></div>
+
+	<!-- Noise texture overlay -->
+	<div class="absolute inset-0 z-[2] opacity-[0.03]" style="background-image: url(/noise-texture.png); background-repeat: repeat;"></div>
+
 	<!-- Consistent Grid Pattern Background -->
 	<div
 		class="absolute inset-0 z-[1] opacity-20"

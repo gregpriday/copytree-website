@@ -6,7 +6,11 @@
 <section
 	class="relative flex h-auto min-h-[90vh] items-center justify-center overflow-hidden border-b border-border bg-background pt-12 pb-24 md:pt-16 md:pb-24"
 >
-	<!-- Grid pattern background -->
+	<!-- Edge gradients for subtle depth -->
+	<div class="pointer-events-none absolute inset-x-0 top-0 z-[2] h-px bg-gradient-to-r from-transparent via-border/60 to-transparent"></div>
+	<div class="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-px bg-gradient-to-r from-transparent via-border/60 to-transparent"></div>
+
+	<!-- Background pattern and vignette -->
 	<div
 		class="absolute inset-0 z-[1] overflow-hidden opacity-[0.15] dark:opacity-20"
 		style="
