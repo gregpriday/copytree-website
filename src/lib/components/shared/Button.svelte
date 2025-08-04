@@ -11,7 +11,9 @@
 					outline: 'border border-input hover:bg-accent hover:text-accent-foreground',
 					secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
 					ghost: 'hover:bg-accent hover:text-accent-foreground bg-transparent',
-					link: 'underline-offset-4 hover:underline text-primary'
+					link: 'underline-offset-4 hover:underline text-primary',
+					'dark-primary': 'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white shadow-lg shadow-emerald-500/20 hover:from-emerald-600 hover:to-emerald-700 hover:brightness-110 focus-visible:ring-emerald-500 focus-visible:ring-offset-zinc-950',
+					'dark-secondary': 'border border-zinc-700 bg-zinc-800/60 text-zinc-300 backdrop-blur-sm hover:border-emerald-500/50 hover:bg-emerald-500/10 hover:text-white focus-visible:ring-emerald-500 focus-visible:ring-offset-zinc-950'
 				},
 				size: {
 					default: 'h-10 py-2 px-4',

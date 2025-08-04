@@ -63,18 +63,19 @@
 		<div class="flex flex-col items-center justify-center gap-4 p-4 sm:flex-row">
 			<a href="#getting-started" aria-label="Install CopyTree and get started">
 				<Button
+					variant="dark-primary"
 					size="lg"
-					class="group relative overflow-visible rounded-lg bg-primary px-6 py-3 text-base font-medium text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-200 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+					class="px-6 py-3 text-base font-medium"
 				>
-					<!-- Removed green glow to avoid over-the-top effect on non-white backgrounds -->
-					<span class="relative z-10">Install CopyTree</span>
+					Install CopyTree
 				</Button>
 			</a>
 
 			<a href="/docs" aria-label="Read documentation">
 				<Button
-					variant="secondary"
-					class="rounded-lg border border-zinc-700 bg-zinc-800/60 px-6 py-3 text-base text-zinc-300 backdrop-blur-sm transition-all duration-200 hover:border-primary/50 hover:bg-primary/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
+					variant="dark-secondary"
+					size="lg"
+					class="px-6 py-3 text-base"
 				>
 					Read Documentation
 				</Button>
@@ -82,8 +83,9 @@
 
 			<a href="https://github.com/gregpriday/copytree" target="_blank" rel="noopener noreferrer" aria-label="View CopyTree on GitHub">
 				<Button
-					variant="secondary"
-					class="rounded-lg border border-zinc-700 bg-zinc-800/60 px-6 py-3 text-base text-zinc-300 backdrop-blur-sm transition-all duration-200 hover:border-primary/50 hover:bg-primary/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
+					variant="dark-secondary"
+					size="lg"
+					class="px-6 py-3 text-base"
 				>
 					View on GitHub
 				</Button>
