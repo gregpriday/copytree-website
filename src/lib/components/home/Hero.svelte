@@ -6,7 +6,7 @@
 <section
 	role="region"
 	aria-label="Hero"
-	class="relative flex h-auto min-h-[90vh] items-center justify-center overflow-hidden border-b border-border bg-background py-16 md:py-24 lg:py-32"
+	class="relative flex h-auto min-h-screen items-center justify-center overflow-hidden border-b border-border bg-background pt-0 pb-16 md:pb-24 lg:pb-32"
 >
 	<!-- Edge gradients for subtle depth -->
 	<div
@@ -18,7 +18,7 @@
 
 	<!-- Background pattern and vignette -->
 	<div
-		class="absolute inset-0 z-[1] overflow-hidden opacity-[0.15] dark:opacity-20"
+		class="absolute inset-0 z-[1] overflow-hidden opacity-[0.18] dark:opacity-25"
 		style="
 	     mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%);
 	     -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%);
@@ -48,7 +48,7 @@
 
 	<!-- Noise texture overlay -->
 	<div
-		class="absolute inset-0 z-[3] opacity-[0.04] dark:opacity-[0.06]"
+		class="absolute inset-0 z-[3] opacity-[0.06] dark:opacity-[0.08]"
 		style="background-image: url(/noise-texture.png); background-repeat: repeat;"
 	></div>
 
@@ -64,17 +64,17 @@
 			</div>
 
 			<!-- REFINED MESSAGING -->
-			<p class="mb-4 text-sm font-semibold tracking-widest text-primary uppercase animate-fadeIn opacity-0" style="animation-delay: 0.2s; animation-fill-mode: forwards;">
+			<p class="mb-4 text-sm font-semibold tracking-widest text-primary uppercase animate-fadeIn opacity-0" style="animation-delay: 0.3s; animation-fill-mode: forwards;">
 				AI-Optimized Developer Workflow
 			</p>
 			<h1
 				class="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl animate-fadeIn opacity-0"
-				style="animation-delay: 0.4s; animation-fill-mode: forwards; letter-spacing: -0.02em; font-family: var(--font-space-grotesk);"
+				style="animation-delay: 0.5s; animation-fill-mode: forwards; letter-spacing: -0.01em; font-family: var(--font-space-grotesk);"
 			>
 				Copy your entire codebase to AI in seconds
 			</h1>
 
-			<p class="mx-auto mb-10 max-w-3xl text-lg leading-relaxed text-muted-foreground md:text-xl lg:text-2xl animate-fadeIn opacity-0" style="animation-delay: 0.6s; animation-fill-mode: forwards;">
+			<p class="mx-auto mb-10 max-w-3xl text-lg leading-relaxed text-muted-foreground md:text-xl lg:text-2xl animate-fadeIn opacity-0" style="animation-delay: 0.7s; animation-fill-mode: forwards;">
 				Stop wrangling files. <code class="rounded-md bg-muted/50 px-2 py-1 text-base text-primary font-mono"
 					>copytree</code
 				> packages any project into a clean, AI-ready context for Claude, ChatGPT, Grok, and Gemini.
@@ -83,17 +83,17 @@
 			<!-- Animated terminal demo -->
 			<div
 				class="mx-auto mb-10 max-w-full px-4 text-left sm:max-w-[90%] sm:px-0 md:max-w-[80%] lg:max-w-[70%] animate-fadeIn opacity-0"
-				style="animation-delay: 0.8s; animation-fill-mode: forwards;"
+				style="animation-delay: 0.9s; animation-fill-mode: forwards;"
 			>
 				<AnimatedTerminal />
 			</div>
 
 			<!-- CTA Buttons -->
-			<div class="flex flex-col items-center justify-center gap-4 overflow-visible p-2 sm:flex-row animate-fadeIn opacity-0" style="animation-delay: 1.0s; animation-fill-mode: forwards;">
+			<div class="flex flex-col items-center justify-center gap-4 overflow-visible p-2 sm:flex-row animate-fadeIn opacity-0" style="animation-delay: 1.1s; animation-fill-mode: forwards;">
 				<a href="#getting-started" aria-label="Install and Get Started">
 					<Button
 						size="lg"
-						class="group relative inline-flex items-center justify-center overflow-visible rounded-lg bg-primary px-8 py-3 text-base font-medium text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-200 hover:brightness-110 hover:shadow-xl focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
+						class="group relative inline-flex items-center justify-center overflow-visible rounded-lg bg-primary px-8 py-3 text-base font-medium text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:brightness-110 hover:shadow-xl hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
 					>
 						<span class="relative z-10 flex items-center gap-2">
 							Get Started
@@ -140,9 +140,9 @@
 	</div>
 
 	<!-- Scroll indicator (respects reduced motion) -->
-	<div class="absolute bottom-6 left-1/2 -translate-x-1/2 transform motion-safe:animate-bounce animate-fadeIn opacity-0" style="animation-delay: 1.2s; animation-fill-mode: forwards;">
+	<div class="absolute bottom-6 left-1/2 -translate-x-1/2 transform motion-safe:animate-bounce animate-fadeIn opacity-0" style="animation-delay: 1.3s; animation-fill-mode: forwards;">
 		<svg
-			class="h-5 w-5 text-muted-foreground"
+			class="h-6 w-6 text-muted-foreground"
 			fill="none"
 			stroke="currentColor"
 			viewBox="0 0 24 24"
@@ -171,6 +171,6 @@
 	}
 
 	.animate-fadeIn {
-		animation: fadeIn 0.6s ease-out;
+		animation: fadeIn 0.8s ease-out;
 	}
 </style>

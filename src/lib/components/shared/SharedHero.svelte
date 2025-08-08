@@ -4,7 +4,7 @@
 </script>
 
 <section
-	class="relative flex h-auto items-center justify-center border-b border-border bg-background py-8 md:py-12"
+	class="relative flex h-auto items-center justify-center border-b border-border bg-background pt-[calc(60px+2rem)] pb-8 md:pt-[calc(64px+3rem)] md:pb-12"
 >
 	<!-- Grid pattern background -->
 	<div
