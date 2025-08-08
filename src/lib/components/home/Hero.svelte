@@ -48,7 +48,7 @@
 
 	<!-- Noise texture overlay -->
 	<div
-		class="absolute inset-0 z-[3] opacity-[0.06] dark:opacity-[0.08]"
+		class="absolute inset-0 z-[3] opacity-[0.03] dark:opacity-[0.04]"
 		style="background-image: url(/noise-texture.png); background-repeat: repeat;"
 	></div>
 
