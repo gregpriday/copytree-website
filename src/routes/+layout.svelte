@@ -1,6 +1,10 @@
 <script>
 	import '../app.css';
 	import { Header, Footer } from '$lib/components/layout';
+	import { injectAnalytics } from '@vercel/analytics/sveltekit';
+
+	// Inject Vercel analytics
+	injectAnalytics();
 
 	let { children, data } = $props();
 
