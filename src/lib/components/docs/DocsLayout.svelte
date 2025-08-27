@@ -3,7 +3,6 @@
 	import DocsScrollTracker from './DocsScrollTracker.svelte';
 	import { GeometricDivider } from '../shared/index.js';
     import { Link as LinkIcon, Pencil } from 'lucide-svelte';
-    import HelpfulFeedback from './shared/HelpfulFeedback.svelte';
 
 	// Import all section components
 	import Overview from './sections/Overview.svelte';
@@ -122,13 +121,13 @@
 		Skip to docs content
 	</a>
 	<div class="max-w-container mx-auto px-6 py-12 md:px-9">
-		<div class="flex gap-12">
-			<!-- Sidebar with scroll tracking -->
-			<DocsScrollTracker {sections} />
+        <div class="flex gap-12">
+            <!-- Sidebar with scroll tracking -->
+            <DocsScrollTracker {sections} />
 
-			<!-- Content -->
-			<div class="min-w-0 flex-1">
-				<div id="docs-content" tabindex="-1" class="space-y-12 mx-auto max-w-[80ch]">
+            <!-- Content -->
+            <div class="min-w-0 flex-1">
+                <div id="docs-content" tabindex="-1" class="space-y-12 max-w-[88ch] mx-auto">
 					<!-- Overview Section -->
 					<section id="overview" class="relative group/section scroll-mt-[90px]" style="content-visibility:auto; contain-intrinsic-size: 1px 1000px;">
 						<!-- Section tools: anchor + edit link -->
@@ -298,37 +297,34 @@
 						<Troubleshooting />
 					</section>
 
-					<!-- Feedback -->
-					<div class="mt-8">
-                    <!-- page-level feedback component -->
-                    <HelpfulFeedback />
+                    <!-- Prev/Next section navigation (aligned with content column) -->
+                    <nav aria-label="Section navigation" class="mt-10 border-t border-border pt-6 mb-16">
+                        <div class="flex items-center justify-between gap-3">
+                            {#if currentIndex > 0}
+                                {@const prev = sections[currentIndex - 1]}
+                                <a href={`#${prev.id}`} class="group inline-flex max-w-[45%] items-center gap-2 rounded-md border border-border bg-background/60 px-3 py-2 text-left text-sm text-foreground shadow-sm transition-colors hover:bg-muted focus:outline-none focus:ring-2 focus:ring-primary">
+                                    <span aria-hidden="true" class="text-muted-foreground group-hover:text-foreground">←</span>
+                                    <span class="truncate"><span class="text-muted-foreground">Previous:</span> {prev.title}</span>
+                                </a>
+                            {:else}
+                                <span></span>
+                            {/if}
+                            {#if currentIndex < sections.length - 1}
+                                {@const next = sections[currentIndex + 1]}
+                                <a href={`#${next.id}`} class="group inline-flex max-w-[45%] items-center gap-2 justify-end rounded-md border border-border bg-background/60 px-3 py-2 text-right text-sm text-foreground shadow-sm transition-colors hover:bg-muted focus:outline-none focus:ring-2 focus:ring-primary">
+                                    <span class="truncate"><span class="text-muted-foreground">Next:</span> {next.title}</span>
+                                    <span aria-hidden="true" class="text-muted-foreground group-hover:text-foreground">→</span>
+                                </a>
+                            {/if}
+                        </div>
+                    </nav>
                 </div>
-				</div>
-			</div>
-		</div>
-	</div>
+            </div>
 
-    <!-- Prev/Next section navigation -->
-    <nav aria-label="Section navigation" class="mx-auto mt-10 max-w-[80ch] px-6 md:px-9">
-        <div class="flex items-center justify-between gap-3 border-t border-border pt-6">
-            {#if currentIndex > 0}
-                {@const prev = sections[currentIndex - 1]}
-                <a href={`#${prev.id}`} class="group inline-flex max-w-[45%] items-center gap-2 rounded-md border border-border bg-background/60 px-3 py-2 text-left text-sm text-foreground shadow-sm transition-colors hover:bg-muted focus:outline-none focus:ring-2 focus:ring-primary">
-                    <span aria-hidden="true" class="text-muted-foreground group-hover:text-foreground">←</span>
-                    <span class="truncate"><span class="text-muted-foreground">Previous:</span> {prev.title}</span>
-                </a>
-            {:else}
-                <span></span>
-            {/if}
-            {#if currentIndex < sections.length - 1}
-                {@const next = sections[currentIndex + 1]}
-                <a href={`#${next.id}`} class="group inline-flex max-w-[45%] items-center gap-2 justify-end rounded-md border border-border bg-background/60 px-3 py-2 text-right text-sm text-foreground shadow-sm transition-colors hover:bg-muted focus:outline-none focus:ring-2 focus:ring-primary">
-                    <span class="truncate"><span class="text-muted-foreground">Next:</span> {next.title}</span>
-                    <span aria-hidden="true" class="text-muted-foreground group-hover:text-foreground">→</span>
-                </a>
-            {/if}
+            <!-- Right spacer equal to sidebar width for visual balance on wide screens -->
+            <div class="hidden w-56 flex-shrink-0 lg:block" aria-hidden="true"></div>
         </div>
-    </nav>
+    </div>
 
     <!-- Back to top button -->
     {#if showBackToTop}
