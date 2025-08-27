@@ -420,7 +420,7 @@ body {
 		box-shadow 150ms ease;
 }
 .hover-lift:hover {
-	transform: translateY(-2px);
+    transform: translateY(-2px);
 }
 
 /* Button glow on hover (uses tokenized glow colors) */
@@ -469,14 +469,27 @@ h6 {
 
 /* Custom animations */
 @keyframes fadeIn {
-	from {
-		opacity: 0;
-		transform: translateY(20px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Print styles: cleaner docs printing */
+@media print {
+  header, footer, nav, aside, .skip-link { display: none !important; }
+  main { max-width: 100% !important; padding: 0 !important; }
+  body { color: #000 !important; background: #fff !important; }
+  /* Remove decorative backgrounds */
+  [style*="grid-pattern"], [style*="noise-texture"], .bg-[var(--color-background)] { background: #fff !important; }
+  /* Show link URLs */
+  a[href]::after { content: " (" attr(href) ")"; font-size: 0.9em; color: #555; }
+  /* Avoid breaking code blocks mid-line */
+  pre, code { white-space: pre-wrap; word-break: break-word; }
 }
 
 @keyframes slideUp {

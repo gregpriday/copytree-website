@@ -107,11 +107,11 @@
 		return () => {}; // No-op cleanup for SSR
 	});
 
-	// Handle result click
-	/** @param {any} item */
-	function handleResultClick(item) {
-		const currentPath = $page.url.pathname;
-		const targetHash = item.path; // e.g., #section-id
+    // Handle result click
+    /** @param {any} item */
+    function handleResultClick(item) {
+        const currentPath = $page.url.pathname;
+        const targetHash = item.path; // e.g., #section-id
 
 		// If not currently on /docs, navigate there with the hash first
 		if (!currentPath.startsWith('/docs')) {
@@ -123,15 +123,20 @@
 		}
 
 		// Already on /docs, smooth scroll to the section
-		const element = document.querySelector(targetHash);
-		if (element) {
-			const top = element.getBoundingClientRect().top + window.pageYOffset - 80; // 80px offset for header
-			window.scrollTo({ top, behavior: 'smooth' });
-		}
-		isOpen = false;
-		query = '';
-		inputRef?.blur();
-	}
+        const element = document.querySelector(targetHash);
+        if (element) {
+            const top = element.getBoundingClientRect().top + window.pageYOffset - 80; // 80px offset for header
+            window.scrollTo({ top, behavior: 'smooth' });
+            // Ephemeral highlight to draw attention
+            element.classList.add('ring-2', 'ring-primary/40', 'bg-muted/20');
+            setTimeout(() => {
+                element.classList.remove('ring-2', 'ring-primary/40', 'bg-muted/20');
+            }, 1500);
+        }
+        isOpen = false;
+        query = '';
+        inputRef?.blur();
+    }
 
 	// Truncate match for cleaner preview
 	/** @param {string} text */

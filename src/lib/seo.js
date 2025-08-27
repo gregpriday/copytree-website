@@ -266,3 +266,39 @@ export function generateFAQSchema() {
 		]
 	};
 }
+
+/**
+ * Generate structured data for a technical documentation article
+ * @param {Object} opts
+ * @param {string} [opts.title]
+ * @param {string} [opts.description]
+ * @param {string} [opts.url]
+ * @returns {Object}
+ */
+export function generateTechArticleSchema(opts = {}) {
+  const title = opts.title || 'CopyTree Documentation';
+  const description = opts.description || 'Learn how to use CopyTree to transform your codebase into AI-ready formats. Complete guides for installation, usage, and advanced features.';
+  const url = opts.url || `${SITE_CONFIG.url}/docs`;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    headline: title,
+    description,
+    url,
+    mainEntityOfPage: url,
+    author: {
+      '@type': 'Organization',
+      name: 'CopyTree',
+      url: SITE_CONFIG.url
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'CopyTree',
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_CONFIG.url}/logo/copytree-logo-light.svg`
+      }
+    }
+  };
+}

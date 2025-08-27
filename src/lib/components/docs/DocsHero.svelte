@@ -41,14 +41,25 @@
 		style="background-image: url(/noise-texture.png); background-repeat: repeat;"
 	></div>
 
-	<div class="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-		<h1 class="mb-8 text-3xl leading-tight font-bold tracking-tight text-foreground md:text-4xl">
-			CopyTree Documentation
-		</h1>
+    <div class="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+        <h1 class="mb-4 text-3xl leading-tight font-bold tracking-tight text-foreground md:text-4xl">
+            CopyTree Documentation
+        </h1>
 
-		<!-- Search Bar -->
-		<div>
-			<SearchBar />
-		</div>
-	</div>
+        <!-- Breadcrumbs -->
+        <nav aria-label="Breadcrumb" class="mb-6 text-sm">
+            <ol class="flex items-center justify-center gap-2 text-muted-foreground">
+                <li>
+                    <a href="/" class="hover:text-foreground focus:outline-none focus:ring-2 focus:ring-primary rounded-sm px-1">Home</a>
+                </li>
+                <li aria-hidden="true" class="opacity-60">/</li>
+                <li aria-current="page" class="text-foreground">Docs</li>
+            </ol>
+        </nav>
+
+        <!-- Search Bar -->
+        <div>
+            <SearchBar />
+        </div>
+    </div>
 </section>
