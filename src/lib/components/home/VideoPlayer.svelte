@@ -9,7 +9,7 @@
 	}
 
 	const youtubeEmbedUrl = $derived(
-		`https://www.youtube.com/embed/${youtubeVideoId}?rel=0&modestbranding=1&autoplay=1`
+		`https://www.youtube-nocookie.com/embed/${youtubeVideoId}?rel=0&modestbranding=1&autoplay=1`
 	);
 </script>
 
@@ -27,6 +27,8 @@
 			src={poster}
 			alt={title}
 			class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+			loading="lazy"
+			decoding="async"
 		/>
 		<div
 			class="absolute inset-0 bg-black/30 transition-colors group-hover:bg-black/50"

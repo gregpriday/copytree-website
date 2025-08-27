@@ -19,6 +19,9 @@
 
 	// Enhanced images have an 'img' property that contains the traditional image object
 	const posterUrl = intelligentFileCopyingImg.img.src;
+
+	// Video identifier used for player and external link
+	const videoId = 'jGztGfRujSE';
 </script>
 
 <section
@@ -72,13 +75,21 @@
 					class="absolute -inset-px rounded-xl bg-primary/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
 				></div>
 				<VideoPlayer
-					youtubeVideoId="jGztGfRujSE"
+					youtubeVideoId={videoId}
 					poster={posterUrl}
 					title="CopyTree Getting Started"
 				/>
 			</div>
 			<p class="mt-6 text-center text-sm text-muted-foreground">
-				Short demo: installation and first run in under a minute
+				Short demo: installation and first run in under a minute ·
+				<a
+					href={`https://www.youtube.com/watch?v=${videoId}`}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="underline-offset-4 hover:underline"
+				>
+					Watch on YouTube
+				</a>
 			</p>
 		</div>
 

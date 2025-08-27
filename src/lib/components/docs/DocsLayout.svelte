@@ -42,6 +42,13 @@
 
 <!-- Main Content Area -->
 <div class="relative">
+	<!-- Skip link for docs page content -->
+	<a
+		href="#docs-content"
+		class="sr-only focus:not-sr-only fixed left-2 top-2 z-[1000] rounded-md border border-border bg-background px-3 py-2 text-foreground"
+	>
+		Skip to docs content
+	</a>
 	<div class="max-w-container mx-auto px-6 py-12 md:px-9">
 		<div class="flex gap-12">
 			<!-- Sidebar with scroll tracking -->
@@ -49,7 +56,7 @@
 
 			<!-- Content -->
 			<div class="min-w-0 flex-1">
-				<div class="space-y-12">
+				<div id="docs-content" tabindex="-1" class="space-y-12">
 					<!-- Overview Section -->
 					<section id="overview" class="scroll-mt-[90px]">
 						<Overview />

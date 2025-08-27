@@ -8,6 +8,11 @@
 	let isMenuOpen = $state(false);
 	let isScrolled = $state(false);
 
+	// Accessibility: track elements for focus management
+	let menuButton;
+	let mobileMenu;
+	let previousActiveElement = null;
+
 	const handleScroll = () => {
 		isScrolled = window.scrollY > 10;
 	};
@@ -33,6 +38,59 @@
 		window.addEventListener('scroll', handleScroll, { passive: true });
 		handleScroll(); // initialize on mount
 		return () => window.removeEventListener('scroll', handleScroll);
+	});
+
+	// Body scroll lock + focus trap when mobile menu is open
+	$effect(() => {
+		if (!browser) return;
+
+		const focusableSelectors = [
+			'a[href]','button:not([disabled])','textarea','input[type="text"]','input[type="radio"]','input[type="checkbox"]','select','[tabindex]:not([tabindex="-1"])'
+		].join(',');
+
+		function trapFocus(e) {
+			if (!isMenuOpen || !mobileMenu) return;
+			if (e.key !== 'Tab') return;
+			const focusable = Array.from(mobileMenu.querySelectorAll(focusableSelectors)).filter(
+				(el) => el.offsetParent !== null
+			);
+			if (focusable.length === 0) return;
+			const first = focusable[0];
+			const last = focusable[focusable.length - 1];
+			const active = document.activeElement;
+			if (e.shiftKey && active === first) {
+				e.preventDefault();
+				last.focus();
+			} else if (!e.shiftKey && active === last) {
+				e.preventDefault();
+				first.focus();
+			}
+		}
+
+		if (isMenuOpen) {
+			// Lock body scroll
+			const prevOverflow = document.body.style.overflow;
+			document.body.style.overflow = 'hidden';
+			previousActiveElement = document.activeElement;
+
+			// Move focus into menu
+			queueMicrotask(() => {
+				if (!mobileMenu) return;
+				const firstFocusable = mobileMenu.querySelector(focusableSelectors);
+				if (firstFocusable && firstFocusable.focus) firstFocusable.focus();
+			});
+
+			document.addEventListener('keydown', trapFocus);
+
+			// Cleanup when menu closes
+			return () => {
+				document.body.style.overflow = prevOverflow;
+				document.removeEventListener('keydown', trapFocus);
+				if (previousActiveElement && previousActiveElement.focus) {
+					previousActiveElement.focus();
+				}
+			};
+		}
 	});
 
 	const nav = [
@@ -164,13 +222,14 @@
 				<!-- Mobile toggles -->
 				<div class="flex items-center gap-2 lg:hidden">
 					<ThemeToggle class="p-2" />
-					<button
-						onclick={() => (isMenuOpen = !isMenuOpen)}
-						class="relative rounded-md p-2 text-muted-foreground transition-colors duration-200 hover:text-foreground focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background focus:outline-none"
-						aria-label="Toggle menu"
-						aria-expanded={isMenuOpen}
-						aria-controls="mobile-menu"
-					>
+				<button
+					bind:this={menuButton}
+					onclick={() => (isMenuOpen = !isMenuOpen)}
+					class="relative rounded-md p-2 text-muted-foreground transition-colors duration-200 hover:text-foreground focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background focus:outline-none"
+					aria-label="Toggle menu"
+					aria-expanded={isMenuOpen}
+					aria-controls="mobile-menu"
+				>
 						<svg
 							class="h-6 w-6"
 							fill="none"
@@ -194,6 +253,7 @@
 		<!-- Mobile menu -->
 		<div
 			id="mobile-menu"
+			bind:this={mobileMenu}
 			class="origin-top transition-all duration-200 ease-out lg:hidden {isMenuOpen
 				? 'visible scale-y-100 opacity-100'
 				: 'invisible max-h-0 scale-y-95 opacity-0'}"

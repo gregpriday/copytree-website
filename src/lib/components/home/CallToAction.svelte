@@ -33,6 +33,7 @@
 			alt="Background decoration"
 			class="h-[400px] w-[600px] object-cover"
 			loading="lazy"
+			decoding="async"
 		/>
 	</div>
 
@@ -49,6 +50,7 @@
 			alt="Background decoration"
 			class="h-[400px] w-[600px] object-cover"
 			loading="lazy"
+			decoding="async"
 		/>
 	</div>
 

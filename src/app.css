@@ -322,10 +322,19 @@ body {
 .noise-overlay {
 	background-image: url('/noise-texture.png');
 	background-repeat: repeat;
-	opacity: 0.03;
+	opacity: 0.02;
 }
 .dark .noise-overlay {
-	opacity: 0.04;
+	opacity: 0.03;
+}
+
+@media (max-width: 640px) {
+	.noise-overlay {
+		opacity: 0.015;
+	}
+	.dark .noise-overlay {
+		opacity: 0.025;
+	}
 }
 
 /* Reduce motion helper for elements that animate on hover/scroll */

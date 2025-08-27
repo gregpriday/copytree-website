@@ -1,10 +1,11 @@
 <script>
 	import '../app.css';
-	import { Header, Footer } from '$lib/components/layout';
-	import { injectAnalytics } from '@vercel/analytics/sveltekit';
+    import { Header, Footer } from '$lib/components/layout';
+    import { injectAnalytics } from '@vercel/analytics/sveltekit';
+    import { dev } from '$app/environment';
 
-	// Inject Vercel analytics
-	injectAnalytics();
+    // Inject Vercel analytics only in production
+    if (!dev) injectAnalytics();
 
 	let { children, data } = $props();
 
@@ -41,7 +42,7 @@
 			seo.description ||
 			'Transform how you share files with AI. CopyTree creates intelligent, structured representations of your projects that AI models can easily understand and work with.'}
 	/>
-	<meta property="og:image" content={seo.ogImage || 'https://copytree.dev/og-image.png'} />
+	<meta property="og:image" content={seo.ogImage || 'https://copytree.dev/logo/copytree-logo-light.svg'} />
 	<meta property="og:site_name" content="CopyTree" />
 	<meta property="og:locale" content="en_US" />
 
@@ -58,16 +59,12 @@
 			seo.description ||
 			'Transform how you share files with AI. CopyTree creates intelligent, structured representations of your projects that AI models can easily understand and work with.'}
 	/>
-	<meta property="twitter:image" content={seo.ogImage || 'https://copytree.dev/og-image.png'} />
+	<meta property="twitter:image" content={seo.ogImage || 'https://copytree.dev/logo/copytree-logo-light.svg'} />
 	<meta property="twitter:creator" content="@copytree_dev" />
 
 	<!-- Additional Meta Tags -->
 	<meta name="robots" content="index, follow" />
 	<meta name="author" content="CopyTree" />
-	<meta
-		name="keywords"
-		content="AI, file sharing, codebase, developer tools, Claude, ChatGPT, Gemini, code transformation"
-	/>
 	<meta name="theme-color" content="#16a34a" />
 
 	<!-- Additional custom meta tags -->
@@ -84,6 +81,10 @@
 
 	{#if structuredData.breadcrumb}
 		{@html `<script type="application/ld+json">${JSON.stringify(structuredData.breadcrumb)}</script>`}
+	{/if}
+
+	{#if structuredData.software}
+		{@html `<script type="application/ld+json">${JSON.stringify(structuredData.software)}</script>`}
 	{/if}
 
 	<!-- Favicons -->
@@ -108,11 +109,16 @@
 	<!-- Preload critical assets -->
 	<link rel="preload" href="/logo/copytree-logo-light.svg" as="image" type="image/svg+xml" />
 	<link rel="preload" href="/noise-texture.png" as="image" />
+	<link rel="preload" href="/grid-pattern.svg" as="image" type="image/svg+xml" />
+	<link rel="preload" href="/grid-pattern-dark.svg" as="image" type="image/svg+xml" />
 </svelte:head>
+
+<!-- Skip link for keyboard users -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <div class="min-h-screen bg-[var(--color-background)] text-foreground">
 	<Header />
-	<main class="bg-[var(--color-background)]">
+	<main id="main-content" tabindex="-1" class="bg-[var(--color-background)]">
 		{@render children?.()}
 	</main>
 	<Footer />
@@ -130,5 +136,23 @@
 		background: var(--color-background);
 		/* Prevent rubber-band overscroll flashing the UA default bg on iOS/Safari */
 		overscroll-behavior: none;
+	}
+
+	/* Skip link styles */
+	.skip-link {
+		position: absolute;
+		top: -40px;
+		left: 8px;
+		background: var(--color-background);
+		color: var(--color-foreground);
+		padding: 8px 12px;
+		z-index: 1000;
+		border: 1px solid var(--color-border);
+		border-radius: 6px;
+		transition: top 0.2s ease;
+	}
+
+	.skip-link:focus {
+		top: 8px;
 	}
 </style>

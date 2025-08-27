@@ -86,6 +86,7 @@
 								alt={feature.alt}
 								class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
 								loading={index < 2 ? 'eager' : 'lazy'}
+								decoding="async"
 							/>
 							<!-- Keep overlay dark to avoid light-mode washout -->
 							<div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 to-transparent"></div>

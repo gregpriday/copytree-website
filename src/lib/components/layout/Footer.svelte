@@ -37,12 +37,16 @@
 							alt="CopyTree"
 							class="block h-5 w-auto dark:hidden"
 							height="20"
+							loading="lazy"
+							decoding="async"
 						/>
 						<img
 							src="/logo/copytree-logo-dark.svg"
 							alt="CopyTree"
 							class="hidden h-5 w-auto dark:block"
 							height="20"
+							loading="lazy"
+							decoding="async"
 						/>
 						<div class="text-xs text-muted-foreground/90">
 							© {currentYear} CopyTree
