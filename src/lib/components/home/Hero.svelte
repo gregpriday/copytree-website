@@ -4,24 +4,23 @@
 </script>
 
 <section
-	role="region"
 	aria-label="Hero"
 	class="relative flex h-auto min-h-screen items-center justify-center overflow-hidden border-b border-border bg-background pt-0 pb-16 md:pb-24 lg:pb-32"
 >
 	<!-- Edge gradients for subtle depth -->
 	<div
-		class="pointer-events-none absolute inset-x-0 top-0 z-[2] h-px bg-gradient-to-r from-transparent via-border/60 to-transparent"
+		class="pointer-events-none absolute inset-x-0 top-0 z-[2] h-px bg-gradient-to-r from-transparent via-border/50 to-transparent"
 	></div>
 	<div
-		class="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-px bg-gradient-to-r from-transparent via-border/60 to-transparent"
+		class="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-px bg-gradient-to-r from-transparent via-border/50 to-transparent"
 	></div>
 
 	<!-- Background pattern and vignette -->
 	<div
-		class="absolute inset-0 z-[1] overflow-hidden opacity-[0.18] dark:opacity-25"
+		class="absolute inset-0 z-[1] overflow-hidden opacity-[0.16] dark:opacity-[0.22]"
 		style="
-	     mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%);
-	     -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%);
+	     mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 62%);
+	     -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 62%);
 	   "
 	>
 		<!-- Light mode grid -->
@@ -48,7 +47,7 @@
 
 	<!-- Noise texture overlay -->
 	<div
-		class="absolute inset-0 z-[3] opacity-[0.03] dark:opacity-[0.04]"
+		class="absolute inset-0 z-[3] opacity-[0.024] dark:opacity-[0.032]"
 		style="background-image: url(/noise-texture.png); background-repeat: repeat;"
 	></div>
 
@@ -59,22 +58,18 @@
 				<LogoIcon size="xl" class="mx-auto hover:brightness-110" />
 				<!-- Subtle ambient glow -->
 				<div
-					class="absolute inset-0 rounded-full bg-primary/20 opacity-0 blur-xl transition-opacity duration-500 hover:opacity-100"
+					class="absolute inset-0 rounded-full bg-primary/15 opacity-0 blur-[20px] transition-opacity duration-500 hover:opacity-100"
 				></div>
 			</div>
 
-			<!-- REFINED MESSAGING -->
-			<p class="mb-4 text-sm font-semibold tracking-widest text-primary uppercase animate-fadeIn opacity-0" style="animation-delay: 0.3s; animation-fill-mode: forwards;">
-				AI-Optimized Developer Workflow
-			</p>
 			<h1
-				class="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl animate-fadeIn opacity-0"
-				style="animation-delay: 0.5s; animation-fill-mode: forwards; letter-spacing: -0.01em; font-family: var(--font-space-grotesk);"
+				class="mb-8 text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl animate-fadeIn opacity-0"
+				style="animation-delay: 0.4s; animation-fill-mode: forwards; letter-spacing: -0.01em; font-family: var(--font-space-grotesk);"
 			>
 				Copy your entire codebase to AI in seconds
 			</h1>
 
-			<p class="mx-auto mb-10 max-w-3xl text-lg leading-relaxed text-muted-foreground md:text-xl lg:text-2xl animate-fadeIn opacity-0" style="animation-delay: 0.7s; animation-fill-mode: forwards;">
+			<p class="mx-auto mb-10 max-w-3xl text-lg leading-relaxed text-muted-foreground md:text-xl lg:text-2xl animate-fadeIn opacity-0" style="animation-delay: 0.55s; animation-fill-mode: forwards;">
 				Stop wrangling files. <code class="rounded-md bg-muted/50 px-2 py-1 text-base text-primary font-mono"
 					>copytree</code
 				> packages any project into a clean, AI-ready context for Claude, ChatGPT, Grok, and Gemini.
@@ -83,13 +78,13 @@
 			<!-- Animated terminal demo -->
 			<div
 				class="mx-auto mb-10 max-w-full px-4 text-left sm:max-w-[90%] sm:px-0 md:max-w-[80%] lg:max-w-[70%] animate-fadeIn opacity-0"
-				style="animation-delay: 0.9s; animation-fill-mode: forwards;"
+				style="animation-delay: 0.75s; animation-fill-mode: forwards;"
 			>
 				<AnimatedTerminal />
 			</div>
 
 			<!-- CTA Buttons -->
-			<div class="flex flex-col items-center justify-center gap-4 overflow-visible p-2 sm:flex-row animate-fadeIn opacity-0" style="animation-delay: 1.1s; animation-fill-mode: forwards;">
+			<div class="flex flex-col items-center justify-center gap-4 overflow-visible p-2 sm:flex-row animate-fadeIn opacity-0" style="animation-delay: 0.9s; animation-fill-mode: forwards;">
 				<a href="#getting-started" aria-label="Install and Get Started">
 					<Button
 						size="lg"
@@ -140,9 +135,9 @@
 	</div>
 
 	<!-- Scroll indicator (respects reduced motion) -->
-	<div class="absolute bottom-6 left-1/2 -translate-x-1/2 transform motion-safe:animate-bounce animate-fadeIn opacity-0" style="animation-delay: 1.3s; animation-fill-mode: forwards;">
+	<div class="absolute bottom-6 left-1/2 -translate-x-1/2 transform animate-fadeIn opacity-0" style="animation-delay: 1.05s; animation-fill-mode: forwards; animation-duration: 0.6s;">
 		<svg
-			class="h-6 w-6 text-muted-foreground"
+			class="h-5 w-5 text-muted-foreground"
 			fill="none"
 			stroke="currentColor"
 			viewBox="0 0 24 24"
@@ -152,7 +147,7 @@
 				stroke-linecap="round"
 				stroke-linejoin="round"
 				stroke-width={2}
-				d="M19 14l-7 7m0 0l-7-7m7 7V3"
+				d="M6 9l6 6 6-6"
 			/>
 		</svg>
 	</div>

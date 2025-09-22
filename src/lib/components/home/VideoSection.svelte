@@ -26,13 +26,13 @@
 
 <section
 	id="video"
-	role="region"
 	aria-label="Video demo"
 	class="relative overflow-hidden bg-background px-4 py-24 sm:px-6 md:py-32 lg:px-8"
 >
 	<!-- Subtle gradient background -->
 	<div
-		class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/8 via-background to-background"
+		class="absolute inset-0"
+		style="background: radial-gradient(ellipse at top, color-mix(in oklch, var(--color-border) 35%, transparent) 0%, transparent 70%);"
 	></div>
 	<!-- Noise overlay -->
 	<div class="noise-overlay absolute inset-0"></div>
@@ -54,7 +54,7 @@
 			</div>
 
 			<h2 class="mb-4 text-3xl font-semibold tracking-tight text-foreground md:text-4xl" style="letter-spacing: -0.01em;">
-				Install and copy
+				Install, then copy
 				<span class="text-muted-foreground"> your codebase</span>
 			</h2>
 
@@ -96,18 +96,18 @@
 		<!-- Refined feature highlights -->
 		<div class="mt-12 text-center">
 			<p class="mb-6 text-sm font-medium text-muted-foreground">Quick highlights:</p>
-			<div class="flex flex-wrap justify-center gap-x-6 gap-y-4">
+			<ul class="flex flex-wrap justify-center gap-x-6 gap-y-4" role="list">
 				{#each features as feature}
-					<div
+					<li
 						class="inline-flex items-center gap-3 rounded-full border border-border/50 bg-background/40 px-4 py-2.5 text-sm font-medium text-foreground backdrop-blur-sm transition-all duration-200 hover:border-primary/40 hover:bg-primary/5 hover:text-primary"
 					>
 						<div class="h-1.5 w-1.5 rounded-full bg-primary/60"></div>
 						<span class="font-medium">{feature.title}</span>
 						<span class="text-muted-foreground">•</span>
 						<span class="text-muted-foreground">{feature.description}</span>
-					</div>
+					</li>
 				{/each}
-			</div>
+			</ul>
 		</div>
 	</div>
 </section>

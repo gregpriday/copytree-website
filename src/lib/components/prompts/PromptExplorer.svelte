@@ -65,7 +65,6 @@
 						? 'border-primary/50 bg-primary/5 text-primary'
 						: 'border-transparent text-muted-foreground hover:border-border/60 hover:bg-muted/40 hover:text-foreground'}"
 					aria-current={isActive ? 'page' : undefined}
-					role="listitem"
 				>
 					<!-- left accent when active -->
 					<span

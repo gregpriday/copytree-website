@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>CopyTree OG Image</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap"
+		rel="stylesheet"
+	/>
+	<style>
+		:root {
+			--bg-base: #050506;
+			--bg-soft: #18181b;
+			--text-primary: #fafafa;
+			--text-muted: #a1a1aa;
+			--primary: rgb(34, 197, 94);
+			--primary-glow: rgba(34, 197, 94, 0.15);
+			--border: rgba(255, 255, 255, 0.08);
+			--border-subtle: rgba(255, 255, 255, 0.04);
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+			background: transparent;
+			font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+			color: var(--text-primary);
+		}
+
+		main {
+			position: relative;
+			width: 1200px;
+			height: 630px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+			background: var(--bg-base);
+		}
+
+		/* Grid pattern layer */
+		.grid-pattern {
+			position: absolute;
+			inset: 0;
+			background-image:
+				linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+				linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+			background-size: 60px 60px;
+			opacity: 0.6;
+			mask-image: radial-gradient(circle at center, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0) 70%);
+			-webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0) 70%);
+		}
+
+		/* Gradient background glow */
+		.gradient-glow {
+			position: absolute;
+			inset: 0;
+			background: radial-gradient(circle at 50% 30%, var(--primary-glow) 0%, transparent 50%);
+			opacity: 0.5;
+			pointer-events: none;
+		}
+
+		/* Noise texture overlay */
+		.noise {
+			position: absolute;
+			inset: 0;
+			background-image: url('../../static/noise-texture.png');
+			opacity: 0.032;
+			pointer-events: none;
+		}
+
+		/* Content container */
+		.content {
+			position: relative;
+			z-index: 10;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 24px;
+		}
+
+		/* Logo SVG */
+		.logo {
+			width: 80px;
+			height: 92px;
+			fill: var(--primary);
+			filter: drop-shadow(0 0 20px var(--primary-glow));
+			margin-bottom: 8px;
+		}
+
+		/* Main title */
+		.title {
+			font-family: 'Space Grotesk', 'Inter', sans-serif;
+			font-size: 88px;
+			font-weight: 700;
+			letter-spacing: -0.03em;
+			margin: 0;
+			background: linear-gradient(180deg, #fafafa 0%, #d4d4d8 100%);
+			-webkit-background-clip: text;
+			background-clip: text;
+			-webkit-text-fill-color: transparent;
+			text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+		}
+
+		/* Tagline */
+		.tagline {
+			margin: 0;
+			font-size: 26px;
+			font-weight: 500;
+			color: var(--text-muted);
+			max-width: 600px;
+			line-height: 1.4;
+		}
+
+		/* Code snippet style */
+		.code {
+			background: rgba(24, 24, 27, 0.8);
+			border: 1px solid var(--border);
+			border-radius: 6px;
+			padding: 4px 10px;
+			font-family: ui-monospace, SFMono-Regular, 'SF Mono', Consolas, monospace;
+			font-size: 20px;
+			color: var(--primary);
+			display: inline-block;
+			backdrop-filter: blur(8px);
+		}
+
+		/* Divider */
+		.divider {
+			width: 200px;
+			height: 1px;
+			background: linear-gradient(90deg,
+				transparent,
+				rgba(34, 197, 94, 0.3),
+				rgba(34, 197, 94, 0.5),
+				rgba(34, 197, 94, 0.3),
+				transparent
+			);
+			margin: 8px 0;
+		}
+
+		/* Bottom section with features */
+		.features {
+			display: flex;
+			gap: 32px;
+			margin-top: 16px;
+			font-size: 18px;
+			color: var(--text-muted);
+			font-weight: 500;
+		}
+
+		.feature {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+		}
+
+		.feature-icon {
+			color: var(--primary);
+			font-size: 20px;
+		}
+
+		/* URL at bottom */
+		.url {
+			position: absolute;
+			bottom: 40px;
+			left: 50%;
+			transform: translateX(-50%);
+			font-size: 16px;
+			font-weight: 600;
+			letter-spacing: 0.05em;
+			color: rgba(161, 161, 170, 0.6);
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<!-- Background layers -->
+		<div class="grid-pattern"></div>
+		<div class="gradient-glow"></div>
+		<div class="noise"></div>
+
+		<!-- Content -->
+		<div class="content">
+			<!-- Logo -->
+			<svg class="logo" viewBox="0 0 148.3303 171.2764" aria-label="CopyTree Logo">
+				<path d="M74.165,0L0,42.8188v85.6382l74.165,42.8193,74.1653-42.8193V42.8188L74.165,0ZM74.165,11.2871l59.5024,34.354-25.4973,14.7217-34.0051-19.6323-34.0049,19.6323-25.4971-14.7217L74.165,11.2871ZM79.0527,88.46v-5.4287l-4.8877-3.0366-4.8877-2.8218-19.3418-11.1665,24.2295-13.9888,24.2297,13.9888,4.8877,2.8218v33.6201l-24.2297,13.9888v-27.9771ZM9.7754,54.1064l25.4971,14.7217,9.7754,5.6436,24.2295,13.9883v68.7075L9.7754,122.8135V54.1064ZM138.5549,122.8135l-59.5022,34.354v-29.4434l34.0049-19.6323v-39.2637l25.4973-14.7217v68.707Z"/>
+			</svg>
+
+			<!-- Title -->
+			<h1 class="title">CopyTree</h1>
+
+			<div class="divider"></div>
+
+			<!-- Tagline -->
+			<p class="tagline">
+				Package your entire codebase into<br/>
+				AI-ready context with <span class="code">copytree</span>
+			</p>
+
+			<!-- Features -->
+			<div class="features">
+				<div class="feature">
+					<span class="feature-icon">✓</span>
+					<span>15+ Transformers</span>
+				</div>
+				<div class="feature">
+					<span class="feature-icon">✓</span>
+					<span>Smart Selection</span>
+				</div>
+				<div class="feature">
+					<span class="feature-icon">✓</span>
+					<span>Git Integration</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- URL -->
+		<div class="url">copytree.dev</div>
+	</main>
+</body>
+</html>

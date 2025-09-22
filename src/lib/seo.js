@@ -19,9 +19,8 @@ const SITE_CONFIG = {
 	url: 'https://copytree.dev',
 	description:
 		'Transform how you share files with AI. CopyTree creates intelligent, structured representations of your projects that AI models can easily understand and work with.',
-	// Use existing logo as fallback OG image to avoid 404s.
-	// Ideally replace with a 1200x630 PNG for best social sharing.
-	image: '/logo/copytree-logo-light.svg',
+	// Default social card (1200x630 PNG) used for OG/Twitter fallbacks
+	image: '/og-image.png',
 	twitter: '@copytree_dev' // Update if different
 };
 

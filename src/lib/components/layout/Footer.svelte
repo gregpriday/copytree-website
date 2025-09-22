@@ -21,7 +21,7 @@
 		<!-- low-contrast noise for materiality -->
 		<div
 			aria-hidden="true"
-			class="pointer-events-none absolute inset-0 bg-[url('/noise-texture.png')] opacity-[0.05] mix-blend-overlay"
+			class="pointer-events-none absolute inset-0 bg-[url('/noise-texture.png')] opacity-[0.04] mix-blend-overlay"
 		></div>
 
 		<div class="relative">

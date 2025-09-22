@@ -15,7 +15,7 @@
 			installing: '⠋ Processing files...',
 			output: '✅ 144 files [803.2 KB] copied to clipboard',
 			installDuration: 500,
-			pauseAfter: 2500 // Good pause to absorb the clipboard message
+			pauseAfter: 1900 // Slightly shorter dwell keeps the sequence moving
 		},
 		{
 			command: '$ copytree -r',

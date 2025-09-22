@@ -43,7 +43,6 @@
 
 <section
 	id="getting-started"
-	role="region"
 	aria-label="Getting started"
 	class="overflow-visible bg-background px-4 py-24 sm:px-6 md:py-32 lg:px-8"
 >
@@ -63,7 +62,7 @@
 					<!-- Connection line -->
 					{#if index < steps.length - 1}
 						<div
-							class="absolute top-16 bottom-0 left-8 w-0.5 bg-gradient-to-b from-primary to-transparent"
+							class="absolute top-16 bottom-0 left-[34px] w-0.5 bg-gradient-to-b from-primary to-transparent"
 						></div>
 					{/if}
 
@@ -73,39 +72,16 @@
 							<div
 								class="box-border flex h-16 w-16 items-center justify-center rounded-xl border-2 border-border bg-background shadow-sm transition-all duration-300 group-hover:border-primary/50 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
 							>
-								{#if step.isProTip}
-									<div class="h-10 w-10">
-										<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<!-- GitHub Octocat icon -->
-											<g fill="currentColor">
-												<path
-													d="M16 2C8.268 2 2 8.268 2 16c0 6.112 3.96 11.294 9.45 13.125.691.126.943-.3.943-.667 0-.329-.012-1.415-.018-2.566-3.844.835-4.656-1.63-4.656-1.63-.628-1.596-1.534-2.021-1.534-2.021-1.254-.857.095-.839.095-.839 1.387.097 2.116 1.424 2.116 1.424 1.233 2.114 3.236 1.503 4.025 1.149.125-.893.482-1.502.877-1.847-3.072-.35-6.303-1.536-6.303-6.835 0-1.509.539-2.744 1.424-3.711-.143-.35-.618-1.761.135-3.671 0 0 1.16-.373 3.801 1.421 1.102-.307 2.285-.46 3.461-.465 1.176.005 2.359.158 3.462.465 2.64-1.794 3.799-1.421 3.799-1.421.754 1.91.279 3.321.136 3.671.886.967 1.423 2.202 1.423 3.711 0 5.314-3.236 6.481-6.318 6.826.497.428.939 1.272.939 2.564 0 1.852-.017 3.344-.017 3.799 0 .371.25.799.949.664C26.042 27.288 30 22.11 30 16c0-7.732-6.268-14-14-14z"
-													fill="url(#githubGradient)"
-												/>
-												<!-- Add some highlight -->
-												<path
-													d="M6.5 23.5c.3.6 1.2 1.2 2.5 1.5"
-													stroke="url(#githubGradient)"
-													stroke-width="1"
-													stroke-linecap="round"
-													opacity="0.3"
-												/>
-											</g>
-											<defs>
-												<linearGradient
-													id="githubGradient"
-													x1="16"
-													y1="2"
-													x2="16"
-													y2="30"
-													gradientUnits="userSpaceOnUse"
-												>
-													<stop stop-color="#22C55E" />
-													<stop offset="1" stop-color="#059669" />
-												</linearGradient>
-											</defs>
-										</svg>
-									</div>
+							{#if step.isProTip}
+								<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-muted/40 text-muted-foreground">
+									<svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+										<path
+											fill-rule="evenodd"
+											d="M12 .5C5.73.5.98 5.24.98 11.52c0 4.86 3.15 8.98 7.52 10.44.55.1.75-.24.75-.54 0-.27-.01-1.16-.02-2.1-3.06.66-3.71-1.31-3.71-1.31-.5-1.26-1.22-1.6-1.22-1.6-.99-.67.07-.66.07-.66 1.1.08 1.68 1.12 1.68 1.12.98 1.67 2.57 1.19 3.2.91.1-.71.38-1.19.69-1.47-2.44-.28-5.01-1.22-5.01-5.42 0-1.2.43-2.17 1.12-2.94-.11-.28-.49-1.43.11-2.98 0 0 .92-.3 3.02 1.13a10.5 10.5 0 0 1 5.5 0c2.1-1.43 3.02-1.13 3.02-1.13.6 1.55.22 2.7.11 2.98.7.77 1.12 1.74 1.12 2.94 0 4.21-2.57 5.13-5.01 5.41.39.34.73 1 .73 2.02 0 1.46-.01 2.64-.01 3 0 .3.2.65.76.54 4.36-1.46 7.5-5.58 7.5-10.44C23.02 5.24 18.27.5 12 .5Z"
+											clip-rule="evenodd"
+										/>
+									</svg>
+								</div>
 								{:else}
 									<span
 										class="bg-gradient-to-br from-primary to-primary/80 bg-clip-text text-2xl font-bold text-transparent"
@@ -130,9 +106,7 @@
 										code={step.code}
 										language={step.language}
 										glow={true}
-										animate={true}
-										animationSpeed={25}
-										animationDelay={index * 100}
+										animate={false}
 									/>
 								</div>
 							{/if}

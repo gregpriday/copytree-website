@@ -35,32 +35,15 @@
 </script>
 
 <section
-	role="region"
 	aria-label="Features"
-	class="relative overflow-hidden bg-zinc-950 px-4 py-24 sm:px-6 md:py-32 lg:px-8"
+	class="relative overflow-hidden bg-background px-4 py-24 sm:px-6 md:py-32 lg:px-8 dark:bg-zinc-950"
 >
 	<!-- Edge gradients for subtle depth -->
 	<div
-		class="pointer-events-none absolute inset-x-0 top-0 z-[2] h-px bg-gradient-to-r from-transparent via-border/60 to-transparent"
+		class="pointer-events-none absolute inset-x-0 top-0 z-[2] h-px bg-gradient-to-r from-transparent via-border/50 to-transparent"
 	></div>
 	<div
-		class="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-px bg-gradient-to-r from-transparent via-border/60 to-transparent"
-	></div>
-
-	<!-- Noise texture overlay -->
-	<div class="noise-overlay absolute inset-0 z-[2]"></div>
-
-	<!-- Consistent Grid Pattern Background - force dark pattern for visual consistency -->
-	<div
-		class="absolute inset-0 z-[1] opacity-20"
-		style="
-	     background-image: url('/grid-pattern-dark.svg');
-	     background-position: center;
-	     background-size: 60px 60px;
-	     background-repeat: repeat;
-	     mask-image: radial-gradient(ellipse at center, white 22%, transparent 62%);
-	     -webkit-mask-image: radial-gradient(ellipse at center, white 22%, transparent 62%);
-	   "
+		class="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-px bg-gradient-to-r from-transparent via-border/50 to-transparent"
 	></div>
 
 	<div class="relative z-10 mx-auto max-w-7xl">
@@ -77,14 +60,16 @@
 			{#each features as feature, index}
 				<div class="group relative transition-all duration-300 ease-out hover:-translate-y-0.5">
 					<div
-						class="subtle-gradient-border-hover relative flex h-full flex-col overflow-hidden rounded-xl border border-zinc-700 bg-zinc-900/70 shadow-sm backdrop-blur-sm transition-all duration-200 hover:shadow-md"
+						class="subtle-gradient-border-hover relative flex h-full flex-col overflow-hidden rounded-xl border border-zinc-800 bg-zinc-950 text-white shadow-sm transition-all duration-200 hover:shadow-md dark:border-zinc-700 dark:bg-zinc-900/70"
+						role="article"
+						aria-labelledby={`feature-${index}`}
 					>
 						<!-- Image container -->
 						<div class="relative h-44 overflow-hidden">
 							<enhanced:img
 								src={feature.image}
 								alt={feature.alt}
-								class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+								class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
 								loading={index < 2 ? 'eager' : 'lazy'}
 								decoding="async"
 							/>
@@ -93,8 +78,8 @@
 						</div>
 
 						<!-- Text content -->
-						<div class="flex-1 bg-gradient-to-b from-zinc-950 to-zinc-900/70 p-6">
-							<h3 class="mb-2 text-lg font-semibold tracking-tight text-white">
+						<div class="flex-1 bg-gradient-to-b from-zinc-950 to-zinc-900/80 p-6 dark:from-zinc-950/95 dark:to-zinc-900/70">
+							<h3 class="mb-2 text-lg font-semibold tracking-tight" id={`feature-${index}`}>
 								{feature.title}
 							</h3>
 							<p class="text-base leading-relaxed text-zinc-300">
@@ -109,13 +94,13 @@
 		<!-- Refined "Also Includes" Pills -->
 		<div class="mt-16 text-center">
 			<p class="mb-6 text-base font-medium text-muted-foreground">Also includes:</p>
-			<div class="flex flex-wrap justify-center gap-x-4 gap-y-3">
+			<ul class="flex flex-wrap justify-center gap-x-4 gap-y-3" role="list">
 				{#each ['Smart .gitignore parsing', 'Token counting', 'Custom transformers', 'CLI & API access'] as item}
-					<div
-						class="inline-flex items-center gap-2 rounded-full border border-zinc-700 bg-zinc-800/60 px-4 py-2 text-sm text-zinc-300 transition-all duration-200 hover:border-primary/50 hover:bg-primary/10 hover:text-white"
+					<li
+						class="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-zinc-100/50 px-4 py-1.5 text-sm text-zinc-700 transition-all duration-200 hover:border-primary/50 hover:bg-primary/10 hover:text-zinc-900 dark:border-zinc-700 dark:bg-zinc-800/60 dark:text-zinc-300 dark:hover:text-white"
 					>
 						<svg
-							class="h-3.5 w-3.5 text-emerald-400"
+							class="h-3.5 w-3.5 text-emerald-500"
 							viewBox="0 0 24 24"
 							fill="none"
 							stroke="currentColor"
@@ -125,9 +110,9 @@
 							<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
 						</svg>
 						{item}
-					</div>
+					</li>
 				{/each}
-			</div>
+			</ul>
 		</div>
 	</div>
 </section>

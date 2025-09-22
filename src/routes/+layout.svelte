@@ -42,7 +42,7 @@
 			seo.description ||
 			'Transform how you share files with AI. CopyTree creates intelligent, structured representations of your projects that AI models can easily understand and work with.'}
 	/>
-	<meta property="og:image" content={seo.ogImage || 'https://copytree.dev/logo/copytree-logo-light.svg'} />
+	<meta property="og:image" content={seo.ogImage || 'https://copytree.dev/og-image.png'} />
 	<meta property="og:site_name" content="CopyTree" />
 	<meta property="og:locale" content="en_US" />
 
@@ -59,7 +59,7 @@
 			seo.description ||
 			'Transform how you share files with AI. CopyTree creates intelligent, structured representations of your projects that AI models can easily understand and work with.'}
 	/>
-	<meta property="twitter:image" content={seo.ogImage || 'https://copytree.dev/logo/copytree-logo-light.svg'} />
+	<meta property="twitter:image" content={seo.ogImage || 'https://copytree.dev/og-image.png'} />
 	<meta property="twitter:creator" content="@copytree_dev" />
 
 	<!-- Additional Meta Tags -->
@@ -102,6 +102,13 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
 	<link
+		rel="preload"
+		as="font"
+		href="https://fonts.gstatic.com/s/spacegrotesk/v22/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj4PVksj.ttf"
+		type="font/ttf"
+		crossorigin=""
+	/>
+	<link
 		href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
 		rel="stylesheet"
 	/>
@@ -141,18 +148,24 @@
 	/* Skip link styles */
 	.skip-link {
 		position: absolute;
-		top: -40px;
-		left: 8px;
+		top: 12px;
+		left: 12px;
 		background: var(--color-background);
 		color: var(--color-foreground);
 		padding: 8px 12px;
 		z-index: 1000;
 		border: 1px solid var(--color-border);
 		border-radius: 6px;
-		transition: top 0.2s ease;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+		transform: translateY(-200%);
+		opacity: 0;
+		pointer-events: none;
+		transition: transform 0.2s ease, opacity 0.2s ease;
 	}
 
 	.skip-link:focus {
-		top: 8px;
+		transform: translateY(0%);
+		opacity: 1;
+		pointer-events: auto;
 	}
 </style>

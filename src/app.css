@@ -322,18 +322,18 @@ body {
 .noise-overlay {
 	background-image: url('/noise-texture.png');
 	background-repeat: repeat;
-	opacity: 0.02;
+	opacity: 0.014;
 }
 .dark .noise-overlay {
-	opacity: 0.03;
+	opacity: 0.021;
 }
 
 @media (max-width: 640px) {
 	.noise-overlay {
-		opacity: 0.015;
+		opacity: 0.011;
 	}
 	.dark .noise-overlay {
-		opacity: 0.025;
+		opacity: 0.017;
 	}
 }
 

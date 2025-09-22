@@ -105,35 +105,34 @@
 
 <header
 	class="fixed -top-px z-50 w-full"
-	role="banner"
 >
 	<nav class="max-w-container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Primary">
-		<div
-			class="relative overflow-hidden rounded-b-xl border border-border/60 shadow-sm transition-all duration-300 lg:rounded-b-2xl"
-		>
+	<div
+		class="relative overflow-hidden rounded-b-xl border border-border/40 shadow-sm transition-all duration-300 lg:rounded-b-2xl"
+	>
 			<!-- Glass + blur (scroll-reactive) -->
 			<div
 				class="absolute inset-0 transition-all duration-300 {isScrolled
-					? 'bg-white/70 dark:bg-zinc-950/70'
-					: 'bg-white/50 dark:bg-zinc-950/50'}"
-				style="backdrop-filter: blur({isScrolled ? '8px' : '6px'}); -webkit-backdrop-filter: blur({isScrolled ? '8px' : '6px'});"
+					? 'bg-white/75 dark:bg-zinc-950/75'
+					: 'bg-white/55 dark:bg-zinc-950/55'}"
+				style="backdrop-filter: blur({isScrolled ? '9px' : '5px'}); -webkit-backdrop-filter: blur({isScrolled ? '9px' : '5px'});"
 				aria-hidden="true"
 			></div>
 
 			<!-- Noise -->
 			<div
-				class="absolute inset-0 opacity-[0.12] mix-blend-overlay dark:opacity-[0.15]"
+				class="absolute inset-0 opacity-[0.08] mix-blend-overlay dark:opacity-[0.12]"
 				style="background-image: url(/noise-texture.png); background-size: 128px 128px; background-repeat: repeat;"
 				aria-hidden="true"
 			></div>
 
 			<!-- Edge gradients -->
 			<div
-				class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent dark:via-zinc-300/10"
+				class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent dark:via-zinc-200/10"
 				aria-hidden="true"
 			></div>
 			<div
-				class="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-black/5 to-transparent dark:via-black/30"
+				class="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-black/5 to-transparent dark:via-black/25"
 				aria-hidden="true"
 			></div>
 
@@ -164,12 +163,12 @@
 								<span class="relative">
 									{item.label}
 									<span
-										class="pointer-events-none absolute -bottom-1.5 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded bg-primary/70 transition-[width] duration-200 group-hover:w-7"
+										class="pointer-events-none absolute -bottom-1.5 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded bg-primary/70 transition-[width] duration-200 group-hover:w-[12px]"
 										aria-hidden="true"
 									></span>
 									{#if isActive(item.href)}
 										<span
-											class="pointer-events-none absolute -bottom-1.5 left-1/2 h-[2px] w-7 -translate-x-1/2 rounded bg-primary"
+											class="pointer-events-none absolute -bottom-1.5 left-1/2 h-[2px] w-[18px] -translate-x-1/2 rounded bg-primary"
 											aria-hidden="true"
 										></span>
 									{/if}
@@ -204,16 +203,16 @@
 							rel="noopener noreferrer"
 							aria-label="View on GitHub"
 						>
-							<Button variant="secondary" size="sm" class="px-3.5 py-2.5">
-								<svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-									<path
-										fill-rule="evenodd"
-										d="M12 .5C5.73.5.98 5.24.98 11.52c0 4.86 3.15 8.98 7.52 10.44.55.1.75-.24.75-.54 0-.27-.01-1.16-.02-2.1-3.06.66-3.71-1.31-3.71-1.31-.5-1.26-1.22-1.6-1.22-1.6-.99-.67.07-.66.07-.66 1.1.08 1.68 1.12 1.68 1.12.98 1.67 2.57 1.19 3.2.91.1-.71.38-1.19.69-1.47-2.44-.28-5.01-1.22-5.01-5.42 0-1.2.43-2.17 1.12-2.94-.11-.28-.49-1.43.11-2.98 0 0 .92-.3 3.02 1.13a10.5 10.5 0 0 1 5.5 0c2.1-1.43 3.02-1.13 3.02-1.13.6 1.55.22 2.7.11 2.98.7.77 1.12 1.74 1.12 2.94 0 4.21-2.57 5.13-5.01 5.41.39.34.73 1 .73 2.02 0 1.46-.01 2.64-.01 3 0 .3.2.65.76.54 4.36-1.46 7.5-5.58 7.5-10.44C23.02 5.24 18.27.5 12 .5Z"
-										clip-rule="evenodd"
-									/>
-								</svg>
-								<span class="ml-2">GitHub</span>
-							</Button>
+						<Button variant="secondary" size="sm" class="px-2.5 py-2.5">
+							<svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+								<path
+									fill-rule="evenodd"
+									d="M12 .5C5.73.5.98 5.24.98 11.52c0 4.86 3.15 8.98 7.52 10.44.55.1.75-.24.75-.54 0-.27-.01-1.16-.02-2.1-3.06.66-3.71-1.31-3.71-1.31-.5-1.26-1.22-1.6-1.22-1.6-.99-.67.07-.66.07-.66 1.1.08 1.68 1.12 1.68 1.12.98 1.67 2.57 1.19 3.2.91.1-.71.38-1.19.69-1.47-2.44-.28-5.01-1.22-5.01-5.42 0-1.2.43-2.17 1.12-2.94-.11-.28-.49-1.43.11-2.98 0 0 .92-.3 3.02 1.13a10.5 10.5 0 0 1 5.5 0c2.1-1.43 3.02-1.13 3.02-1.13.6 1.55.22 2.7.11 2.98.7.77 1.12 1.74 1.12 2.94 0 4.21-2.57 5.13-5.01 5.41.39.34.73 1 .73 2.02 0 1.46-.01 2.64-.01 3 0 .3.2.65.76.54 4.36-1.46 7.5-5.58 7.5-10.44C23.02 5.24 18.27.5 12 .5Z"
+									clip-rule="evenodd"
+								/>
+							</svg>
+							<span class="sr-only">GitHub</span>
+						</Button>
 						</a>
 						<ThemeToggle class="ml-1 p-2" />
 					</div>
@@ -260,16 +259,16 @@
 			role="region"
 			aria-label="Mobile navigation"
 		>
-			<div class="relative mt-2 overflow-hidden rounded-xl border border-border/50 shadow-md">
+			<div class="relative mt-2 overflow-hidden rounded-xl border border-border/40 shadow-md">
 				<!-- Blur + tint -->
 				<div
-					class="absolute inset-0 bg-background/75 dark:bg-zinc-950/75"
-					style="backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);"
+					class="absolute inset-0 bg-background/80 dark:bg-zinc-950/80"
+					style="backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px);"
 					aria-hidden="true"
 				></div>
 				<!-- Noise -->
 				<div
-					class="absolute inset-0 opacity-[0.12] mix-blend-overlay dark:opacity-[0.15]"
+					class="absolute inset-0 opacity-[0.09] mix-blend-overlay dark:opacity-[0.13]"
 					style="background-image: url(/noise-texture.png); background-repeat: repeat; background-size: 128px 128px;"
 					aria-hidden="true"
 				></div>

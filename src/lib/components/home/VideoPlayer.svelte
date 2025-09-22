@@ -8,6 +8,14 @@
 		isPlayerActive = true;
 	}
 
+	/** @param {KeyboardEvent} event */
+	function handleKeydown(event) {
+		if (event.key === 'Enter' || event.key === ' ' || event.key === 'Spacebar' || event.code === 'Space') {
+			event.preventDefault();
+			handlePlayClick();
+		}
+	}
+
 	const youtubeEmbedUrl = $derived(
 		`https://www.youtube-nocookie.com/embed/${youtubeVideoId}?rel=0&modestbranding=1&autoplay=1`
 	);
@@ -29,25 +37,24 @@
 			class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
 			loading="lazy"
 			decoding="async"
+			fetchpriority="low"
 		/>
+		<div class="pointer-events-none absolute inset-[1px] rounded-[inherit] border border-border/70"></div>
 		<div
 			class="absolute inset-0 bg-black/30 transition-colors group-hover:bg-black/50"
 			onclick={handlePlayClick}
-			onkeydown={(e) => e.key === 'Enter' && handlePlayClick()}
-			role="button"
-			tabindex="0"
-			aria-label="Play video"
+			aria-hidden="true"
 		></div>
 		<div
 			class="absolute inset-0 flex items-center justify-center"
 			onclick={handlePlayClick}
-			onkeydown={(e) => e.key === 'Enter' && handlePlayClick()}
+			onkeydown={handleKeydown}
 			role="button"
 			tabindex="0"
 			aria-label="Play video"
 		>
 			<div
-				class="group/button relative flex h-20 w-20 scale-100 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm transition-all duration-300 group-hover:scale-110 hover:bg-white/30 active:scale-100"
+				class="group/button relative flex h-20 w-20 scale-100 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm transition-all duration-300 group-hover:-translate-y-[1px] group-hover:scale-110 hover:bg-white/30 active:translate-y-0 active:scale-100"
 			>
 				<div
 					class="absolute -inset-1 rounded-full bg-white/20 opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100"

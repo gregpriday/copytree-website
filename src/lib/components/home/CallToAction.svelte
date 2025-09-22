@@ -3,29 +3,18 @@
 </script>
 
 <section
-	role="region"
 	aria-label="Call to Action"
 	class="relative overflow-hidden bg-zinc-950 py-24 md:py-32"
 >
 	<!-- Force consistent dark motif with dark grid only; remove light fallback -->
-	<div
-		class="pointer-events-none absolute inset-0 z-0 opacity-20"
-		style="
-			background-image: url('/grid-pattern-dark.svg');
-			background-position: center;
-			background-size: 60px 60px;
-			background-repeat: repeat;
-			mask-image: radial-gradient(ellipse at center, white 22%, transparent 62%);
-			-webkit-mask-image: radial-gradient(ellipse at center, white 22%, transparent 62%);
-		"
-	></div>
-
 	<!-- Left side background image -->
 	<div
-		class="absolute top-1/2 -left-1/4 left-0 z-0 -translate-y-1/2 opacity-25 blur-sm"
+		class="absolute top-1/2 -left-1/4 left-0 z-0 -translate-y-1/2 opacity-[0.18] blur-sm animate-fadeIn"
 		style="
 			mask-image: radial-gradient(ellipse 70% 80% at center, white 20%, transparent 80%);
 			-webkit-mask-image: radial-gradient(ellipse 70% 80% at center, white 20%, transparent 80%);
+			animation-delay: 0.35s;
+			animation-fill-mode: both;
 		"
 	>
 		<enhanced:img
@@ -39,10 +28,12 @@
 
 	<!-- Right side background image -->
 	<div
-		class="absolute top-1/2 -right-1/4 right-0 z-0 -translate-y-1/2 opacity-25 blur-sm"
+		class="absolute top-1/2 -right-1/4 right-0 z-0 -translate-y-1/2 opacity-[0.18] blur-sm animate-fadeIn"
 		style="
 			mask-image: radial-gradient(ellipse 70% 80% at center, white 20%, transparent 80%);
 			-webkit-mask-image: radial-gradient(ellipse 70% 80% at center, white 20%, transparent 80%);
+			animation-delay: 0.45s;
+			animation-fill-mode: both;
 		"
 	>
 		<enhanced:img
@@ -61,7 +52,7 @@
 
 	<div class="relative z-20 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
 		<h2 class="mb-4 text-3xl font-semibold tracking-tight text-zinc-50 md:text-4xl">
-			Ready to transform your workflow?
+			Ship context to AI in seconds
 		</h2>
 
 		<p class="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-zinc-200/90">
@@ -90,23 +81,22 @@
 					Read Documentation
 				</Button>
 			</a>
+		</div>
 
+		<p class="mt-2 text-sm text-zinc-400">
+			Prefer GitHub?
 			<a
 				href="https://github.com/gregpriday/copytree"
 				target="_blank"
 				rel="noopener noreferrer"
-				aria-label="View CopyTree on GitHub"
+				class="ml-1 inline-flex items-center gap-1 text-zinc-300 underline-offset-4 transition-colors hover:text-white hover:underline focus-visible:text-white focus-visible:underline focus-visible:outline-none"
 			>
-				<Button
-					variant="secondary"
-					size="lg"
-					class="px-6 py-4 text-base border border-border/70 hover:border-border hover:bg-secondary/50 transition-all duration-200 animate-fadeIn"
-					style="animation-delay: 0.3s; animation-fill-mode: both;"
-				>
-					View on GitHub
-				</Button>
+				View the repo
+				<svg class="h-3 w-3" viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 4h9m0 0v9m0-9L4 16" />
+				</svg>
 			</a>
-		</div>
+		</p>
 
 		<p class="mt-8 text-sm text-zinc-300">Free and open-source CLI tool</p>
 	</div>

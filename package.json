@@ -14,7 +14,8 @@
 		"lint": "prettier --check .",
 		"lint:fix": "prettier --write .",
 		"test:unit": "vitest",
-		"test": "npm run test:unit -- --run"
+		"test": "npm run test:unit -- --run",
+		"generate:og": "node scripts/generate-og-image.mjs"
 	},
 	"dependencies": {
 		"@sveltejs/adapter-auto": "^6.0.1",
