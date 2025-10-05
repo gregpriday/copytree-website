@@ -1,23 +1,27 @@
 <script>
 	import { browser } from '$app/environment';
 
-	/** @type {{ code: string, language?: string }} */
-	let { code, language = 'markdown' } = $props();
+	/** @type {{ code: string, language?: string, showLineNumbers?: boolean }} */
+	let { code, language = 'markdown', showLineNumbers = false } = $props();
 
 	// Progressive enhancement state
 	let highlightedHtml = $state('');
 	let isHighlighting = $state(true);
 	let highlightingError = $state(false);
 
+	// Derived values for line numbers
+	const lines = $derived(code ? code.trim().split('\n') : []);
+	const lineCount = $derived(lines.length);
+
 	// HTML escaping utility (mirror CodeBlock)
 	/** @param {string} text */
 	function escapeHtml(text) {
 		/** @type {Record<string, string>} */
 		const map = {
-			'&': '&',
-			'<': '<',
-			'>': '>',
-			'"': '"',
+			'&': '&amp;',
+			'<': '&lt;',
+			'>': '&gt;',
+			'"': '&quot;',
 			"'": '&#039;'
 		};
 		return text.replace(/[&<>"']/g, (m) => map[m]);
@@ -65,7 +69,7 @@
 			highlightingError = false;
 		} catch (err) {
 			console.warn('Failed to highlight prompt content:', err);
-			// Fallback: keep plain text (we still set an escaped html version to keep structure)
+			// Fallback: keep plain text
 			highlightedHtml = '';
 			highlightingError = true;
 		} finally {
@@ -81,31 +85,44 @@
 	});
 </script>
 
-<!-- Code surface (force dark background for editor area) -->
-<div class="h-full overflow-y-auto bg-[rgb(13,13,13)] p-3 text-sm md:p-4">
-	<!-- Progressive rendering: show plain text immediately, replace asynchronously -->
-	<div class="font-mono">
-		{#if isHighlighting || !highlightedHtml}
-			<!-- Immediate plain, escaped text. Preserves whitespace and wrapping similar to docs CodeBlock -->
-			<pre
-				class="!m-0 !p-0 font-mono text-zinc-300"
-				style="background: transparent; white-space: pre-wrap; word-break: break-word; line-height: 1.5;">{escapeHtml(
-					(code ?? '').trim()
-				)}</pre>
-			{#if highlightingError}
-				<div class="mt-2 text-xs text-amber-500">Plain text</div>
+<!-- Code surface (aligned with CodeBlock dark background) -->
+<div class="relative h-full overflow-hidden bg-[rgb(13,13,13)]">
+	<div class="h-full overflow-y-auto">
+		<div class="flex text-sm">
+			<!-- Line numbers column (optional) -->
+			{#if showLineNumbers}
+				<div class="sticky left-0 flex-shrink-0 select-none bg-[rgb(13,13,13)] px-3 py-3 md:px-4 md:py-4">
+					<pre class="m-0 font-mono text-zinc-500">{#each Array(lineCount) as _, i}<div class="leading-relaxed">{i + 1}</div>{/each}</pre>
+				</div>
 			{/if}
-		{:else}
-			<!-- Highlighted HTML -->
-			<div class="shiki-container">
-				{@html highlightedHtml}
+			
+			<!-- Code content -->
+			<div class="min-w-0 flex-1 px-3 py-3 md:px-4 md:py-4">
+				<div class="font-mono">
+					{#if isHighlighting || !highlightedHtml}
+						<!-- Immediate plain, escaped text -->
+						<pre
+							class="!m-0 !p-0 font-mono leading-relaxed text-zinc-300"
+							style="background: transparent; white-space: pre-wrap; word-break: break-word;">{escapeHtml(
+								(code ?? '').trim()
+							)}</pre>
+						{#if highlightingError}
+							<div class="mt-2 text-xs text-amber-500">Plain text mode</div>
+						{/if}
+					{:else}
+						<!-- Highlighted HTML -->
+						<div class="shiki-container">
+							{@html highlightedHtml}
+						</div>
+					{/if}
+				</div>
 			</div>
-		{/if}
+		</div>
 	</div>
 </div>
 
 <style>
-	/* Ensure proper styling for syntax highlighted content (align with CodeBlock) */
+	/* Ensure proper styling for syntax highlighted content (aligned with CodeBlock) */
 	:global(.shiki-pre) {
 		background: transparent !important;
 		margin: 0 !important;
@@ -120,10 +137,11 @@
 	}
 
 	:global(.shiki-line) {
-		line-height: 1.5;
+		line-height: 1.75; /* Match leading-relaxed */
 		/* Allow long lines to wrap */
 		white-space: pre-wrap !important;
 		word-break: break-word !important;
+		display: block;
 	}
 
 	/* Container font to match rest of app */
@@ -133,5 +151,10 @@
 			monospace;
 		/* Ensure container doesn't constrain wrapping */
 		white-space: normal;
+	}
+
+	/* Line number styling consistency */
+	:global(.shiki-container .shiki-line) {
+		min-height: 1.75rem; /* Ensure consistent height with line numbers */
 	}
 </style>

@@ -1,5 +1,8 @@
 <script>
-	// This route redirects; content is handled by child layout
+	import { PromptLibrary } from '$lib/components/prompts';
+	
+	/** @type {import('./$types').PageData} */
+	let { data } = $props();
 </script>
 
-<div class="px-6 py-12 text-sm text-muted-foreground">Loading prompts…</div>
+<PromptLibrary prompts={data.prompts} categories={data.categories} tags={data.tags} />
